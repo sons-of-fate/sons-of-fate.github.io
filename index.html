@@ -413,7 +413,10 @@ footer span{color:#c8a96e;}
       </div>
       <div id="btab-resume" class="b-tab-content">
         <div class="b-print-section"><h3>Résumé de la bande</h3><div id="resumeBody"></div></div>
-        <button class="b-btn b-btn-primary" onclick="printResume()">Imprimer / PDF</button>
+        <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.75rem;">
+          <button class="b-btn b-btn-primary" onclick="printResume()">🖨 Imprimer le résumé</button>
+          <button class="b-btn b-btn-primary" onclick="printCartes()">🃏 Imprimer les cartes de capacités</button>
+        </div>
       </div>
     </div>
   </div>
@@ -629,7 +632,15 @@ function renderResume(){
     const fCaps=assignments.filter(a=>a.fighterUid===f.uid);
     html+=`<div class="b-print-fighter"><div style="display:flex;justify-content:space-between;"><span class="b-print-fighter-name">${getFighterDisplayName(f)}</span><span class="b-print-fighter-cost">${cost} pts</span></div>`;
     if(f.customName){html+=`<div style="font-size:11px;color:#888;font-family:sans-serif;">Profil : ${p.name}</div>`;}
-    fCaps.forEach(a=>{const cap=CAPACITES.find(x=>x.id===a.capId);html+=`<div class="b-print-cap">• ${cap.name} ${cap.niveau} — ${cap.cout} MD</div>`;});
+    if(fCaps.length>0){
+      fCaps.forEach(a=>{
+        const cap=CAPACITES.find(x=>x.id===a.capId);
+        html+=`<div class="b-print-cap" style="margin-top:4px;">
+          <div style="font-weight:bold;font-size:12px;">• ${cap.name} ${cap.niveau} — ${cap.cout} MD</div>
+          <div style="font-size:11px;color:#555;padding-left:10px;line-height:1.5;font-family:sans-serif;">${cap.desc}</div>
+        </div>`;
+      });
+    }
     html+=`</div>`;
   });
   html+=`<div class="b-print-totals"><div class="b-print-total-row"><span>Total points</span><span>${spent} / ${budget} pts</span></div><div class="b-print-total-row"><span>MD totaux</span><span>${total}</span></div><div class="b-print-total-row"><span>MD dépensés</span><span>${mdSpent}</span></div><div class="b-print-total-row"><span>MD restants</span><span>${total-mdSpent}</span></div></div>`;
@@ -745,6 +756,68 @@ function printResume(){
     <div class="sub">RÉSUMÉ DE BANDE</div>
     <div class="divider"></div>
     ${content}
+    <script>window.onload=()=>{window.print();}<\/script>
+  </body></html>`);
+  win.document.close();
+}
+
+function printCartes(){
+  if(band.length===0){alert('La bande est vide, rien à imprimer.');return;}
+  const win=window.open('','_blank');
+  let cartesHtml='';
+  band.forEach(f=>{
+    const p=PROFILES.find(x=>x.id===f.profileId);
+    const fCaps=assignments.filter(a=>a.fighterUid===f.uid);
+    if(fCaps.length===0)return;
+    const cost=f.tireur?p.tireurCost:p.cost;
+    let capsHtml=fCaps.map(a=>{
+      const cap=CAPACITES.find(x=>x.id===a.capId);
+      return`<div class="cap-entry">
+        <div class="cap-name">${cap.name} <span class="cap-niv">${cap.niveau}</span> <span class="cap-md">${cap.cout} MD</span></div>
+        <div class="cap-desc">${cap.desc}</div>
+      </div>`;
+    }).join('');
+    cartesHtml+=`<div class="carte">
+      <div class="carte-header">
+        <div class="carte-nom">${getFighterDisplayName(f)}</div>
+        <div class="carte-profil">${f.customName?p.name:''} ${f.tireur?'— Tireur':''} — ${cost} pts</div>
+      </div>
+      <div class="carte-caps">${capsHtml}</div>
+      <div class="carte-footer">SONS <span>OF</span> FATE — Capacités</div>
+    </div>`;
+  });
+  if(!cartesHtml){alert('Aucun combattant n\'a de capacité assignée.');win.close();return;}
+  win.document.write(`<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Sons of Fate — Cartes de capacités</title><style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:Georgia,serif;background:#fff;}
+    .page{display:flex;flex-wrap:wrap;gap:5mm;padding:10mm;}
+    .carte{
+      width:63mm;height:88mm;
+      border:1px solid #1a1a1a;border-radius:3mm;
+      padding:3mm;
+      display:flex;flex-direction:column;
+      background:#fff;
+      page-break-inside:avoid;
+      overflow:hidden;
+    }
+    .carte-header{border-bottom:1px solid #c8a96e;padding-bottom:2mm;margin-bottom:2mm;}
+    .carte-nom{font-size:9pt;font-weight:bold;letter-spacing:.05em;color:#1a1a1a;}
+    .carte-profil{font-size:7pt;color:#888;font-family:sans-serif;}
+    .carte-caps{flex:1;overflow:hidden;}
+    .cap-entry{margin-bottom:2mm;padding-bottom:2mm;border-bottom:1px solid #e0dbd4;}
+    .cap-entry:last-child{border-bottom:none;}
+    .cap-name{font-size:7.5pt;font-weight:bold;color:#1a1a1a;margin-bottom:1mm;}
+    .cap-niv{color:#c8a96e;font-weight:normal;}
+    .cap-md{color:#888;font-family:sans-serif;font-weight:normal;}
+    .cap-desc{font-size:6.5pt;color:#444;line-height:1.4;font-family:sans-serif;}
+    .carte-footer{font-size:6pt;color:#888;text-align:center;border-top:1px solid #e0dbd4;padding-top:2mm;margin-top:auto;letter-spacing:.1em;font-family:sans-serif;}
+    .carte-footer span{color:#c8a96e;}
+    @media print{
+      body{margin:0;}
+      .page{gap:3mm;padding:5mm;}
+    }
+  </style></head><body>
+    <div class="page">${cartesHtml}</div>
     <script>window.onload=()=>{window.print();}<\/script>
   </body></html>`);
   win.document.close();
