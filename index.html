@@ -486,7 +486,7 @@ let budget=200,band=[],assignments=[],pendingAdd=null;
 let capFilter='Tous';
 
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2);}
-function getMDBase(b){return b<100?6:Math.floor(b/100)*6;}
+function getMDBase(b){return Math.floor(b/50)*3;}
 function getMDBonus(){return band.reduce((s,f)=>{const p=PROFILES.find(x=>x.id===f.profileId);return s+(f.tireur?p.tireurMd:p.md);},0);}
 function getTotalMD(){return getMDBase(budget)+getMDBonus();}
 function getMDSpent(){return assignments.reduce((s,a)=>{const c=CAPACITES.find(x=>x.id===a.capId);return s+(c?c.cout:0);},0);}
