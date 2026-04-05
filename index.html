@@ -751,7 +751,28 @@ function printResume(){
 function printCartes(){
   if(band.length===0){alert('La bande est vide, rien à imprimer.');return;}
   const win=window.open('','_blank');
-  const CAPS_PAR_CARTE=3;
+  // Découpage intelligent : budget de ~320 caractères par carte (63x88mm)
+  // Chaque capacité coûte : longueur desc + 30 (pour le nom/niveau)
+  function decouper(caps){
+    const BUDGET=320;
+    const groupes=[];
+    let groupe=[];
+    let total=0;
+    caps.forEach(a=>{
+      const cap=CAPACITES.find(x=>x.id===a.capId);
+      const cout=cap.desc.length+30;
+      if(groupe.length>0 && total+cout>BUDGET){
+        groupes.push(groupe);
+        groupe=[a];
+        total=cout;
+      } else {
+        groupe.push(a);
+        total+=cout;
+      }
+    });
+    if(groupe.length>0)groupes.push(groupe);
+    return groupes;
+  }
   let cartesHtml='';
   band.forEach(f=>{
     const p=PROFILES.find(x=>x.id===f.profileId);
@@ -760,11 +781,11 @@ function printCartes(){
     const cost=f.tireur?p.tireurCost:p.cost;
     const nom=getFighterDisplayName(f);
     const profil=`${f.customName?p.name:''} ${f.tireur?'— Tireur':''} — ${cost} pts`;
-    // Découper les capacités par tranches de CAPS_PAR_CARTE
-    for(let i=0;i<fCaps.length;i+=CAPS_PAR_CARTE){
-      const tranche=fCaps.slice(i,i+CAPS_PAR_CARTE);
-      const numCarte=Math.floor(i/CAPS_PAR_CARTE)+1;
-      const totalCartes=Math.ceil(fCaps.length/CAPS_PAR_CARTE);
+    // Découpage intelligent
+    const groupes=decouper(fCaps);
+    groupes.forEach((tranche,i)=>{
+      const numCarte=i+1;
+      const totalCartes=groupes.length;
       const carteLabel=totalCartes>1?` (${numCarte}/${totalCartes})`:'';
       let capsHtml=tranche.map(a=>{
         const cap=CAPACITES.find(x=>x.id===a.capId);
@@ -781,7 +802,7 @@ function printCartes(){
         <div class="carte-caps">${capsHtml}</div>
         <div class="carte-footer">SONS <span>OF</span> FATE — Capacités</div>
       </div>`;
-    }
+    });
   });
   if(!cartesHtml){alert('Aucun combattant n\'a de capacité assignée.');win.close();return;}
   win.document.write(`<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Sons of Fate — Cartes de capacités</title><style>
