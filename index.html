@@ -224,7 +224,7 @@ footer span{color:#d4a853;}
       <div class="hero-card"><div class="hero-card-num">7</div><div class="hero-card-label">PROFILS</div></div>
       <div class="hero-card"><div class="hero-card-num">5</div><div class="hero-card-label">TOURS MAX</div></div>
       <div class="hero-card"><div class="hero-card-num">3</div><div class="hero-card-label">DÉS DU DESTIN</div></div>
-      <div class="hero-card"><div class="hero-card-num">16</div><div class="hero-card-label">CAPACITÉS</div></div>
+      <div class="hero-card"><div class="hero-card-num" id="nbCapacites">—</div><div class="hero-card-label">CAPACITÉS</div></div>
     </div>
   </div>
   <div class="section">
@@ -469,7 +469,7 @@ const PROFILES=[
 let CAPACITES=[];
 fetch('capacites.json')
   .then(r=>r.json())
-  .then(data=>{CAPACITES=data;render();renderCapPage();})
+  .then(data=>{CAPACITES=data;document.getElementById('nbCapacites').textContent=data.length;render();renderCapPage();})
   .catch(()=>console.error('Impossible de charger capacites.json'));
 
 let budget=200,band=[],assignments=[],pendingAdd=null;
