@@ -142,5 +142,14 @@
     "name": "Regard pétrifiant",
     "reservedFor": [],
     "desc": "1 PA — 1 fois par tour — portée 12 pouces : choisissez un ennemi avec ligne de vue ; effectuez un test de PSY en opposition ; en cas de réussite, le combattant ennemi devient un décor ; à sa prochaine activation, il peut tenter un test de PSY (difficulté 5) pour ne plus être pétrifié."
+  },
+  {
+    "id": "c17",
+    "cat": "Attaque",
+    "niveau": "++",
+    "cout": 2,
+    "name": "Grosse baffe",
+    "reservedFor": [],
+    "desc": "Avant d’effectuer une attaque au corps à corps, le joueur peut déclarer qu’il tente une Grosse Baffe.Pour réussir, l’attaque doit obtenir au moins trois réussites. Si c’est le cas, la cible subit un choc violent : elle lance 2 D6 de moins lors de sa prochaine esquive contre cette attaque."
   }
 ]
