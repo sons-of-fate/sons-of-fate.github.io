@@ -466,24 +466,11 @@ const PROFILES=[
   {id:'colosse',  name:'Colosse',         psy:2,for_:6,res:5,rap:3,cost:45,tireurCost:60,md:1,tireurMd:1,maxType:'colosse'},
 ];
 
-const CAPACITES=[
-  {id:'c1', cat:'Attaque', niveau:'+',   cout:1, name:'Chute titanesque',       reservedFor:['colosse','seigneurS'], desc:'Passif — à la mise hors de combat — réservé Imposant (Colosse, Seigneur Suprême) : lorsqu\'un combattant Imposant est mis hors de combat, lancez 1D6 ; sur 1 l\'adversaire choisit la direction de la chute, sur 2+ le joueur la choisit ; placez un gabarit de chute correspondant à la taille du combattant ; tous les combattants touchés subissent 1 blessure sur chaque membre.'},
-  {id:'c2', cat:'Attaque', niveau:'+',   cout:1, name:'Drain de vie',           reservedFor:[], desc:'1 PA — 1 fois par tour — au contact : effectuez un test de FOR (difficulté = FOR adverse) contre un ennemi au contact ; en cas de réussite, le combattant récupère 1D3 blessures et inflige 1D3 blessures à la cible ; les blessures infligées sont localisées via un jet de localisation.'},
-  {id:'c3', cat:'Attaque', niveau:'++',  cout:2, name:'Poison',                 reservedFor:[], desc:'Passif : chaque fois qu\'un ennemi subit au moins une blessure causée par ce combattant (tir ou mêlée), il doit effectuer un test de RES (difficulté 5) ; en cas d\'échec, il subit 1 blessure supplémentaire.'},
-  {id:'c4', cat:'Attaque', niveau:'+++', cout:3, name:'Piétinement sauvage',    reservedFor:['colosse','seigneurS'], desc:'1 PA — 1 fois par tour — Colosse, Seigneur Suprême : le combattant effectue un déplacement de 6 pouces ; il peut traverser les ennemis mais ne peut pas terminer son mouvement au contact ni sur une figurine ; chaque ennemi traversé lance 1D6, sur 1 aucun effet, sur 2+ il subit 1 blessure sur chaque membre.'},
-  {id:'c5', cat:'Attaque', niveau:'+++', cout:3, name:'Botte secrète',          reservedFor:['champion'], desc:'Passif — réservé Champion : si 2 réussites ou plus sont obtenues lors d\'un jet d\'esquive, le combattant peut immédiatement effectuer une attaque gratuite ; cette attaque compte dans sa limite d\'attaques du tour.'},
-  {id:'c6', cat:'Tir',     niveau:'+++', cout:3, name:'Tir réactif',            reservedFor:[], desc:'1 PA par tir — réaction — limité par les attaques du tour : lorsqu\'un ennemi effectue un déplacement ou un engagement qui le place dans la ligne de vue du tireur, celui-ci peut immédiatement effectuer un tir ; chaque tir coûte 1 PA et compte dans la limite d\'attaques du tour ; un même ennemi ne peut déclencher qu\'un seul tir réactif par tour.'},
-  {id:'c7', cat:'Tir',     niveau:'+++', cout:3, name:'Lancer de rocher',       reservedFor:['champion','colosse','seigneur','seigneurS'], desc:'Tir — portée 18 pouces : effectue une attaque de tir ; lors du jet d\'attaque contre RAP, chaque résultat de 5 ou 6 génère 2 touches.'},
-  {id:'c8', cat:'Tir',     niveau:'+++', cout:3, name:'Tir précis',             reservedFor:['brave','guerrier','seigneur'], desc:'1 PA — 1 fois par tour — tir : lors d\'une attaque de tir, ajoutez +1D3 à la valeur de FOR pour ce tir. (réservé Braves, Guerriers, Seigneurs)'},
-  {id:'c9', cat:'Défense', niveau:'++',  cout:2, name:'Régénération trolesque', reservedFor:[], desc:'Passif — fin de tour : à la fin de chaque tour, lancez 1D3 ; sur 2+, le combattant récupère 1 blessure dans chaque membre.'},
-  {id:'c10',cat:'Défense', niveau:'++',  cout:2, name:'Esquive tactique',       reservedFor:[], desc:'1 PA — réaction à un engagement : lorsqu\'un combattant est ciblé par un engagement, il peut se déplacer immédiatement de 6 pouces à l\'opposé de l\'attaquant ; l\'engagement ennemi devient un simple déplacement.'},
-  {id:'c11',cat:'Défense', niveau:'++',  cout:2, name:'Éthéré',                 reservedFor:[], desc:'Passif : lorsque ce combattant est ciblé par une attaque, chaque résultat de 1 obtenu sur les dés d\'attaque adverses annule une réussite.'},
-  {id:'c12',cat:'Mouvement',niveau:'+',  cout:1, name:'Commandement',           reservedFor:['capitaine','seigneur','seigneurS'], desc:'1 PA — 1 fois par tour — réservé Capitaine, Seigneur, Seigneur Suprême : choisissez un allié ; celui-ci peut immédiatement effectuer une action de mouvement ; cette action coûte 1 PA à l\'allié et compte dans sa limite de mouvements ; il ne peut pas effectuer d\'engagement lors de ce mouvement.'},
-  {id:'c13',cat:'Mouvement',niveau:'++', cout:2, name:'Monture imprévisible',   reservedFor:[], desc:'Passif — à chaque déplacement ou engagement : la distance de mouvement devient 5 pouces + 1D6 ; si le mouvement permet un contact, l\'engagement peut être effectué ; ignore les restrictions de terrain liées au saut.'},
-  {id:'c14',cat:'Contrôle',niveau:'++',  cout:2, name:'Entrave mystique',       reservedFor:[], desc:'1 PA — 1 fois par tour — portée 12 pouces : choisissez un ennemi avec ligne de vue ; effectuez un jet de PSY (difficulté = PSY adverse) ; en cas de réussite, la cible perd 1 PA.'},
-  {id:'c15',cat:'Contrôle',niveau:'++',  cout:2, name:'Effroi',                 reservedFor:[], desc:'1 PA — 1 fois par tour — portée 12 pouces : choisissez un ennemi avec une ligne de vue ; effectuez un test de PSY (difficulté = PSY adverse) ; en cas de réussite, la cible ne peut plus attaquer ; à son activation, elle peut effectuer un test de PSY (difficulté 4) pour annuler cet effet.'},
-  {id:'c16',cat:'Contrôle',niveau:'+++', cout:3, name:'Regard pétrifiant',      reservedFor:[], desc:'1 PA — 1 fois par tour — portée 12 pouces : choisissez un ennemi avec ligne de vue ; effectuez un test de PSY en opposition ; en cas de réussite, le combattant ennemi devient un décor ; à sa prochaine activation, il peut tenter un test de PSY (difficulté 5) pour ne plus être pétrifié.'},
-];
+let CAPACITES=[];
+fetch('capacites.json')
+  .then(r=>r.json())
+  .then(data=>{CAPACITES=data;render();renderCapPage();})
+  .catch(()=>console.error('Impossible de charger capacites.json'));
 
 let budget=200,band=[],assignments=[],pendingAdd=null;
 let capFilter='Tous';
@@ -823,8 +810,6 @@ function printCartes(){
   win.document.close();
 }
 
-render();
-renderCapPage();
 </script>
 </body>
 </html>
