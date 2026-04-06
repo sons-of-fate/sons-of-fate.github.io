@@ -604,7 +604,6 @@ function renderMD(){
   const catsFiltered=mdFilter==='Tous'?cats:cats.filter(c=>c===mdFilter);
   catsFiltered.forEach(cat=>{
     const catCaps=CAPACITES.filter(c=>c.cat===cat);
-    const catCaps=CAPACITES.filter(c=>c.cat===cat);
     const hdr=document.createElement('div');hdr.className='b-section-title';hdr.textContent=cat;list.appendChild(hdr);
     catCaps.forEach(cap=>{
       const block=document.createElement('div');block.className='b-cap-block';
