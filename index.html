@@ -409,6 +409,7 @@ footer span{color:#d4a853;}
           <span>MD dépensés : <strong id="mdSpent">0</strong></span>
           <span>MD restants : <strong id="mdLeft">12</strong></span>
         </div>
+        <div id="mdFilter" class="cap-filter"></div>
         <div id="capList"></div>
       </div>
       <div id="btab-resume" class="b-tab-content">
@@ -474,6 +475,7 @@ fetch('capacites.json')
 
 let budget=200,band=[],assignments=[],pendingAdd=null;
 let capFilter='Tous';
+let mdFilter='Tous';
 
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2);}
 function getMDBase(b){return Math.floor(b/50)*3;}
@@ -587,10 +589,21 @@ function renderMD(){
   document.getElementById('mdSpent').textContent=spent;
   document.getElementById('mdLeft').textContent=left;
   const cats=[...new Set(CAPACITES.map(c=>c.cat))];
+  const filterDiv=document.getElementById('mdFilter');
+  filterDiv.innerHTML='';
+  ['Tous',...cats].forEach(cat=>{
+    const btn=document.createElement('button');
+    btn.className='cap-filter-btn'+(mdFilter===cat?' active':'');
+    btn.textContent=cat;
+    btn.onclick=()=>{mdFilter=cat;renderMD();};
+    filterDiv.appendChild(btn);
+  });
   const list=document.getElementById('capList');
   list.innerHTML='';
   if(band.length===0){list.innerHTML='<p class="b-empty">Composez d\'abord votre bande dans l\'onglet Profils.</p>';return;}
-  cats.forEach(cat=>{
+  const catsFiltered=mdFilter==='Tous'?cats:cats.filter(c=>c===mdFilter);
+  catsFiltered.forEach(cat=>{
+    const catCaps=CAPACITES.filter(c=>c.cat===cat);
     const catCaps=CAPACITES.filter(c=>c.cat===cat);
     const hdr=document.createElement('div');hdr.className='b-section-title';hdr.textContent=cat;list.appendChild(hdr);
     catCaps.forEach(cap=>{
