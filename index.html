@@ -384,7 +384,7 @@ footer span{color:#d4a853;}
   <div class="section">
     <div class="section-title">Constructeur de <span>bande</span></div>
     <div class="divider"></div>
-    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;flex-wrap:wrap;"><span style="font-size:.9rem;color:#555;font-family:sans-serif;font-style:italic;">Composez votre bande, l'epopee commence</span><button id="btnPlay" onclick="toggleMusic()" style="display:inline-flex;align-items:center;gap:.4rem;padding:.4rem 1rem;border:1px solid #d4a853;border-radius:3px;background:#fff;color:#8a6d3b;font-size:.85rem;font-family:sans-serif;cursor:pointer;transition:all .2s;">▶ Play</button></div>
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;flex-wrap:wrap;"><span style="font-size:.9rem;color:#555;font-family:sans-serif;font-style:italic;">Composez votre bande, l'epopee commence</span><button id="btnPlay" onclick="toggleMusic()" style="display:inline-flex;align-items:center;gap:.4rem;padding:.4rem 1rem;border:1px solid #d4a853;border-radius:3px;background:#fff;color:#8a6d3b;font-size:.85rem;font-family:sans-serif;cursor:pointer;transition:all .2s;">▶ Play</button><span style="font-size:13px;color:#888;font-family:sans-serif;">🔊</span><input type="range" id="volumeSlider" min="0" max="100" value="70" oninput="setVolume(this.value)" style="width:80px;accent-color:#d4a853;cursor:pointer;"/></div>
     <audio id="bgMusic" loop src="The_Pyre.mp3"></audio>
     <div class="builder-wrap">
       <div class="b-budget-row">
@@ -485,10 +485,16 @@ fetch('capacites.json')
 
 let budget=200,band=[],assignments=[],pendingAdd=null;
 
+function setVolume(val){
+  const audio=document.getElementById('bgMusic');
+  audio.volume=val/100;
+}
+
 function toggleMusic(){
   const audio=document.getElementById('bgMusic');
   const btn=document.getElementById('btnPlay');
   if(audio.paused){
+    audio.volume=document.getElementById('volumeSlider').value/100;
     audio.play();
     btn.innerHTML='⏸ Pause';
     btn.style.background='#d4a853';
