@@ -255,26 +255,33 @@ footer span{color:#d4a853;}
       <div id="taverneVol" style="display:none;align-items:center;gap:.5rem;justify-content:center;margin-top:.5rem;"><span style="font-size:13px;color:#888;font-family:sans-serif;">🔊</span><input type="range" min="0" max="100" value="70" oninput="document.getElementById('taverneMusic').volume=this.value/100" style="width:80px;accent-color:#d4a853;cursor:pointer;"/></div>
     </div>
   </div>
-  <audio id="taverneMusic" src="Midnight_Tale.mp3"></audio>
+  <audio id="taverneMusic" src="Midnight_Tale.mp3" loop></audio>
 
   <!-- LECTEUR DE LIVRE -->
   <div id="livreSection" style="display:none;padding:1rem 2rem 2rem;">
     <style>
-      #livreWrap{position:relative;max-width:700px;margin:0 auto;perspective:1200px;}
-      #livrePage{width:100%;border-radius:4px;box-shadow:4px 4px 20px rgba(0,0,0,.4);display:block;transition:transform 0.5s ease,opacity 0.3s ease;}
-      #livrePage.flip-right{animation:flipRight 0.5s ease forwards;}
-      #livrePage.flip-left{animation:flipLeft 0.5s ease forwards;}
-      @keyframes flipRight{0%{transform:rotateY(0deg);opacity:1;}50%{transform:rotateY(-90deg);opacity:0;}100%{transform:rotateY(0deg);opacity:1;}}
-      @keyframes flipLeft{0%{transform:rotateY(0deg);opacity:1;}50%{transform:rotateY(90deg);opacity:0;}100%{transform:rotateY(0deg);opacity:1;}}
+      #livreWrap{position:relative;max-width:520px;margin:0 auto;}
+      #livrePage{
+        width:auto;
+        max-width:100%;
+        max-height:calc(100vh - 260px);
+        border-radius:4px;
+        box-shadow:4px 4px 20px rgba(0,0,0,.4);
+        display:block;
+        margin:0 auto;
+        transition:opacity 0.4s ease;
+      }
+      #livrePage.fondu{opacity:0;}
       .livre-btn{background:rgba(42,31,21,.8);border:1px solid #d4a853;color:#d4a853;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;position:absolute;top:50%;transform:translateY(-50%);}
       .livre-btn:hover{background:#d4a853;color:#2a1f15;}
+      .livre-btn:disabled{opacity:0.3;cursor:not-allowed;}
       #btnPrev{left:-22px;}
       #btnNext{right:-22px;}
       #pageNum{text-align:center;font-size:.8rem;color:#888;font-family:sans-serif;margin-top:.5rem;}
     </style>
     <div id="livreWrap">
       <img id="livrePage" src="page_01.jpg" alt="Page du livre"/>
-      <button class="livre-btn" id="btnPrev" onclick="livreNav(-1)">&#8592;</button>
+      <button class="livre-btn" id="btnPrev" onclick="livreNav(-1)" disabled>&#8592;</button>
       <button class="livre-btn" id="btnNext" onclick="livreNav(1)">&#8594;</button>
     </div>
     <div id="pageNum">Page 1 / 20</div>
@@ -526,16 +533,17 @@ function livreNav(dir){
   const newPage=livrePage+dir;
   if(newPage<1||newPage>livreTotal)return;
   const img=document.getElementById('livrePage');
-  img.classList.remove('flip-right','flip-left');
-  void img.offsetWidth;
-  img.classList.add(dir>0?'flip-right':'flip-left');
+  const btnPrev=document.getElementById('btnPrev');
+  const btnNext=document.getElementById('btnNext');
+  img.classList.add('fondu');
   setTimeout(()=>{
     livrePage=newPage;
     img.src='page_'+String(livrePage).padStart(2,'0')+'.jpg';
     document.getElementById('pageNum').textContent='Page '+livrePage+' / '+livreTotal;
-    document.getElementById('btnPrev').style.opacity=livrePage===1?'0.3':'1';
-    document.getElementById('btnNext').style.opacity=livrePage===livreTotal?'0.3':'1';
-  },250);
+    btnPrev.disabled=livrePage===1;
+    btnNext.disabled=livrePage===livreTotal;
+    img.classList.remove('fondu');
+  },400);
 }
 
 function toggleTaverne(){
