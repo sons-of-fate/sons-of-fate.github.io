@@ -245,6 +245,16 @@ footer span{color:#d4a853;}
       <div class="info-card"><h3>4. Utilisez le Dé du Destin</h3><p>Trois fois par partie, invoquez une intervention héroïque pour renverser une situation désespérée.</p></div>
     </div>
   </div>
+
+  <!-- EASTER EGG TAVERNE -->
+  <div style="text-align:center;padding:2rem 2rem 1rem;">
+    <div style="max-width:600px;margin:0 auto;">
+      <img src="taverne.png" alt="Barde dans une taverne" onclick="toggleTaverne()" style="width:100%;border-radius:6px;cursor:pointer;border:2px solid #d4a853;transition:transform .2s;opacity:.9;" onmouseover="this.style.transform='scale(1.02)';this.style.opacity='1'" onmouseout="this.style.transform='scale(1)';this.style.opacity='.9'"/>
+      <p style="margin-top:.75rem;font-size:.9rem;color:#888;font-family:sans-serif;font-style:italic;">Avant d'aller écrire ton destin, tu peux bien passer à la taverne... 🍺</p>
+      <p id="taverneMsg" style="font-size:.8rem;color:#d4a853;font-family:sans-serif;height:1rem;transition:opacity .3s;opacity:0;">* Le barde commence à jouer... *</p>
+    </div>
+  </div>
+  <audio id="taverneMusic" src="Midnight_Tale.mp3"></audio>
 </div>
 
 <!-- PAGE RÈGLES -->
@@ -464,7 +474,7 @@ footer span{color:#d4a853;}
   </div>
 </div>
 
-<footer>Sons of Fate — Livre de règles par <span>Marcellus</span> — Hommage à Eden the Game<br><span style="font-size:.75rem;color:#888;">Musique : The Pyre — Kevin MacLeod (incompetech.com) — Licence CC BY 4.0</span></footer>
+<footer>Sons of Fate — Livre de règles par <span>Marcellus</span> — Hommage à Eden the Game<br><span style="font-size:.75rem;color:#888;">Musique : The Pyre &amp; Midnight Tale — Kevin MacLeod (incompetech.com) — Licence CC BY 4.0</span></footer>
 
 <script>
 const PROFILES=[
@@ -484,6 +494,20 @@ fetch('capacites.json')
   .catch(()=>console.error('Impossible de charger capacites.json'));
 
 let budget=200,band=[],assignments=[],pendingAdd=null;
+
+function toggleTaverne(){
+  const audio=document.getElementById('taverneMusic');
+  const msg=document.getElementById('taverneMsg');
+  if(audio.paused){
+    audio.play();
+    msg.style.opacity='1';
+    msg.textContent='* Le barde commence à jouer... *';
+  } else {
+    audio.pause();
+    audio.currentTime=0;
+    msg.style.opacity='0';
+  }
+}
 
 function setVolume(val){
   const audio=document.getElementById('bgMusic');
