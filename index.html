@@ -384,6 +384,8 @@ footer span{color:#d4a853;}
   <div class="section">
     <div class="section-title">Constructeur de <span>bande</span></div>
     <div class="divider"></div>
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;flex-wrap:wrap;"><span style="font-size:.9rem;color:#555;font-family:sans-serif;font-style:italic;">Composez votre bande, l'epopee commence</span><button id="btnPlay" onclick="toggleMusic()" style="display:inline-flex;align-items:center;gap:.4rem;padding:.4rem 1rem;border:1px solid #d4a853;border-radius:3px;background:#fff;color:#8a6d3b;font-size:.85rem;font-family:sans-serif;cursor:pointer;transition:all .2s;">▶ Play</button></div>
+    <audio id="bgMusic" loop src="The_Pyre.mp3"></audio>
     <div class="builder-wrap">
       <div class="b-budget-row">
         <label>Budget :</label>
@@ -462,7 +464,7 @@ footer span{color:#d4a853;}
   </div>
 </div>
 
-<footer>Sons of Fate — Livre de règles par <span>Marcellus</span> — Hommage à Eden the Game</footer>
+<footer>Sons of Fate — Livre de règles par <span>Marcellus</span> — Hommage à Eden the Game<br><span style="font-size:.75rem;color:#888;">Musique : The Pyre — Kevin MacLeod (incompetech.com) — Licence CC BY 4.0</span></footer>
 
 <script>
 const PROFILES=[
@@ -482,6 +484,22 @@ fetch('capacites.json')
   .catch(()=>console.error('Impossible de charger capacites.json'));
 
 let budget=200,band=[],assignments=[],pendingAdd=null;
+
+function toggleMusic(){
+  const audio=document.getElementById('bgMusic');
+  const btn=document.getElementById('btnPlay');
+  if(audio.paused){
+    audio.play();
+    btn.innerHTML='⏸ Pause';
+    btn.style.background='#d4a853';
+    btn.style.color='#2a1f15';
+  } else {
+    audio.pause();
+    btn.innerHTML='▶ Play';
+    btn.style.background='#fff';
+    btn.style.color='#8a6d3b';
+  }
+}
 let capFilter='Tous';
 let mdFilter='Tous';
 
