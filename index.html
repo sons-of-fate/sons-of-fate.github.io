@@ -598,7 +598,9 @@ function toggleMusic(){
   const btn=document.getElementById('btnPlay');
   if(audio.paused){
     const taverne=document.getElementById('taverneMusic');
-    if(!taverne.paused){taverne.pause();taverne.currentTime=0;document.getElementById('taverneMsg').style.opacity='0';document.getElementById('taverneVol').style.display='none';document.getElementById('livreSection').style.display='none';const cards=document.getElementById('howToCards');if(cards)cards.style.display='';}
+    if(!taverne.paused){taverne.pause();taverne.currentTime=0;document.getElementById('taverneMsg').style.opacity='0';document.getElementById('taverneVol').style.display='none';}
+    const lm=document.getElementById('livreMusic');
+    if(!lm.paused){lm.pause();lm.currentTime=0;document.getElementById('livreSection').style.display='none';}
     audio.volume=document.getElementById('volumeSlider').value/100;
     audio.play();
     btn.innerHTML='⏸ Pause';
