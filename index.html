@@ -257,32 +257,6 @@ footer span{color:#d4a853;}
   </div>
   <audio id="taverneMusic" src="Midnight_Tale.mp3" loop></audio>
 
-  <!-- LECTEUR DE LIVRE (overlay plein écran) -->
-  <div id="livreSection" style="display:none;position:fixed;inset:0;background:rgba(20,14,6,0.96);z-index:500;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
-    <style>
-      #livreOverlayWrap{position:relative;display:flex;align-items:center;justify-content:center;height:calc(100vh - 60px);}
-      #livrePage{max-height:calc(100vh - 80px);max-width:calc(100vw - 120px);width:auto;border-radius:3px;box-shadow:0 0 40px rgba(0,0,0,.8);display:block;transition:opacity 0.4s ease;}
-      #livrePage.fondu{opacity:0;}
-      .livre-btn{background:rgba(42,31,21,.9);border:1px solid #d4a853;color:#d4a853;font-size:1.5rem;width:50px;height:50px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;position:absolute;top:50%;transform:translateY(-50%);}
-      .livre-btn:hover{background:#d4a853;color:#2a1f15;}
-      .livre-btn:disabled{opacity:0.25;cursor:not-allowed;}
-      #btnPrev{left:-60px;}
-      #btnNext{right:-60px;}
-      #pageNum{color:#888;font-size:.8rem;font-family:sans-serif;text-align:center;}
-    </style>
-    <div style="position:absolute;top:16px;right:20px;display:flex;align-items:center;gap:10px;">
-      <span style="font-size:13px;color:#d4a853;font-family:sans-serif;">🔊</span>
-      <input type="range" min="0" max="100" value="70" id="livreVolSlider" oninput="document.getElementById('livreMusic').volume=this.value/100" style="width:80px;accent-color:#d4a853;cursor:pointer;"/>
-      <button onclick="fermerLivre()" title="Fermer" style="background:none;border:none;color:#d4a853;font-size:1.5rem;cursor:pointer;opacity:0.7;font-family:sans-serif;">✕</button>
-    </div>
-    <div id="livreOverlayWrap">
-      <img id="livrePage" src="page_01.jpg" alt="Page du livre"/>
-      <button class="livre-btn" id="btnPrev" onclick="livreNav(-1)" disabled>&#8592;</button>
-      <button class="livre-btn" id="btnNext" onclick="livreNav(1)">&#8594;</button>
-    </div>
-    <div id="pageNum">Page 1 / 20</div>
-  </div>
-  <audio id="livreMusic" loop src="livre_music.mp3"></audio>
 </div>
 
 <!-- PAGE RÈGLES -->
@@ -501,6 +475,33 @@ footer span{color:#d4a853;}
     </div>
   </div>
 </div>
+
+  <!-- LECTEUR DE LIVRE (overlay plein écran) -->
+  <div id="livreSection" style="display:none;position:fixed;inset:0;background:rgba(20,14,6,0.96);z-index:500;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
+    <style>
+      #livreOverlayWrap{position:relative;display:flex;align-items:center;justify-content:center;height:calc(100vh - 60px);}
+      #livrePage{max-height:calc(100vh - 80px);max-width:calc(100vw - 120px);width:auto;border-radius:3px;box-shadow:0 0 40px rgba(0,0,0,.8);display:block;transition:opacity 0.4s ease;}
+      #livrePage.fondu{opacity:0;}
+      .livre-btn{background:rgba(42,31,21,.9);border:1px solid #d4a853;color:#d4a853;font-size:1.5rem;width:50px;height:50px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;position:absolute;top:50%;transform:translateY(-50%);}
+      .livre-btn:hover{background:#d4a853;color:#2a1f15;}
+      .livre-btn:disabled{opacity:0.25;cursor:not-allowed;}
+      #btnPrev{left:-60px;}
+      #btnNext{right:-60px;}
+      #pageNum{color:#888;font-size:.8rem;font-family:sans-serif;text-align:center;}
+    </style>
+    <div style="position:absolute;top:16px;right:20px;display:flex;align-items:center;gap:10px;">
+      <span style="font-size:13px;color:#d4a853;font-family:sans-serif;">🔊</span>
+      <input type="range" min="0" max="100" value="70" id="livreVolSlider" oninput="document.getElementById('livreMusic').volume=this.value/100" style="width:80px;accent-color:#d4a853;cursor:pointer;"/>
+      <button onclick="fermerLivre()" title="Fermer" style="background:none;border:none;color:#d4a853;font-size:1.5rem;cursor:pointer;opacity:0.7;font-family:sans-serif;">✕</button>
+    </div>
+    <div id="livreOverlayWrap">
+      <img id="livrePage" src="page_01.jpg" alt="Page du livre"/>
+      <button class="livre-btn" id="btnPrev" onclick="livreNav(-1)" disabled>&#8592;</button>
+      <button class="livre-btn" id="btnNext" onclick="livreNav(1)">&#8594;</button>
+    </div>
+    <div id="pageNum">Page 1 / 20</div>
+  </div>
+  <audio id="livreMusic" loop src="livre_music.mp3"></audio>
 
 <footer>Sons of Fate — Livre de règles par <span>Marcellus</span> — Hommage à Eden the Game<br><span style="font-size:.75rem;color:#888;">Musique : The Pyre, Midnight Tale &amp; Teller of the Tales — Kevin MacLeod (incompetech.com) — Licence CC BY 4.0</span></footer>
 
