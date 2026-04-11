@@ -269,13 +269,11 @@ footer span{color:#d4a853;}
       #btnPrev{left:-60px;}
       #btnNext{right:-60px;}
       #pageNum{color:#888;font-size:.8rem;font-family:sans-serif;text-align:center;}
-      #btnFermerLivre{position:absolute;top:16px;right:20px;background:none;border:none;color:#d4a853;font-size:1.5rem;cursor:pointer;font-family:sans-serif;opacity:0.7;}
-      #btnFermerLivre:hover{opacity:1;}
     </style>
     <div style="position:absolute;top:16px;right:20px;display:flex;align-items:center;gap:10px;">
       <span style="font-size:13px;color:#d4a853;font-family:sans-serif;">🔊</span>
-      <input type="range" min="0" max="100" value="70" oninput="document.getElementById('taverneMusic').volume=this.value/100" style="width:80px;accent-color:#d4a853;cursor:pointer;"/>
-      <button id="btnFermerLivre" onclick="fermerLivre()" title="Fermer" style="background:none;border:none;color:#d4a853;font-size:1.5rem;cursor:pointer;opacity:0.7;font-family:sans-serif;">✕</button>
+      <input type="range" min="0" max="100" value="70" id="livreVolSlider" oninput="document.getElementById('livreMusic').volume=this.value/100" style="width:80px;accent-color:#d4a853;cursor:pointer;"/>
+      <button onclick="fermerLivre()" title="Fermer" style="background:none;border:none;color:#d4a853;font-size:1.5rem;cursor:pointer;opacity:0.7;font-family:sans-serif;">✕</button>
     </div>
     <div id="livreOverlayWrap">
       <img id="livrePage" src="page_01.jpg" alt="Page du livre"/>
@@ -284,12 +282,13 @@ footer span{color:#d4a853;}
     </div>
     <div id="pageNum">Page 1 / 20</div>
   </div>
+  <audio id="livreMusic" loop src="livre_music.mp3"></audio>
 </div>
 
 <!-- PAGE RÈGLES -->
 <div id="page-regles" class="page">
   <div class="section">
-    <div class="section-title">Livre de <span>Règles</span></div>
+    <div class="section-title">Livre de <span style="cursor:pointer;text-decoration:underline;text-decoration-style:dotted;" onclick="ouvrirLivre()" title="Lire le livre de règles">Règles</span></div>
     <div class="divider"></div>
     <p style="margin-bottom:1.5rem;font-size:.95rem;color:#555;">Téléchargez le PDF complet des règles pour jouer. Vous pouvez aussi l'ouvrir dans votre navigateur pour l'imprimer.</p>
     <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
@@ -503,7 +502,7 @@ footer span{color:#d4a853;}
   </div>
 </div>
 
-<footer>Sons of Fate — Livre de règles par <span>Marcellus</span> — Hommage à Eden the Game<br><span style="font-size:.75rem;color:#888;">Musique : The Pyre &amp; Midnight Tale — Kevin MacLeod (incompetech.com) — Licence CC BY 4.0</span></footer>
+<footer>Sons of Fate — Livre de règles par <span>Marcellus</span> — Hommage à Eden the Game<br><span style="font-size:.75rem;color:#888;">Musique : The Pyre, Midnight Tale &amp; Teller of the Tales — Kevin MacLeod (incompetech.com) — Licence CC BY 4.0</span></footer>
 
 <script>
 const PROFILES=[
@@ -530,12 +529,24 @@ const livreTotal=20;
 function fermerLivre(){
   const livre=document.getElementById('livreSection');
   livre.style.display='none';
-  const audio=document.getElementById('taverneMusic');
-  audio.pause();audio.currentTime=0;
-  document.getElementById('taverneMsg').style.opacity='0';
-  document.getElementById('taverneVol').style.display='none';
-  const cards=document.getElementById('howToCards');
-  if(cards)cards.style.display='';
+  const lm=document.getElementById('livreMusic');
+  lm.pause();lm.currentTime=0;
+}
+
+function ouvrirLivre(){
+  const bgMusic=document.getElementById('bgMusic');
+  if(!bgMusic.paused){bgMusic.pause();document.getElementById('btnPlay').innerHTML='▶ Play';document.getElementById('btnPlay').style.background='#fff';document.getElementById('btnPlay').style.color='#8a6d3b';}
+  const taverne=document.getElementById('taverneMusic');
+  if(!taverne.paused){taverne.pause();taverne.currentTime=0;document.getElementById('taverneMsg').style.opacity='0';document.getElementById('taverneVol').style.display='none';}
+  const lm=document.getElementById('livreMusic');
+  lm.volume=0.7;
+  lm.play();
+  livrePage=1;
+  document.getElementById('livrePage').src='page_01.jpg';
+  document.getElementById('pageNum').textContent='Page 1 / '+livreTotal;
+  document.getElementById('btnPrev').disabled=true;
+  document.getElementById('btnNext').disabled=false;
+  document.getElementById('livreSection').style.display='flex';
 }
 
 function livreNav(dir){
@@ -561,8 +572,6 @@ function toggleTaverne(){
   const audio=document.getElementById('taverneMusic');
   const msg=document.getElementById('taverneMsg');
   const vol=document.getElementById('taverneVol');
-  const livre=document.getElementById('livreSection');
-  const cards=document.getElementById('howToCards');
   if(audio.paused){
     const bgMusic=document.getElementById('bgMusic');
     if(!bgMusic.paused){bgMusic.pause();document.getElementById('btnPlay').innerHTML='▶ Play';document.getElementById('btnPlay').style.background='#fff';document.getElementById('btnPlay').style.color='#8a6d3b';}
@@ -571,20 +580,11 @@ function toggleTaverne(){
     msg.style.opacity='1';
     msg.textContent='* Le barde commence à jouer... *';
     vol.style.display='flex';
-    if(cards)cards.style.display='none';
-    livre.style.display='flex';
-    livrePage=1;
-    document.getElementById('livrePage').src='page_01.jpg';
-    document.getElementById('pageNum').textContent='Page 1 / '+livreTotal;
-    document.getElementById('btnPrev').style.opacity='0.3';
-    document.getElementById('btnNext').style.opacity='1';
   } else {
     audio.pause();
     audio.currentTime=0;
     msg.style.opacity='0';
     vol.style.display='none';
-    livre.style.display='none';
-    if(cards)cards.style.display='';
   }
 }
 
