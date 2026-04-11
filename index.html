@@ -272,7 +272,11 @@ footer span{color:#d4a853;}
       #btnFermerLivre{position:absolute;top:16px;right:20px;background:none;border:none;color:#d4a853;font-size:1.5rem;cursor:pointer;font-family:sans-serif;opacity:0.7;}
       #btnFermerLivre:hover{opacity:1;}
     </style>
-    <button id="btnFermerLivre" onclick="fermerLivre()" title="Fermer">✕</button>
+    <div style="position:absolute;top:16px;right:20px;display:flex;align-items:center;gap:10px;">
+      <span style="font-size:13px;color:#d4a853;font-family:sans-serif;">🔊</span>
+      <input type="range" min="0" max="100" value="70" oninput="document.getElementById('taverneMusic').volume=this.value/100" style="width:80px;accent-color:#d4a853;cursor:pointer;"/>
+      <button id="btnFermerLivre" onclick="fermerLivre()" title="Fermer" style="background:none;border:none;color:#d4a853;font-size:1.5rem;cursor:pointer;opacity:0.7;font-family:sans-serif;">✕</button>
+    </div>
     <div id="livreOverlayWrap">
       <img id="livrePage" src="page_01.jpg" alt="Page du livre"/>
       <button class="livre-btn" id="btnPrev" onclick="livreNav(-1)" disabled>&#8592;</button>
