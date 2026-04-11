@@ -207,7 +207,7 @@ footer span{color:#d4a853;}
   <div class="nav-logo">SONS <span>OF</span> FATE</div>
   <div class="nav-links" id="navLinks">
     <a href="#" class="active" onclick="showPage('accueil',this)">Accueil</a>
-    <a href="#" onclick="showPage('regles',this)">Règles</a>
+    <a href="#" onclick="showPage('regles',this);ouvrirLivre()">Règles</a>
     <a href="#" onclick="showPage('cartes',this)">Cartes</a>
     <a href="#" onclick="showPage('constructeur',this)">Constructeur</a>
     <a href="#" onclick="showPage('capacites',this)">Capacités</a>
@@ -262,7 +262,7 @@ footer span{color:#d4a853;}
 <!-- PAGE RÈGLES -->
 <div id="page-regles" class="page">
   <div class="section">
-    <div class="section-title">Livre de <span style="cursor:pointer;text-decoration:underline;text-decoration-style:dotted;" onclick="ouvrirLivre()" title="Lire le livre de règles">Règles</span></div>
+    <div class="section-title">Livre de <span>Règles</span></div>
     <div class="divider"></div>
     <p style="margin-bottom:1.5rem;font-size:.95rem;color:#555;">Téléchargez le PDF complet des règles pour jouer. Vous pouvez aussi l'ouvrir dans votre navigateur pour l'imprimer.</p>
     <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
@@ -477,7 +477,7 @@ footer span{color:#d4a853;}
 </div>
 
   <!-- LECTEUR DE LIVRE (overlay plein écran) -->
-  <div id="livreSection" style="display:none;position:fixed;inset:0;background:rgba(20,14,6,0.96);z-index:500;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
+  <div id="livreSection" style="visibility:hidden;position:fixed;inset:0;background:rgba(20,14,6,0.96);z-index:500;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
     <style>
       #livreOverlayWrap{position:relative;display:flex;align-items:center;justify-content:center;height:calc(100vh - 60px);}
       #livrePage{max-height:calc(100vh - 80px);max-width:calc(100vw - 120px);width:auto;border-radius:3px;box-shadow:0 0 40px rgba(0,0,0,.8);display:block;transition:opacity 0.4s ease;}
@@ -547,7 +547,7 @@ function ouvrirLivre(){
   document.getElementById('pageNum').textContent='Page 1 / '+livreTotal;
   document.getElementById('btnPrev').disabled=true;
   document.getElementById('btnNext').disabled=false;
-  document.getElementById('livreSection').style.display='flex';
+  document.getElementById('livreSection').style.visibility='visible';
 }
 
 function livreNav(dir){
@@ -567,7 +567,7 @@ function livreNav(dir){
   },400);
 }
 
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('livreSection').style.display!=='none')fermerLivre();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('livreSection').style.visibility!=='hidden')fermerLivre();});
 
 function toggleTaverne(){
   const audio=document.getElementById('taverneMusic');
@@ -601,7 +601,7 @@ function toggleMusic(){
     const taverne=document.getElementById('taverneMusic');
     if(!taverne.paused){taverne.pause();taverne.currentTime=0;document.getElementById('taverneMsg').style.opacity='0';document.getElementById('taverneVol').style.display='none';}
     const lm=document.getElementById('livreMusic');
-    if(!lm.paused){lm.pause();lm.currentTime=0;document.getElementById('livreSection').style.display='none';}
+    if(!lm.paused){lm.pause();lm.currentTime=0;document.getElementById('livreSection').style.visibility='hidden';}
     audio.volume=document.getElementById('volumeSlider').value/100;
     audio.play();
     btn.innerHTML='⏸ Pause';
