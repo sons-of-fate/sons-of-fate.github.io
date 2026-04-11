@@ -264,7 +264,7 @@ footer span{color:#d4a853;}
       #livrePage{
         width:auto;
         max-width:100%;
-        max-height:calc(100vh - 260px);
+        max-height:calc(100vh - 160px);
         border-radius:4px;
         box-shadow:4px 4px 20px rgba(0,0,0,.4);
         display:block;
@@ -553,6 +553,8 @@ function toggleTaverne(){
   const livre=document.getElementById('livreSection');
   const cards=document.getElementById('howToCards');
   if(audio.paused){
+    const bgMusic=document.getElementById('bgMusic');
+    if(!bgMusic.paused){bgMusic.pause();document.getElementById('btnPlay').innerHTML='▶ Play';document.getElementById('btnPlay').style.background='#fff';document.getElementById('btnPlay').style.color='#8a6d3b';}
     audio.volume=0.7;
     audio.play();
     msg.style.opacity='1';
@@ -584,6 +586,8 @@ function toggleMusic(){
   const audio=document.getElementById('bgMusic');
   const btn=document.getElementById('btnPlay');
   if(audio.paused){
+    const taverne=document.getElementById('taverneMusic');
+    if(!taverne.paused){taverne.pause();taverne.currentTime=0;document.getElementById('taverneMsg').style.opacity='0';document.getElementById('taverneVol').style.display='none';document.getElementById('livreSection').style.display='none';const cards=document.getElementById('howToCards');if(cards)cards.style.display='';}
     audio.volume=document.getElementById('volumeSlider').value/100;
     audio.play();
     btn.innerHTML='⏸ Pause';
