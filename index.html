@@ -257,29 +257,23 @@ footer span{color:#d4a853;}
   </div>
   <audio id="taverneMusic" src="Midnight_Tale.mp3" loop></audio>
 
-  <!-- LECTEUR DE LIVRE -->
-  <div id="livreSection" style="display:none;padding:1rem 2rem 2rem;">
+  <!-- LECTEUR DE LIVRE (overlay plein écran) -->
+  <div id="livreSection" style="display:none;position:fixed;inset:0;background:rgba(20,14,6,0.96);z-index:500;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
     <style>
-      #livreWrap{position:relative;max-width:750px;margin:0 auto;}
-      #livrePage{
-        width:auto;
-        max-width:100%;
-        max-height:calc(100vh - 80px);
-        border-radius:4px;
-        box-shadow:4px 4px 20px rgba(0,0,0,.4);
-        display:block;
-        margin:0 auto;
-        transition:opacity 0.4s ease;
-      }
+      #livreOverlayWrap{position:relative;display:flex;align-items:center;justify-content:center;height:calc(100vh - 60px);}
+      #livrePage{max-height:calc(100vh - 80px);max-width:calc(100vw - 120px);width:auto;border-radius:3px;box-shadow:0 0 40px rgba(0,0,0,.8);display:block;transition:opacity 0.4s ease;}
       #livrePage.fondu{opacity:0;}
-      .livre-btn{background:rgba(42,31,21,.8);border:1px solid #d4a853;color:#d4a853;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;position:absolute;top:50%;transform:translateY(-50%);}
+      .livre-btn{background:rgba(42,31,21,.9);border:1px solid #d4a853;color:#d4a853;font-size:1.5rem;width:50px;height:50px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;position:absolute;top:50%;transform:translateY(-50%);}
       .livre-btn:hover{background:#d4a853;color:#2a1f15;}
-      .livre-btn:disabled{opacity:0.3;cursor:not-allowed;}
-      #btnPrev{left:-22px;}
-      #btnNext{right:-22px;}
-      #pageNum{text-align:center;font-size:.8rem;color:#888;font-family:sans-serif;margin-top:.5rem;}
+      .livre-btn:disabled{opacity:0.25;cursor:not-allowed;}
+      #btnPrev{left:-60px;}
+      #btnNext{right:-60px;}
+      #pageNum{color:#888;font-size:.8rem;font-family:sans-serif;text-align:center;}
+      #btnFermerLivre{position:absolute;top:16px;right:20px;background:none;border:none;color:#d4a853;font-size:1.5rem;cursor:pointer;font-family:sans-serif;opacity:0.7;}
+      #btnFermerLivre:hover{opacity:1;}
     </style>
-    <div id="livreWrap">
+    <button id="btnFermerLivre" onclick="fermerLivre()" title="Fermer">✕</button>
+    <div id="livreOverlayWrap">
       <img id="livrePage" src="page_01.jpg" alt="Page du livre"/>
       <button class="livre-btn" id="btnPrev" onclick="livreNav(-1)" disabled>&#8592;</button>
       <button class="livre-btn" id="btnNext" onclick="livreNav(1)">&#8594;</button>
@@ -529,6 +523,17 @@ let budget=200,band=[],assignments=[],pendingAdd=null;
 let livrePage=1;
 const livreTotal=20;
 
+function fermerLivre(){
+  const livre=document.getElementById('livreSection');
+  livre.style.display='none';
+  const audio=document.getElementById('taverneMusic');
+  audio.pause();audio.currentTime=0;
+  document.getElementById('taverneMsg').style.opacity='0';
+  document.getElementById('taverneVol').style.display='none';
+  const cards=document.getElementById('howToCards');
+  if(cards)cards.style.display='';
+}
+
 function livreNav(dir){
   const newPage=livrePage+dir;
   if(newPage<1||newPage>livreTotal)return;
@@ -546,6 +551,8 @@ function livreNav(dir){
   },400);
 }
 
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('livreSection').style.display!=='none')fermerLivre();});
+
 function toggleTaverne(){
   const audio=document.getElementById('taverneMusic');
   const msg=document.getElementById('taverneMsg');
@@ -561,7 +568,7 @@ function toggleTaverne(){
     msg.textContent='* Le barde commence à jouer... *';
     vol.style.display='flex';
     if(cards)cards.style.display='none';
-    livre.style.display='block';
+    livre.style.display='flex';
     livrePage=1;
     document.getElementById('livrePage').src='page_01.jpg';
     document.getElementById('pageNum').textContent='Page 1 / '+livreTotal;
