@@ -769,14 +769,26 @@ function renderCapPage(){
   });
   const list=document.getElementById('capListPage');
   list.innerHTML='';
-  const filtered=capFilter==='Tous'?CAPACITES:CAPACITES.filter(c=>c.cat===capFilter);
-  filtered.forEach(cap=>{
+  const niveauOrder={'+':1,'++':2,'+++':3};
+  function renderCap(cap){
     const div=document.createElement('div');div.className='cap-item';
     let resHtml='';
     if(cap.reservedFor.length>0){const names=cap.reservedFor.map(id=>PROFILES.find(p=>p.id===id)?.name||id);resHtml=`<span class="badge badge-reserved">Réservé : ${names.join(', ')}</span>`;}
     div.innerHTML=`<div class="cap-item-header"><span class="cap-item-name">${cap.name}</span><div class="cap-badges"><span class="badge badge-cat">${cap.cat}</span><span class="badge badge-niveau">${cap.niveau}</span><span class="badge badge-cout">${cap.cout} MD</span>${resHtml}</div></div><div class="cap-item-desc">${cap.desc}</div>`;
     list.appendChild(div);
-  });
+  }
+  if(capFilter==='Tous'){
+    const catOrder=[...new Set(CAPACITES.map(c=>c.cat))];
+    catOrder.forEach(cat=>{
+      const hdr=document.createElement('div');
+      hdr.style.cssText='font-size:11px;font-weight:bold;color:#888;margin:1rem 0 .5rem;text-transform:uppercase;letter-spacing:.08em;font-family:sans-serif;';
+      hdr.textContent=cat;
+      list.appendChild(hdr);
+      CAPACITES.filter(c=>c.cat===cat).sort((a,b)=>niveauOrder[a.niveau]-niveauOrder[b.niveau]).forEach(renderCap);
+    });
+  } else {
+    CAPACITES.filter(c=>c.cat===capFilter).sort((a,b)=>niveauOrder[a.niveau]-niveauOrder[b.niveau]).forEach(renderCap);
+  }
 }
 
 function submitCap(){
