@@ -205,5 +205,14 @@
     "name": "Frappe ciblée",
     "reservedFor": [],
     "desc": "( passif ) : lors d’une attaque de tir, le porteur peut cibler n’importe quel ennemi, sans obligation de viser le combattant le plus proche."
+  },
+    {
+    "id": "c24",
+    "cat": "Mouvement",
+    "niveau": "+",
+    "cout": 1,
+    "name": "Célérité",
+    "reservedFor": [],
+    "desc": "( passif ) : Chaque déplacement du porteur est augmenté de 2 pouces."
   }
 ]
