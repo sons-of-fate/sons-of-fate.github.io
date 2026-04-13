@@ -151,5 +151,14 @@
     "name": "Grosse baffe",
     "reservedFor": [],
     "desc": "Avant d’effectuer une attaque au corps à corps, le joueur peut déclarer qu’il tente une Grosse Baffe.Pour réussir, l’attaque doit obtenir au moins trois réussites. Si c’est le cas, la cible subit un choc violent : elle lance 2 D6 de moins lors de sa prochaine esquive contre cette attaque."
+  },
+  {
+    "id": "c18",
+    "cat": "Défense",
+    "niveau": "++",
+    "cout": 2,
+    "name": "Soins",
+    "reservedFor": [],
+    "desc": "1PA-1fois par tour-portée 1\" : ciblez le soigneur lui-même ou un allié à 1\" ; cette capacité ne peut pas être utilisée si le soigneur est engagé ; lancez 1D6 : sur 5+, soignez 2 PC répartis librement sur les membres de votre choix, sinon soignez 1 PC dans un membre de votre choix ; la cible peut être engagée ; les Colosses ne peuvent pas bénéficier de cette capacité."
   }
 ]
