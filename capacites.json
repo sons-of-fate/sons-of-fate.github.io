@@ -214,5 +214,14 @@
     "name": "Célérité",
     "reservedFor": [],
     "desc": "( passif ) : Chaque déplacement du porteur est augmenté de 2 pouces."
+  },
+   {
+    "id": "c25",
+    "cat": "Contrôle",
+    "niveau": "+",
+    "cout": 1,
+    "name": "Aura perturbante",
+    "reservedFor": [],
+    "desc": "1 PA — 1 fois par tour — portée 12 pouces : Choisissez un ennemi ; lancez 1D6 : sur 4+, choisissez l’un des effets suivants jusqu’à la fin du tour : la cible lance 1D6 de moins lors de son premier jet de tir ou –2 pouces à chacun de ses déplacements ; sur 1–3, l’effet échoue."
   }
 ]
