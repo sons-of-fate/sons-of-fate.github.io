@@ -160,5 +160,14 @@
     "name": "Soins",
     "reservedFor": [],
     "desc": "1PA-1fois par tour-portée 1\" : ciblez le soigneur lui-même ou un allié à 1\" ; cette capacité ne peut pas être utilisée si le soigneur est engagé ; lancez 1D6 : sur 5+, soignez 2 PC répartis librement sur les membres de votre choix, sinon soignez 1 PC dans un membre de votre choix ; la cible peut être engagée ; les Colosses ne peuvent pas bénéficier de cette capacité."
+  },
+   {
+    "id": "c19",
+    "cat": "Attaque",
+    "niveau": "+++",
+    "cout": 3,
+    "name": "Projection ardente",
+    "reservedFor": [],
+    "desc": "1PA-1 fois par tour-gabarit de flamme : Placez le gabarit de flamme au contact du porteur, orienté dans la direction de votre choix, puis lancez 1D6 ; sur 1, l’effet échoue ; sur 2+, chaque figurine dont le socle est sous le gabarit subit 1 blessure dans chaque membre."
   }
 ]
