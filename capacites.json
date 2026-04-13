@@ -177,6 +177,6 @@
     "cout": 3,
     "name": "L’œil du chasseur",
     "reservedFor": ["brave", "guerrier", "seigneur"],
-    "desc": "1 PA - 1 fois par tour - une seule figurine de la bande peut posséder cette capacité. : choisissez un ennemi avec ligne de vue ; effectuez une attaque de tir avec le profil du porteur ; la portée est illimitée ; cette attaque nécessite uniquement une ligne de vue (pas de couloir de tir) et peut cibler n’importe quel ennemi, sans obligation de viser le plus proche."
+    "desc": "1 PA - 1 fois par tour -1 par bande . : choisissez un ennemi avec ligne de vue ; effectuez une attaque de tir avec le profil du porteur ; la portée est illimitée ; cette attaque nécessite uniquement une ligne de vue (pas de couloir de tir) et peut cibler n’importe quel ennemi, sans obligation de viser le plus proche."
   }
 ]
