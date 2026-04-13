@@ -187,5 +187,14 @@
     "name": "Soutien",
     "reservedFor": [],
     "desc": "2 PA -1 fois par tour - portée 24 pouces- 1 par bande : choisissez un allié ; lancez 1D6 : sur 2+, cet allié gagne 1 PA ; une figurine ne peut gagner qu’1 PA par tour de cette manière ."
+  },
+    {
+    "id": "c22",
+    "cat": "Tir",
+    "niveau": "++",
+    "cout": 2,
+    "name": "Tir longue portée",
+    "reservedFor": [],
+    "desc": "( passif ) : le porteur peut effectuer des attaques de tir à portée illimitée."
   }
 ]
