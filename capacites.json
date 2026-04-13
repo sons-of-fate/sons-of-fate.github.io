@@ -196,5 +196,14 @@
     "name": "Tir longue portée",
     "reservedFor": [],
     "desc": "( passif ) : le porteur peut effectuer des attaques de tir à portée illimitée."
+  },
+  {
+    "id": "c23",
+    "cat": "Tir",
+    "niveau": "+",
+    "cout": 1,
+    "name": "Frappe ciblée",
+    "reservedFor": [],
+    "desc": "( passif ) : lors d’une attaque de tir, le porteur peut cibler n’importe quel ennemi, sans obligation de viser le combattant le plus proche."
   }
 ]
