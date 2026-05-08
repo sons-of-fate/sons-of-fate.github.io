@@ -184,6 +184,118 @@ nav{background:#2a1f15;padding:0 2rem;display:flex;align-items:center;justify-co
 footer{background:#2a1f15;color:#888;text-align:center;padding:1.5rem;font-size:.8rem;font-family:sans-serif;margin-top:2rem;}
 footer span{color:#d4a853;}
 
+/* ===================== PAGE SCÉNARIOS ===================== */
+#page-scenarios{background:#f0e6d0;}
+
+.sc-hero{background:#2a1f15;color:#fff;padding:4rem 2rem 3rem;text-align:center;}
+.sc-hero h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:.2em;margin-bottom:.4rem;}
+.sc-hero h1 span{color:#d4a853;}
+.sc-hero-sub{font-size:.8rem;color:#aaa;letter-spacing:.15em;margin-bottom:1.5rem;font-family:sans-serif;text-transform:uppercase;}
+.sc-hero-divider{width:60px;height:2px;background:#d4a853;margin:.75rem auto 1.25rem;}
+.sc-hero p{color:#bbb;font-style:italic;max-width:480px;margin:0 auto;font-size:.95rem;}
+
+.sc-nav-btns{display:flex;justify-content:center;gap:1rem;padding:2rem 1rem 1rem;flex-wrap:wrap;}
+.sc-btn{background:transparent;border:1px solid #b8994e;color:#d4a853;font-family:Georgia,serif;font-size:.85rem;letter-spacing:.08em;padding:.7rem 1.75rem;cursor:pointer;transition:all .25s;}
+.sc-btn:hover{border-color:#d4a853;background:rgba(212,168,83,.07);}
+.sc-btn.active{background:rgba(212,168,83,.12);border-color:#d4a853;}
+
+.sc-section{display:none;padding:2rem 1.5rem 4rem;max-width:1140px;margin:0 auto;}
+.sc-section.visible{display:block;}
+.sc-section-title{font-size:1.15rem;letter-spacing:.12em;color:#2a1f15;text-align:center;margin-bottom:.4rem;}
+.sc-section-title span{color:#d4a853;}
+.sc-section-line{width:50px;height:2px;background:#d4a853;margin:.6rem auto 2.5rem;}
+
+/* Grille scénarios */
+.sc-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:1.5rem;}
+
+/* Carte scénario */
+.sc-card{background:#fff;border:1px solid #d4c4a0;position:relative;transition:border-color .25s,transform .2s;}
+.sc-card:hover{border-color:#d4a853;transform:translateY(-2px);}
+.sc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#d4a85380,transparent);opacity:0;transition:opacity .3s;}
+.sc-card:hover::before{opacity:1;}
+
+.sc-card-num{position:absolute;top:12px;right:14px;font-size:.7rem;letter-spacing:.1em;color:#bbb;font-family:sans-serif;}
+.sc-card-head{padding:1.2rem 1.2rem 1rem;border-bottom:1px solid #ede0c8;}
+.sc-card-label{font-size:.7rem;letter-spacing:.15em;color:#b8994e;text-transform:uppercase;margin-bottom:.5rem;font-family:sans-serif;}
+.sc-card-title{font-size:1.05rem;font-weight:bold;color:#2a1f15;letter-spacing:.06em;margin-bottom:.7rem;}
+.sc-card-flavor{font-style:italic;font-size:.88rem;color:#777;line-height:1.6;border-left:2px solid #d4c4a0;padding-left:.75rem;}
+
+.sc-card-body{padding:1rem 1.2rem .5rem;}
+.sc-rule-section{margin-bottom:.85rem;}
+.sc-rule-label{font-size:.7rem;letter-spacing:.12em;color:#d4a853;text-transform:uppercase;margin-bottom:.3rem;font-family:sans-serif;display:flex;align-items:center;gap:.5rem;}
+.sc-rule-label::after{content:'';flex:1;height:1px;background:#ede0c8;}
+.sc-rule-text{font-size:.87rem;color:#555;line-height:1.7;}
+.sc-rule-text ul{list-style:none;margin-top:.25rem;}
+.sc-rule-text ul li{padding-left:1rem;position:relative;margin-bottom:.2rem;}
+.sc-rule-text ul li::before{content:'—';position:absolute;left:0;color:#bbb;}
+
+.sc-special-rule{background:#fdf6e8;border:1px solid #d4c4a0;border-left:2px solid #d4a853;padding:.6rem .85rem;margin:.6rem 0;font-size:.85rem;font-style:italic;color:#666;}
+
+/* Onglets variantes */
+.sc-variant-tabs{display:flex;border-bottom:1px solid #d4c4a0;}
+.sc-variant-tab{flex:1;padding:.6rem .5rem;text-align:center;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;cursor:pointer;border:none;border-bottom:2px solid transparent;background:none;transition:all .2s;font-family:sans-serif;}
+.sc-variant-tab:hover{color:#d4a853;}
+.sc-variant-tab.active{color:#2a1f15;border-bottom-color:#d4a853;}
+.sc-variant-body{display:none;padding:1rem 1.2rem .5rem;}
+.sc-variant-body.active{display:block;}
+
+/* Footer carte */
+.sc-card-foot{background:#f9f3e8;border-top:1px solid #d4c4a0;padding:.65rem 1.2rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem;}
+.sc-foot-label{font-size:.68rem;letter-spacing:.1em;color:#aaa;text-transform:uppercase;font-family:sans-serif;}
+.sc-foot-value{font-size:.8rem;color:#d4a853;letter-spacing:.05em;flex:1;text-align:center;font-family:sans-serif;}
+.sc-btn-print{background:transparent;border:1px solid #d4c4a0;color:#aaa;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .85rem;cursor:pointer;transition:all .2s;font-family:sans-serif;white-space:nowrap;}
+.sc-btn-print:hover{border-color:#d4a853;color:#d4a853;}
+
+/* Schéma */
+.sc-schema-box{background:#fff;border:1px solid #d4c4a0;border-radius:3px;padding:.5rem;margin:.75rem 0;}
+.sc-schema-box svg{width:100%;height:auto;display:block;}
+
+/* Section dé du destin */
+.sc-destin-section{text-align:center;padding:1.5rem 1rem 4rem;}
+.sc-die-container{display:flex;flex-direction:column;align-items:center;gap:2rem;margin:3rem 0;}
+.sc-die-wrapper{perspective:500px;width:80px;height:80px;}
+.sc-die{width:80px;height:80px;position:relative;transform-style:preserve-3d;}
+.sc-die.rolling{animation:scRollDie 2s ease-out forwards;}
+@keyframes scRollDie{
+  0%{transform:rotateX(0deg) rotateY(0deg);}
+  25%{transform:rotateX(540deg) rotateY(270deg);}
+  50%{transform:rotateX(900deg) rotateY(450deg);}
+  75%{transform:rotateX(1170deg) rotateY(585deg);}
+  100%{transform:var(--sc-final-rot);}
+}
+.sc-die-face{position:absolute;width:80px;height:80px;background:#2a1f15;border:1px solid #d4a853;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#d4a853;backface-visibility:hidden;}
+.sc-face-1{transform:translateZ(40px);}
+.sc-face-2{transform:rotateY(180deg) translateZ(40px);}
+.sc-face-3{transform:rotateY(90deg) translateZ(40px);}
+.sc-face-4{transform:rotateY(-90deg) translateZ(40px);}
+.sc-face-5{transform:rotateX(90deg) translateZ(40px);}
+.sc-face-6{transform:rotateX(-90deg) translateZ(40px);}
+
+.sc-btn-roll{background:transparent;border:1px solid #b8994e;color:#d4a853;font-size:.85rem;letter-spacing:.1em;padding:.7rem 2rem;cursor:pointer;transition:all .25s;font-family:Georgia,serif;}
+.sc-btn-roll:hover{background:rgba(212,168,83,.07);border-color:#d4a853;}
+.sc-btn-roll:disabled{opacity:.35;cursor:not-allowed;}
+.sc-btn-mute{background:transparent;border:1px solid #d4c4a0;color:#aaa;font-size:1rem;width:36px;height:36px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;}
+.sc-btn-mute:hover{border-color:#d4a853;}
+
+/* Résultat dé */
+.sc-die-result{display:none;max-width:660px;margin:0 auto;}
+.sc-die-result.visible{display:block;animation:scFadeUp .5s ease;}
+@keyframes scFadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.sc-res-header{background:#2a1f15;color:#fff;padding:1.2rem 1.5rem 1rem;}
+.sc-res-num{font-size:.7rem;letter-spacing:.15em;color:#888;text-transform:uppercase;margin-bottom:.4rem;font-family:sans-serif;}
+.sc-res-title{font-size:1.3rem;letter-spacing:.1em;color:#d4a853;margin-bottom:.6rem;}
+.sc-res-flavor{font-style:italic;color:#bbb;font-size:.88rem;border-left:2px solid #d4a853;padding-left:.75rem;line-height:1.6;}
+.sc-res-body{background:#fff;border:1px solid #d4c4a0;border-top:none;padding:1.2rem 1.5rem;}
+.sc-res-footer{background:#f9f3e8;border:1px solid #d4c4a0;border-top:none;padding:.6rem 1.5rem;display:flex;justify-content:flex-end;}
+
+/* Onglets résultat */
+.sc-res-variant-tabs{display:flex;border-bottom:1px solid #d4c4a0;margin-bottom:0;}
+.sc-res-variant-tab{flex:1;padding:.6rem .5rem;text-align:center;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;cursor:pointer;border:none;border-bottom:2px solid transparent;background:none;transition:all .2s;font-family:sans-serif;}
+.sc-res-variant-tab:hover{color:#d4a853;}
+.sc-res-variant-tab.active{color:#2a1f15;border-bottom-color:#d4a853;}
+.sc-res-variant-body{display:none;padding-top:1rem;}
+.sc-res-variant-body.active{display:block;}
+
 /* RESPONSIVE */
 @media(max-width:600px){
   .nav-links{display:none;flex-direction:column;position:absolute;top:56px;left:0;right:0;background:#2a1f15;padding:.5rem 0;}
@@ -192,6 +304,7 @@ footer span{color:#d4a853;}
   .nav-burger{display:block;}
   .b-stats{grid-template-columns:repeat(2,minmax(0,1fr));}
   .hero h1{letter-spacing:.1em;}
+  .sc-cards-grid{grid-template-columns:1fr;}
 }
 
 @media print{
@@ -211,6 +324,7 @@ footer span{color:#d4a853;}
     <a href="#" onclick="showPage('cartes',this)">Cartes</a>
     <a href="#" onclick="showPage('constructeur',this)">Constructeur</a>
     <a href="#" onclick="showPage('capacites',this)">Capacités</a>
+    <a href="#" onclick="showPage('scenarios',this)">Scénarios</a>
   </div>
   <button class="nav-burger" onclick="document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
@@ -270,98 +384,8 @@ footer span{color:#d4a853;}
       <a href="sons_of_fate_regles.pdf" target="_blank"><button class="btn-download">🖨 Ouvrir / Imprimer</button></a>
     </div>
     <div style="display:none;" class="rules-content">
-
       <h2>1. Présentation du jeu</h2>
-      <p>Sons of Fate est un jeu de figurines tactique et agnostique — jouable avec n'importe quelle figurine. Les affrontements se déroulent en tours alternés, durant lesquels chaque joueur dépense des Points d'Action (PA) pour déplacer, attaquer ou activer des compétences.</p>
-      <p>Le Dé du Destin peut renverser l'issue d'un duel par une intervention héroïque, tandis que les Marques du Destin personnalisent vos figurines et forgent votre légende.</p>
-      <p><strong>Objectif :</strong> accomplir les missions du scénario en un maximum de cinq tours, et inscrire vos héros dans l'histoire.</p>
-
-      <h2>2. Matériel requis</h2>
-      <ul>
-        <li><strong>Dés :</strong> D6 (jets principaux) et D3 (Dé du Destin — simulé par un D6 : 1–2=1, 3–4=2, 5–6=3)</li>
-        <li><strong>Figurines :</strong> socles ronds (25 à 80mm) ou ovales</li>
-        <li><strong>Terrain :</strong> 90×90 cm pour 150 pts, 90×120 cm pour 200 pts</li>
-        <li><strong>Outils :</strong> règle en pouces, cartes de profils plastifiées, feutre effaçable</li>
-      </ul>
-
-      <h2>3. Constitution d'une bande</h2>
-      <p>Chaque joueur compose une bande avec un budget de points : 200 pts pour une partie standard, 150 pts pour une partie rapide. Une bande peut dépasser son budget de 5 points maximum.</p>
-      <p>Chaque figurine possède quatre caractéristiques liées à un membre :</p>
-      <ul>
-        <li><strong>PSY (Psyché) — Tête :</strong> résistance mentale, utilisée pour certaines capacités spéciales</li>
-        <li><strong>FOR (Force) — Bras :</strong> puissance des attaques</li>
-        <li><strong>RES (Résistance) — Torse :</strong> capacité à encaisser les coups</li>
-        <li><strong>RAP (Rapidité) — Jambes :</strong> agilité pour esquiver</li>
-      </ul>
-      <p><strong>Tireur :</strong> portée 12", +1 puissance (Braves/Guerriers) ou 18", +1 puissance (autres profils). S'achète lors de la composition au surcoût indiqué dans le tableau.</p>
-      <p><strong>Règles de composition :</strong> une bande doit contenir exactement un Seigneur OU un Seigneur Suprême ; maximum un Colosse ; maximum 1 Capitaine (2 pour 200 pts).</p>
-
-      <h2>4. Tableau des Profils</h2>
-      <table>
-        <tr><th>Profil</th><th>PSY</th><th>FOR</th><th>RES</th><th>RAP</th><th>Coût</th><th>Tireur</th><th>MD</th></tr>
-        <tr><td>Brave</td><td>2</td><td>3</td><td>3</td><td>3</td><td>12</td><td>16</td><td>0</td></tr>
-        <tr><td>Guerrier</td><td>2</td><td>4</td><td>4</td><td>4</td><td>18</td><td>24</td><td>0</td></tr>
-        <tr><td>Capitaine</td><td>3</td><td>5</td><td>4</td><td>4</td><td>28</td><td>38</td><td>+1</td></tr>
-        <tr><td>Champion</td><td>3</td><td>5</td><td>4</td><td>4</td><td>26</td><td>36</td><td>0</td></tr>
-        <tr><td>Seigneur</td><td>4</td><td>4</td><td>4</td><td>4</td><td>22</td><td>30</td><td>+2</td></tr>
-        <tr><td>Seigneur Suprême</td><td>4</td><td>5</td><td>5</td><td>4</td><td>32</td><td>46</td><td>+2</td></tr>
-        <tr><td>Colosse</td><td>2</td><td>6</td><td>5</td><td>3</td><td>45</td><td>60</td><td>+1</td></tr>
-      </table>
-
-      <h2>5. Mécanismes de jeu</h2>
-      <h3>Jets de dés</h3>
-      <p>Lorsqu'un combattant effectue une action, il lance un nombre de D6 égal à la caractéristique concernée. Un résultat de 1 est toujours un échec. Un résultat égal ou supérieur à la difficulté est une réussite.</p>
-      <ul>
-        <li><strong>Attaque :</strong> FOR vs RES</li>
-        <li><strong>Tir :</strong> FOR vs RAP (toucher), puis réussites + puissance vs RES (blesser)</li>
-        <li><strong>Esquive :</strong> RAP vs FOR</li>
-        <li><strong>Désengagement :</strong> RAP vs RAP</li>
-      </ul>
-      <h3>Actions (3 PA par figurine)</h3>
-      <ul>
-        <li><strong>Déplacement (3/tour, 1 PA) :</strong> 6" (3" en terrain difficile)</li>
-        <li><strong>Attaque corps-à-corps (2/tour, 1 PA) :</strong> FOR D6, difficulté = RES cible + jet de localisation</li>
-        <li><strong>Attaque à distance (2/tour, 1 PA) :</strong> FOR vs RAP, puis réussites + puissance vs RES</li>
-        <li><strong>Engagement (1/tour, 2 PA) :</strong> déplacement 6" jusqu'au contact + attaque</li>
-        <li><strong>Désengagement (1 PA) :</strong> RAP vs RAP max des ennemis au contact. Que le désengagement soit réussi ou raté, la figurine peut ensuite effectuer un déplacement normal (1 PA, jusqu'à 6") dans la direction de son choix.</li>
-      </ul>
-      <h3>Réactions</h3>
-      <ul>
-        <li><strong>Esquive (1 PA) :</strong> RAP D6 diff = FOR attaquant, chaque réussite annule une réussite adverse</li>
-        <li><strong>Riposte (1 PA) :</strong> 1D6 + FOR pour les deux, le plus haut attaque en premier</li>
-        <li><strong>Passivité (0 PA) :</strong> subit l'attaque sans réagir</li>
-      </ul>
-
-      <h2>6. Le Dé du Destin</h2>
-      <div class="highlight">Chaque joueur dispose de trois jets de Dé du Destin pour toute la partie. Une figurine ne peut recevoir qu'un seul jet (sauf si elle est la dernière en jeu). Maximum un Dé du Destin par tour.</div>
-      <p>Lancez un D3. Le résultat indique l'intensité de l'effet, puis choisissez l'effet à appliquer :</p>
-      <ul>
-        <li><strong>Attaque — 1 :</strong> Frappe Précise (localisation ±1) | <strong>2 :</strong> Frappe Implacable (+1 réussite) | <strong>3 :</strong> Exécution (choisissez la localisation)</li>
-        <li><strong>Défense — 1 :</strong> Sixième Sens (relancez un jet d'esquive raté) | <strong>2 :</strong> Rempart Absolu (-1 réussite adverse) | <strong>3 :</strong> Dernier Souffle (soignez 2 PC)</li>
-        <li><strong>Vitesse — 1 :</strong> déplacez de 2" | <strong>2 :</strong> Sprint Éclair (+4" au prochain mouvement) | <strong>3 :</strong> Éclair (+1 PA ce tour)</li>
-      </ul>
-
-      <h2>7. Déroulement d'une partie</h2>
-      <h3>Mise en place</h3>
-      <ul>
-        <li>Définissez les décors et leurs types (couvert léger, obstacle, terrain difficile)</li>
-        <li>Lancez 1D6 — le plus haut score place le premier décor, puis alternez</li>
-        <li>Tracez une ligne médiane. Le plus haut score choisit son côté</li>
-        <li>Déployez toute votre bande à au moins 12" de la ligne médiane</li>
-      </ul>
-      <h3>Tours de jeu</h3>
-      <p>5 tours maximum. Activation alternée : chaque joueur active une figurine à tour de rôle en dépensant ses 3 PA. Les PA non utilisés peuvent être conservés pour les réactions, mais sont perdus en fin de tour.</p>
-
-      <h2>8. Scénario de base : La Domination</h2>
-      <div class="highlight">Placez un marqueur objectif au centre de la table. Une figurine contrôle l'objectif si elle est la seule figurine à moins de 3" de celui-ci. Chaque tour où un joueur contrôle l'objectif, il marque 1 point de victoire. Le joueur avec le plus de points après 5 tours gagne. En cas d'égalité, le joueur ayant éliminé le plus de figurines adverses l'emporte.</div>
-
-      <h2>9. Règles avancées</h2>
-      <ul>
-        <li><strong>Effets simultanés :</strong> le premier joueur choisit l'ordre de résolution</li>
-        <li><strong>Couvert léger :</strong> -1 D6 pour les tirs</li>
-        <li><strong>Obstacle :</strong> bloque la ligne de vue</li>
-        <li><strong>Terrain difficile :</strong> divise le déplacement par deux</li>
-      </ul>
+      <p>Sons of Fate est un jeu de figurines tactique et agnostique — jouable avec n'importe quelle figurine.</p>
     </div>
   </div>
 </div>
@@ -463,6 +487,66 @@ footer span{color:#d4a853;}
   </div>
 </div>
 
+<!-- PAGE SCÉNARIOS -->
+<div id="page-scenarios" class="page">
+
+  <div class="sc-hero">
+    <h1>Les <span>Scénarios</span></h1>
+    <div class="sc-hero-sub">Sons of Fate</div>
+    <div class="sc-hero-divider"></div>
+    <p>Six scénarios pour forger votre légende.<br>Choisissez ou laissez le destin décider.</p>
+  </div>
+
+  <div class="sc-nav-btns">
+    <button class="sc-btn active" id="sc-btn-all" onclick="scShowSection('all')">⚔ Tous les scénarios</button>
+    <button class="sc-btn" id="sc-btn-destin" onclick="scShowSection('destin')">⚄ Laisse le destin décider</button>
+  </div>
+
+  <!-- TOUS LES SCÉNARIOS -->
+  <div class="sc-section visible" id="sc-section-all">
+    <div class="sc-section-title">Les <span>Six Scénarios</span></div>
+    <div class="sc-section-line"></div>
+    <div class="sc-cards-grid" id="sc-all-cards"></div>
+  </div>
+
+  <!-- LAISSE LE DESTIN DÉCIDER -->
+  <div class="sc-section" id="sc-section-destin">
+    <div class="sc-destin-section">
+      <div class="sc-section-title">Laisse le Destin <span>Décider</span></div>
+      <div class="sc-section-line"></div>
+      <p style="color:#777;font-style:italic;margin-bottom:2.5rem;">Lancez le dé — le destin choisit votre scénario.</p>
+      <div class="sc-die-container">
+        <div class="sc-die-wrapper">
+          <div class="sc-die" id="sc-die">
+            <div class="sc-die-face sc-face-1">1</div>
+            <div class="sc-die-face sc-face-2">2</div>
+            <div class="sc-die-face sc-face-3">3</div>
+            <div class="sc-die-face sc-face-4">4</div>
+            <div class="sc-die-face sc-face-5">5</div>
+            <div class="sc-die-face sc-face-6">6</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <button class="sc-btn-roll" id="sc-btn-roll" onclick="scRollDie()">⚄ Lancer le dé</button>
+          <button class="sc-btn-mute" id="sc-btn-mute" onclick="scToggleMute()" title="Couper le son">🔊</button>
+        </div>
+      </div>
+      <div class="sc-die-result" id="sc-die-result">
+        <div class="sc-res-header">
+          <div class="sc-res-num" id="sc-res-num"></div>
+          <div class="sc-res-title" id="sc-res-title"></div>
+          <div class="sc-res-flavor" id="sc-res-flavor"></div>
+        </div>
+        <div class="sc-res-body" id="sc-res-body"></div>
+        <div class="sc-res-footer">
+          <button class="sc-btn-print" id="sc-res-print-btn">🖨 Imprimer ce scénario</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 <!-- MODAL NOMMAGE -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
@@ -476,10 +560,12 @@ footer span{color:#d4a853;}
   </div>
 </div>
 
-
 <footer>Sons of Fate — Livre de règles par <span>Marcellus</span> — Hommage à Eden the Game<br><span style="font-size:.75rem;color:#888;">Musique : The Pyre, Midnight Tale &amp; Teller of the Tales — Kevin MacLeod (incompetech.com) — Licence CC BY 4.0</span></footer>
 
 <script>
+// ============================================================
+// DONNÉES PRINCIPALES
+// ============================================================
 const PROFILES=[
   {id:'brave',    name:'Brave',           psy:2,for_:3,res:3,rap:3,cost:12,tireurCost:16,md:0,tireurMd:0,maxType:null},
   {id:'guerrier', name:'Guerrier',        psy:2,for_:4,res:4,rap:4,cost:18,tireurCost:24,md:0,tireurMd:0,maxType:null},
@@ -498,8 +584,23 @@ fetch('capacites.json')
 
 let budget=200,band=[],assignments=[],pendingAdd=null;
 
+// ============================================================
+// NAVIGATION PRINCIPALE
+// ============================================================
+function showPage(name,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  if(el)el.classList.add('active');
+  document.getElementById('navLinks').classList.remove('open');
+  window.scrollTo(0,0);
+  if(name==='capacites')renderCapPage();
+  if(name==='scenarios')scInitCards();
+}
 
-
+// ============================================================
+// TAVERNE / MUSIQUES
+// ============================================================
 function toggleTaverne(){
   const audio=document.getElementById('taverneMusic');
   const msg=document.getElementById('taverneMsg');
@@ -507,23 +608,15 @@ function toggleTaverne(){
   if(audio.paused){
     const bgMusic=document.getElementById('bgMusic');
     if(!bgMusic.paused){bgMusic.pause();document.getElementById('btnPlay').innerHTML='▶ Play';document.getElementById('btnPlay').style.background='#fff';document.getElementById('btnPlay').style.color='#8a6d3b';}
-    audio.volume=0.7;
-    audio.play();
-    msg.style.opacity='1';
-    msg.textContent='* Le barde commence à jouer... *';
+    audio.volume=0.7;audio.play();
+    msg.style.opacity='1';msg.textContent='* Le barde commence à jouer... *';
     vol.style.display='flex';
   } else {
-    audio.pause();
-    audio.currentTime=0;
-    msg.style.opacity='0';
-    vol.style.display='none';
+    audio.pause();audio.currentTime=0;msg.style.opacity='0';vol.style.display='none';
   }
 }
 
-function setVolume(val){
-  const audio=document.getElementById('bgMusic');
-  audio.volume=val/100;
-}
+function setVolume(val){document.getElementById('bgMusic').volume=val/100;}
 
 function toggleMusic(){
   const audio=document.getElementById('bgMusic');
@@ -532,17 +625,15 @@ function toggleMusic(){
     const taverne=document.getElementById('taverneMusic');
     if(!taverne.paused){taverne.pause();taverne.currentTime=0;document.getElementById('taverneMsg').style.opacity='0';document.getElementById('taverneVol').style.display='none';}
     audio.volume=document.getElementById('volumeSlider').value/100;
-    audio.play();
-    btn.innerHTML='⏸ Pause';
-    btn.style.background='#d4a853';
-    btn.style.color='#2a1f15';
+    audio.play();btn.innerHTML='⏸ Pause';btn.style.background='#d4a853';btn.style.color='#2a1f15';
   } else {
-    audio.pause();
-    btn.innerHTML='▶ Play';
-    btn.style.background='#fff';
-    btn.style.color='#8a6d3b';
+    audio.pause();btn.innerHTML='▶ Play';btn.style.background='#fff';btn.style.color='#8a6d3b';
   }
 }
+
+// ============================================================
+// CONSTRUCTEUR
+// ============================================================
 let capFilter='Tous';
 let mdFilter='Tous';
 
@@ -583,8 +674,7 @@ function confirmAdd(){
   if(!pendingAdd)return;
   const customName=document.getElementById('modalNameInput').value.trim();
   band.push({uid:uid(),profileId:pendingAdd.profileId,tireur:pendingAdd.tireur,customName});
-  closeModal();
-  render();
+  closeModal();render();
 }
 
 document.getElementById('modalNameInput').addEventListener('keydown',e=>{if(e.key==='Enter')confirmAdd();});
@@ -603,16 +693,6 @@ function showValidation(msg){
   const el=document.getElementById('validationMsg');
   el.textContent=msg;
   setTimeout(()=>{el.textContent='';},2500);
-}
-
-function showPage(name,el){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  document.getElementById('page-'+name).classList.add('active');
-  if(el)el.classList.add('active');
-  document.getElementById('navLinks').classList.remove('open');
-  window.scrollTo(0,0);
-  if(name==='capacites')renderCapPage();
 }
 
 function showBTab(name,btn){
@@ -700,15 +780,7 @@ function renderResume(){
     const fCaps=assignments.filter(a=>a.fighterUid===f.uid);
     html+=`<div class="b-print-fighter"><div style="display:flex;justify-content:space-between;"><span class="b-print-fighter-name">${getFighterDisplayName(f)}</span><span class="b-print-fighter-cost">${cost} pts</span></div>`;
     if(f.customName){html+=`<div style="font-size:11px;color:#888;font-family:sans-serif;">Profil : ${p.name}</div>`;}
-    if(fCaps.length>0){
-      fCaps.forEach(a=>{
-        const cap=CAPACITES.find(x=>x.id===a.capId);
-        html+=`<div class="b-print-cap" style="margin-top:4px;">
-          <div style="font-weight:bold;font-size:12px;">• ${cap.name} ${cap.niveau} — ${cap.cout} MD</div>
-          <div style="font-size:11px;color:#555;padding-left:10px;line-height:1.5;font-family:sans-serif;">${cap.desc}</div>
-        </div>`;
-      });
-    }
+    if(fCaps.length>0){fCaps.forEach(a=>{const cap=CAPACITES.find(x=>x.id===a.capId);html+=`<div class="b-print-cap" style="margin-top:4px;"><div style="font-weight:bold;font-size:12px;">• ${cap.name} ${cap.niveau} — ${cap.cout} MD</div><div style="font-size:11px;color:#555;padding-left:10px;line-height:1.5;font-family:sans-serif;">${cap.desc}</div></div>`;});}
     html+=`</div>`;
   });
   html+=`<div class="b-print-totals"><div class="b-print-total-row"><span>Total points</span><span>${spent} / ${budget} pts</span></div><div class="b-print-total-row"><span>MD totaux</span><span>${total}</span></div><div class="b-print-total-row"><span>MD dépensés</span><span>${mdSpent}</span></div><div class="b-print-total-row"><span>MD restants</span><span>${total-mdSpent}</span></div></div>`;
@@ -782,8 +854,7 @@ function renderCapPage(){
     catOrder.forEach(cat=>{
       const hdr=document.createElement('div');
       hdr.style.cssText='font-size:11px;font-weight:bold;color:#888;margin:1rem 0 .5rem;text-transform:uppercase;letter-spacing:.08em;font-family:sans-serif;';
-      hdr.textContent=cat;
-      list.appendChild(hdr);
+      hdr.textContent=cat;list.appendChild(hdr);
       CAPACITES.filter(c=>c.cat===cat).sort((a,b)=>niveauOrder[a.niveau]-niveauOrder[b.niveau]).forEach(renderCap);
     });
   } else {
@@ -791,149 +862,277 @@ function renderCapPage(){
   }
 }
 
-function submitCap(){
-  const name=document.getElementById('formName').value.trim();
-  const cat=document.getElementById('formCat').value;
-  const niveau=document.getElementById('formNiveau').value;
-  const desc=document.getElementById('formDesc').value.trim();
-  const msg=document.getElementById('formMsg');
-  if(!name||!cat||!niveau||!desc){msg.style.color='#dc3545';msg.textContent='Veuillez remplir tous les champs obligatoires.';return;}
-  const profils=document.getElementById('formProfils').value.trim();
-  const test=document.getElementById('formTest').value.trim();
-  const formUrl=`https://docs.google.com/forms/d/e/VOTRE_FORM_ID/formResponse?entry.NAME=${encodeURIComponent(name)}&entry.CAT=${encodeURIComponent(cat)}&entry.NIVEAU=${encodeURIComponent(niveau)}&entry.DESC=${encodeURIComponent(desc)}&entry.PROFILS=${encodeURIComponent(profils)}&entry.TEST=${encodeURIComponent(test)}`;
-  msg.style.color='#28a745';
-  msg.textContent='Merci ! Votre capacité a été soumise et sera examinée par l\'auteur avant publication.';
-  document.getElementById('formName').value='';
-  document.getElementById('formCat').value='';
-  document.getElementById('formNiveau').value='';
-  document.getElementById('formProfils').value='';
-  document.getElementById('formDesc').value='';
-  document.getElementById('formTest').value='';
-  setTimeout(()=>{msg.textContent='';},5000);
-}
-
 function printResume(){
   const content=document.getElementById('resumeBody').innerHTML;
   if(!content||band.length===0){alert('La bande est vide, rien à imprimer.');return;}
   const win=window.open('','_blank');
   win.document.write(`<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Sons of Fate — Résumé de bande</title><style>
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:Georgia,serif;background:#fff;color:#2a1f15;padding:2rem;max-width:600px;margin:0 auto;}
-    h1{font-size:1.4rem;letter-spacing:.15em;margin-bottom:.25rem;}
-    h1 span{color:#d4a853;}
-    .sub{font-size:.8rem;color:#888;letter-spacing:.1em;font-family:sans-serif;margin-bottom:1.5rem;}
-    .divider{width:40px;height:2px;background:#d4a853;margin:.5rem 0 1.5rem;}
-    .b-print-fighter{margin-bottom:.75rem;padding-bottom:.75rem;border-bottom:1px solid #d4c4a0;}
-    .b-print-fighter:last-child{border-bottom:none;}
-    .b-print-fighter-name{font-size:14px;font-weight:bold;}
-    .b-print-fighter-cost{font-size:13px;color:#888;font-family:sans-serif;}
-    .b-print-cap{font-size:12px;color:#555;padding:2px 0 2px 12px;font-family:sans-serif;}
-    .b-print-totals{margin-top:.75rem;padding-top:.75rem;border-top:2px solid #2a1f15;}
-    .b-print-total-row{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;font-family:sans-serif;}
+    *{box-sizing:border-box;margin:0;padding:0;}body{font-family:Georgia,serif;background:#fff;color:#2a1f15;padding:2rem;max-width:600px;margin:0 auto;}
+    h1{font-size:1.4rem;letter-spacing:.15em;margin-bottom:.25rem;}h1 span{color:#d4a853;}.sub{font-size:.8rem;color:#888;letter-spacing:.1em;font-family:sans-serif;margin-bottom:1.5rem;}
+    .divider{width:40px;height:2px;background:#d4a853;margin:.5rem 0 1.5rem;}.b-print-fighter{margin-bottom:.75rem;padding-bottom:.75rem;border-bottom:1px solid #d4c4a0;}.b-print-fighter:last-child{border-bottom:none;}
+    .b-print-fighter-name{font-size:14px;font-weight:bold;}.b-print-fighter-cost{font-size:13px;color:#888;font-family:sans-serif;}.b-print-cap{font-size:12px;color:#555;padding:2px 0 2px 12px;font-family:sans-serif;}
+    .b-print-totals{margin-top:.75rem;padding-top:.75rem;border-top:2px solid #2a1f15;}.b-print-total-row{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;font-family:sans-serif;}
     @media print{body{padding:1rem;}}
-  </style></head><body>
-    <h1>SONS <span>OF</span> FATE</h1>
-    <div class="sub">RÉSUMÉ DE BANDE</div>
-    <div class="divider"></div>
-    ${content}
-    <script>window.onload=()=>{window.print();}<\/script>
-  </body></html>`);
+  </style></head><body><h1>SONS <span>OF</span> FATE</h1><div class="sub">RÉSUMÉ DE BANDE</div><div class="divider"></div>${content}<script>window.onload=()=>{window.print();}<\/script></body></html>`);
   win.document.close();
 }
 
 function printCartes(){
   if(band.length===0){alert('La bande est vide, rien à imprimer.');return;}
   const win=window.open('','_blank');
-  // Découpage intelligent : budget de ~320 caractères par carte (63x88mm)
-  // Chaque capacité coûte : longueur desc + 30 (pour le nom/niveau)
   function decouper(caps){
-    const BUDGET=800;
-    const groupes=[];
-    let groupe=[];
-    let total=0;
-    caps.forEach(a=>{
-      const cap=CAPACITES.find(x=>x.id===a.capId);
-      const cout=cap.desc.length+30;
-      if(groupe.length>0 && total+cout>BUDGET){
-        groupes.push(groupe);
-        groupe=[a];
-        total=cout;
-      } else {
-        groupe.push(a);
-        total+=cout;
-      }
-    });
-    if(groupe.length>0)groupes.push(groupe);
-    return groupes;
+    const BUDGET=800;const groupes=[];let groupe=[];let total=0;
+    caps.forEach(a=>{const cap=CAPACITES.find(x=>x.id===a.capId);const cout=cap.desc.length+30;if(groupe.length>0&&total+cout>BUDGET){groupes.push(groupe);groupe=[a];total=cout;}else{groupe.push(a);total+=cout;}});
+    if(groupe.length>0)groupes.push(groupe);return groupes;
   }
   let cartesHtml='';
   band.forEach(f=>{
-    const p=PROFILES.find(x=>x.id===f.profileId);
-    const fCaps=assignments.filter(a=>a.fighterUid===f.uid);
+    const p=PROFILES.find(x=>x.id===f.profileId);const fCaps=assignments.filter(a=>a.fighterUid===f.uid);
     if(fCaps.length===0)return;
-    const cost=f.tireur?p.tireurCost:p.cost;
-    const nom=getFighterDisplayName(f);
+    const cost=f.tireur?p.tireurCost:p.cost;const nom=getFighterDisplayName(f);
     const profil=`${f.customName?p.name:''} ${f.tireur?'— Tireur':''} — ${cost} pts`;
-    // Découpage intelligent
     const groupes=decouper(fCaps);
     groupes.forEach((tranche,i)=>{
-      const numCarte=i+1;
-      const totalCartes=groupes.length;
-      const carteLabel=totalCartes>1?` (${numCarte}/${totalCartes})`:'';
-      let capsHtml=tranche.map(a=>{
-        const cap=CAPACITES.find(x=>x.id===a.capId);
-        return`<div class="cap-entry">
-          <div class="cap-name">${cap.name} <span class="cap-niv">${cap.niveau}</span> <span class="cap-md">${cap.cout} MD</span></div>
-          <div class="cap-desc">${cap.desc}</div>
-        </div>`;
-      }).join('');
-      cartesHtml+=`<div class="carte">
-        <div class="carte-header">
-          <div class="carte-nom">${nom}${carteLabel}</div>
-          <div class="carte-profil">${profil}</div>
-        </div>
-        <div class="carte-caps">${capsHtml}</div>
-        <div class="carte-footer">SONS <span>OF</span> FATE — Capacités</div>
-      </div>`;
+      const numCarte=i+1;const totalCartes=groupes.length;const carteLabel=totalCartes>1?` (${numCarte}/${totalCartes})`:'';
+      let capsHtml=tranche.map(a=>{const cap=CAPACITES.find(x=>x.id===a.capId);return`<div class="cap-entry"><div class="cap-name">${cap.name} <span class="cap-niv">${cap.niveau}</span> <span class="cap-md">${cap.cout} MD</span></div><div class="cap-desc">${cap.desc}</div></div>`;}).join('');
+      cartesHtml+=`<div class="carte"><div class="carte-header"><div class="carte-nom">${nom}${carteLabel}</div><div class="carte-profil">${profil}</div></div><div class="carte-caps">${capsHtml}</div><div class="carte-footer">SONS <span>OF</span> FATE — Capacités</div></div>`;
     });
   });
   if(!cartesHtml){alert('Aucun combattant n\'a de capacité assignée.');win.close();return;}
   win.document.write(`<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Sons of Fate — Cartes de capacités</title><style>
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:Georgia,serif;background:#fff;}
+    *{box-sizing:border-box;margin:0;padding:0;}body{font-family:Georgia,serif;background:#fff;}
     .page{display:flex;flex-wrap:wrap;gap:5mm;padding:10mm;}
-    .carte{
-      width:63mm;height:88mm;
-      border:1px solid #2a1f15;border-radius:3mm;
-      padding:3mm;
-      display:flex;flex-direction:column;
-      background:#fff;
-      page-break-inside:avoid;
-      overflow:hidden;
-    }
-    .carte-header{border-bottom:1px solid #d4a853;padding-bottom:2mm;margin-bottom:2mm;}
-    .carte-nom{font-size:9pt;font-weight:bold;letter-spacing:.05em;color:#2a1f15;}
-    .carte-profil{font-size:7pt;color:#888;font-family:sans-serif;}
-    .carte-caps{flex:1;overflow:hidden;}
-    .cap-entry{margin-bottom:2mm;padding-bottom:2mm;border-bottom:1px solid #d4c4a0;}
-    .cap-entry:last-child{border-bottom:none;}
-    .cap-name{font-size:7.5pt;font-weight:bold;color:#2a1f15;margin-bottom:1mm;}
-    .cap-niv{color:#d4a853;font-weight:normal;}
-    .cap-md{color:#888;font-family:sans-serif;font-weight:normal;}
-    .cap-desc{font-size:6.5pt;color:#444;line-height:1.4;font-family:sans-serif;}
-    .carte-footer{font-size:6pt;color:#888;text-align:center;border-top:1px solid #d4c4a0;padding-top:2mm;margin-top:auto;letter-spacing:.1em;font-family:sans-serif;}
-    .carte-footer span{color:#d4a853;}
-    @media print{
-      body{margin:0;}
-      .page{gap:3mm;padding:5mm;}
-    }
-  </style></head><body>
-    <div class="page">${cartesHtml}</div>
-    <script>window.onload=()=>{window.print();}<\/script>
-  </body></html>`);
+    .carte{width:63mm;height:88mm;border:1px solid #2a1f15;border-radius:3mm;padding:3mm;display:flex;flex-direction:column;background:#fff;page-break-inside:avoid;overflow:hidden;}
+    .carte-header{border-bottom:1px solid #d4a853;padding-bottom:2mm;margin-bottom:2mm;}.carte-nom{font-size:9pt;font-weight:bold;letter-spacing:.05em;color:#2a1f15;}.carte-profil{font-size:7pt;color:#888;font-family:sans-serif;}.carte-caps{flex:1;overflow:hidden;}
+    .cap-entry{margin-bottom:2mm;padding-bottom:2mm;border-bottom:1px solid #d4c4a0;}.cap-entry:last-child{border-bottom:none;}.cap-name{font-size:7.5pt;font-weight:bold;color:#2a1f15;margin-bottom:1mm;}.cap-niv{color:#d4a853;font-weight:normal;}.cap-md{color:#888;font-family:sans-serif;font-weight:normal;}.cap-desc{font-size:6.5pt;color:#444;line-height:1.4;font-family:sans-serif;}
+    .carte-footer{font-size:6pt;color:#888;text-align:center;border-top:1px solid #d4c4a0;padding-top:2mm;margin-top:auto;letter-spacing:.1em;font-family:sans-serif;}.carte-footer span{color:#d4a853;}
+    @media print{body{margin:0;}.page{gap:3mm;padding:5mm;}}
+  </style></head><body><div class="page">${cartesHtml}</div><script>window.onload=()=>{window.print();}<\/script></body></html>`);
   win.document.close();
 }
 
+// ============================================================
+// PAGE SCÉNARIOS
+// ============================================================
+const SC_SVG = `<div class="sc-schema-box"><svg viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg">
+<rect width="680" height="460" fill="white"/>
+<rect x="60" y="20" width="560" height="390" rx="2" fill="none" stroke="#222" stroke-width="2"/>
+<line x1="60" y1="215" x2="620" y2="215" stroke="#aaa" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="340" y="209" text-anchor="middle" font-family="Arial" font-size="11" fill="#aaa">ligne médiane</text>
+<path d="M60 250 A160 160 0 0 1 220 410" fill="#3B8BD4" fill-opacity="0.10" stroke="#3B8BD4" stroke-width="2"/>
+<path d="M620 180 A160 160 0 0 1 460 20" fill="#E24B4A" fill-opacity="0.10" stroke="#E24B4A" stroke-width="2"/>
+<circle cx="150" cy="95" r="22" fill="none" stroke="#3B8BD4" stroke-width="2"/>
+<text x="150" y="91" text-anchor="middle" font-family="Arial" font-size="10" fill="#3B8BD4">Autel A</text>
+<text x="150" y="104" text-anchor="middle" font-family="Arial" font-size="9" fill="#3B8BD4">⌀ 3 pouces</text>
+<circle cx="530" cy="332" r="22" fill="none" stroke="#E24B4A" stroke-width="2"/>
+<text x="530" y="328" text-anchor="middle" font-family="Arial" font-size="10" fill="#E24B4A">Autel B</text>
+<text x="530" y="341" text-anchor="middle" font-family="Arial" font-size="9" fill="#E24B4A">⌀ 3 pouces</text>
+<line x1="60" y1="95" x2="128" y2="95" stroke="#3B8BD4" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="94" y="89" text-anchor="middle" font-family="Arial" font-size="10" fill="#3B8BD4">9"</text>
+<line x1="150" y1="20" x2="150" y2="73" stroke="#3B8BD4" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="162" y="50" text-anchor="start" font-family="Arial" font-size="10" fill="#3B8BD4">9"</text>
+<line x1="552" y1="332" x2="620" y2="332" stroke="#E24B4A" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="586" y="326" text-anchor="middle" font-family="Arial" font-size="10" fill="#E24B4A">9"</text>
+<line x1="530" y1="354" x2="530" y2="410" stroke="#E24B4A" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="544" y="390" text-anchor="start" font-family="Arial" font-size="10" fill="#E24B4A">9"</text>
+<text x="82" y="375" font-family="Arial" font-size="10" fill="#3B8BD4">rayon 12"</text>
+<text x="464" y="44" font-family="Arial" font-size="10" fill="#E24B4A">rayon 12"</text>
+<text x="108" y="330" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#3B8BD4">Joueur A</text>
+<text x="108" y="346" text-anchor="middle" font-family="Arial" font-size="10" fill="#3B8BD4">déploiement</text>
+<text x="572" y="100" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#E24B4A">Joueur B</text>
+<text x="572" y="116" text-anchor="middle" font-family="Arial" font-size="10" fill="#E24B4A">déploiement</text>
+<line x1="68" y1="435" x2="88" y2="435" stroke="#3B8BD4" stroke-width="2"/>
+<text x="94" y="439" font-family="Arial" font-size="10" fill="#555">Joueur A</text>
+<line x1="200" y1="435" x2="220" y2="435" stroke="#E24B4A" stroke-width="2"/>
+<text x="226" y="439" font-family="Arial" font-size="10" fill="#555">Joueur B</text>
+</svg></div>`;
+
+const SC_DATA = {
+  1:{title:"Jusqu'au Dernier",num:"Scénario N°1 — D6 : 1",flavor:"Deux bandes se font face. Pas de territoire à conquérir, pas de relique à protéger. Juste le fer, le sang et la volonté d'anéantir l'adversaire. Que les meilleurs survivent.",victory:"Le plus de points de valeur éliminés",rules:[{l:"Mise en place",t:"Déploiement standard : chaque joueur place ses figurines à au moins 12\" de la ligne médiane, en alternance par profil."},{l:"Objectif",t:"Éliminer le plus de figurines adverses possible. Chaque figurine éliminée rapporte un nombre de points égal à son coût tel qu'il a été payé lors de la composition de la bande."},{l:"Fin de partie",t:"La partie se termine après 5 tours, ou si une bande est entièrement éliminée avant. Le joueur ayant accumulé le plus de points gagne. En cas d'égalité, match nul."}]},
+  2:{title:"La Chasse aux Reliques",num:"Scénario N°2 — D6 : 2",flavor:"Trois reliques anciennes reposent sur le champ de bataille. Chaque camp se rue pour s'en emparer. Mais la gloire n'appartient qu'à ceux qui savent les garder.",victory:"Le plus de points de Reliques",rules:[{l:"Mise en place",pre:"Déploiement standard : 12\" de la ligne médiane. Placez 3 marqueurs Reliques sur la table :",li:["1 au centre exact","1 à 12\" du centre vers la gauche","1 à 12\" du centre vers la droite"]},{l:"Ramasser une Relique (1 PA — 1/tour)",t:"Une figurine libre et au contact d'un marqueur peut le ramasser. Elle ne peut pas porter plus d'une Relique à la fois."},{l:"Donner une Relique (0 PA)",t:"Une figurine portant une Relique peut la donner à une figurine alliée au contact. La figurine receveuse ne peut pas accepter si elle porte déjà une Relique."},{l:"Déposer une Relique (1 PA)",t:"Une figurine portant une Relique peut choisir de la déposer à ses pieds. Le marqueur est placé à son contact et peut être ramassé au tour suivant par n'importe quelle figurine."},{l:"Élimination d'une porteuse",t:"Si une figurine portant une Relique est éliminée, le marqueur est déposé à l'endroit où elle tombe. N'importe quelle figurine peut le ramasser au tour suivant."},{l:"Porter une Relique",t:"À la fin de chaque tour, chaque joueur marque 1 point par Relique portée par ses figurines."},{l:"Vol par Dé du Destin",sp:true,t:"Un joueur peut dépenser un jet de Dé du Destin (sans lancer le dé) pour voler instantanément une Relique portée par une figurine adverse au contact de l'une de ses figurines."},{l:"Fin de partie",t:"Après 5 tours. Le joueur avec le plus de points gagne. En cas d'égalité, le joueur ayant éliminé le plus de figurines adverses l'emporte."}]},
+  3:{title:"La Cible",num:"Scénario N°3 — D6 : 3",flavor:"Une figurine secrète. Un adversaire qui ne sait pas qui viser. Le bluff et la trahison au cœur de la bataille.",victory:"Le plus de points",variants:true,v:[{label:"Version Symétrique",flavor:"Avant la bataille, chaque joueur inscrit secrètement le nom d'une de ses figurines sur un bout de papier et le retourne face cachée. Cette figurine est sa Cible. L'adversaire ne sait pas qui elle est — et c'est là tout le danger.",rules:[{l:"Mise en place",t:"Déploiement standard : 12\" de la ligne médiane."},{l:"Marquer des points",li:["1 point par tour où ta Cible est encore en vie, où qu'elle soit sur la table.","2 points par tour si ta Cible est dans la zone adverse (à moins de 3\" de la bordure opposée à ton déploiement) — mais pour encaisser ces points, tu dois révéler ta Cible à ton adversaire. Une fois révélée, elle rapporte 2 points par tour pour le reste de la partie, où qu'elle se trouve."]},{l:"Révélation finale",t:"À la fin de la partie, les joueurs n'ayant pas encore révélé leur Cible la dévoilent. On comptabilise tous les points."},{l:"Fin de partie",t:"Après 5 tours. Le joueur avec le plus de points gagne. En cas d'égalité parfaite — match nul."}]},{label:"Version Asymétrique",flavor:"Avant la bataille, le défenseur inscrit secrètement le nom d'une de ses figurines sur un bout de papier et le retourne face cachée. Cette figurine est la Cible. L'attaquant ne sait pas qui elle est — il devra tout détruire pour être sûr de l'avoir éliminée.",rules:[{l:"Mise en place",t:"Tirez au sort qui attaque et qui défend. Déploiement standard : 12\" de la ligne médiane, en alternance par profil."},{l:"Le défenseur marque des points",t:"À partir du tour 2, le défenseur marque 2 points par tour où la Cible est encore en vie."},{l:"L'attaquant marque des points",t:"À partir du tour 2, l'attaquant marque 1 point par tour où il élimine au moins une figurine adverse. Si la Cible fait partie des figurines éliminées, l'attaquant marque un bonus de 3 points supplémentaires — révélé uniquement à la fin de la partie."},{l:"Révélation finale",t:"À la fin de la partie, le défenseur retourne son papier et révèle sa Cible. On vérifie si elle est encore en vie et on comptabilise le bonus attaquant si elle a été éliminée."},{l:"Fin de partie",t:"Après 5 tours. Le joueur avec le plus de points gagne. En cas d'égalité parfaite — match nul."}]}]},
+  4:{title:"Les Terres Disputées",num:"Scénario N°4 — D6 : 4",flavor:"Trois territoires s'étendent sur le champ de bataille. Chaque tour, le destin désigne celui qui vaut le plus. Tenez le terrain — ou mourez en le défendant.",victory:"Le plus de points de zones",rules:[{l:"Mise en place",t:"Déploiement standard : 12\" de la ligne médiane. Placez 3 marqueurs sur la table : Zone 1 (gauche), Zone 2 (centre), Zone 3 (droite). Chaque zone est un cercle de 3\" de rayon autour de son marqueur."},{l:"Zone bonus (début de chaque tour)",pre:"Le premier joueur lance 1D6 avant toute activation :",li:["1-2 → Zone 1 vaut 2 points ce tour","3-4 → Zone 2 vaut 2 points ce tour","5-6 → Zone 3 vaut 2 points ce tour"],post:"Les deux autres zones valent 1 point chacune ce tour."},{l:"Contrôle d'une zone",t:"Le joueur dont la totalité des valeurs en points de ses figurines présentes dans la zone dépasse celle de l'adversaire contrôle cette zone. En cas d'égalité, la zone est contestée et ne rapporte aucun point."},{l:"Marquer des points",t:"À la fin de chaque tour, chaque joueur marque les points des zones qu'il contrôle."},{l:"Fin de partie",t:"Après 5 tours, le joueur avec le plus de points gagne. En cas d'égalité parfaite — match nul."}]},
+  5:{title:"Le Ventre de la Bête",num:"Scénario N°5 — D6 : 5",flavor:"Un seul territoire. Au centre de tout. Celui qui le tient dicte la loi. Celui qui le perd... n'a plus rien.",victory:"Le plus de points de contrôle",rules:[{l:"Mise en place",t:"Déploiement standard : 12\" de la ligne médiane. Placez un marqueur au centre exact de la table. Il représente la zone de contrôle — un cercle de 6\" de rayon autour de ce marqueur."},{l:"Contrôle de la zone",t:"Le joueur dont la totalité des valeurs en points de ses figurines présentes dans la zone dépasse celle de l'adversaire contrôle la zone. En cas d'égalité, la zone est contestée et ne rapporte aucun point."},{l:"Marquer des points",t:"À la fin de chaque tour, le joueur qui contrôle la zone marque 1 point."},{l:"Fin de partie",t:"Après 5 tours. Le joueur avec le plus de points gagne. En cas d'égalité parfaite — match nul."}]},
+  6:{title:"Le Prix du Sang",num:"Scénario N°6 — D6 : 6",flavor:"Chaque mort nourrit l'autel. Chaque autel attire les profanateurs. Tuer est nécessaire — mais jamais sans conséquence.",victory:"Le plus de pions sur son autel",schema:true,rules:[{l:"Mise en place",pre:"Chaque joueur se déploie dans un arc de cercle de 12\" de rayon depuis son coin de table. Les autels sont placés du même côté latéral, mais de l'autre côté de la ligne médiane :",li:["Joueur A — déploiement en bas à droite, autel à 9\" du bord droit et 9\" du bord inférieur","Joueur B — déploiement en haut à gauche, autel à 9\" du bord gauche et 9\" du bord supérieur"]},{l:"Alimenter son autel",pre:"Chaque fois qu'une figurine adverse est éliminée, le joueur qui l'a éliminée place des pions sur son propre autel :",li:["1 pion par figurine éliminée","+1 pion bonus si la figurine éliminée est un Seigneur ou Seigneur Suprême"]},{l:"Profaner l'autel adverse",t:"Une figurine au contact de l'autel adverse peut dépenser 1 PA pour retirer 1 pion de cet autel. Cette action peut être répétée tant que la figurine dispose de PA."},{l:"Marquer des points",t:"À la fin de la partie, chaque joueur marque 1 point par pion restant sur son autel."},{l:"Fin de partie",t:"Après 5 tours. Le joueur avec le plus de points gagne. En cas d'égalité parfaite — match nul."}]}
+};
+
+let scCardsBuilt = false;
+
+function scInitCards(){
+  if(scCardsBuilt) return;
+  const grid = document.getElementById('sc-all-cards');
+  Object.entries(SC_DATA).forEach(([n,s]) => {
+    grid.innerHTML += scBuildCard(n, s);
+  });
+  scCardsBuilt = true;
+}
+
+function scRuleHTML(r){
+  if(r.sp) return `<div class="sc-special-rule"><strong>${r.l} :</strong> ${r.t}</div>`;
+  let h=`<div class="sc-rule-section"><div class="sc-rule-label">${r.l}</div><div class="sc-rule-text">`;
+  if(r.pre) h+=`<p style="margin-bottom:4px;">${r.pre}</p>`;
+  if(r.li)  h+=`<ul>${r.li.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+  if(r.t)   h+=`<p>${r.t}</p>`;
+  if(r.post)h+=`<p style="margin-top:4px;">${r.post}</p>`;
+  h+=`</div></div>`;
+  return h;
+}
+
+function scRulesHTML(rules, schema){
+  let h = schema ? SC_SVG : '';
+  rules.forEach(r => h += scRuleHTML(r));
+  return h;
+}
+
+function scBuildCard(n, s){
+  let innerBody='';
+  if(s.variants){
+    let tabs=`<div class="sc-variant-tabs">`;
+    let bodies='';
+    s.v.forEach((v,i)=>{
+      const id=`scv-${n}-${i}`;
+      tabs+=`<button class="sc-variant-tab ${i===0?'active':''}" onclick="scSwitchTab(this,'sc-variant-tab','sc-variant-body')">${v.label}</button>`;
+      bodies+=`<div class="sc-variant-body ${i===0?'active':''}" id="${id}"><div class="sc-card-flavor" style="margin-bottom:12px;">${v.flavor}</div>${v.rules.map(r=>scRuleHTML(r)).join('')}</div>`;
+    });
+    tabs+='</div>';
+    innerBody=tabs+bodies;
+  } else {
+    innerBody=`<div class="sc-card-body">${scRulesHTML(s.rules,s.schema)}</div>`;
+  }
+  return `<div class="sc-card">
+    <div class="sc-card-num">${s.num}</div>
+    <div class="sc-card-head">
+      <div class="sc-card-label">Scénario</div>
+      <div class="sc-card-title">${s.title}</div>
+      <div class="sc-card-flavor">${s.flavor}</div>
+    </div>
+    ${innerBody}
+    <div class="sc-card-foot">
+      <span class="sc-foot-label">Victoire</span>
+      <span class="sc-foot-value">${s.victory}</span>
+      <button class="sc-btn-print" onclick="scPrint(${n})">🖨 Imprimer</button>
+    </div>
+  </div>`;
+}
+
+function scSwitchTab(btn, tabClass, bodyClass){
+  const container = btn.closest('.sc-card') || btn.closest('.sc-res-body') || btn.closest('.sc-die-result');
+  container.querySelectorAll('.'+tabClass).forEach(t=>t.classList.remove('active'));
+  container.querySelectorAll('.'+bodyClass).forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const tabs=Array.from(container.querySelectorAll('.'+tabClass));
+  const idx=tabs.indexOf(btn);
+  const bodies=container.querySelectorAll('.'+bodyClass);
+  if(bodies[idx]) bodies[idx].classList.add('active');
+}
+
+function scShowSection(name){
+  document.querySelectorAll('.sc-section').forEach(s=>s.classList.remove('visible'));
+  document.querySelectorAll('.sc-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sc-section-'+name).classList.add('visible');
+  document.getElementById('sc-btn-'+name).classList.add('active');
+}
+
+// Dé du destin scénarios
+const SC_FACE_ROT={
+  1:'rotateX(0deg) rotateY(0deg)',
+  2:'rotateX(0deg) rotateY(180deg)',
+  3:'rotateX(0deg) rotateY(-90deg)',
+  4:'rotateX(0deg) rotateY(90deg)',
+  5:'rotateX(-90deg) rotateY(0deg)',
+  6:'rotateX(90deg) rotateY(0deg)'
+};
+let scMuted=false;
+
+function scToggleMute(){
+  scMuted=!scMuted;
+  document.getElementById('sc-btn-mute').textContent=scMuted?'🔇':'🔊';
+}
+
+function scRollDie(){
+  const die=document.getElementById('sc-die');
+  const btn=document.getElementById('sc-btn-roll');
+  const result=document.getElementById('sc-die-result');
+  result.classList.remove('visible');
+  die.classList.remove('rolling');
+  btn.disabled=true;
+  if(!scMuted){
+    const audio=new Audio('warhorn.wav');
+    audio.volume=0.45;
+    audio.play().catch(()=>{});
+  }
+  const n=Math.floor(Math.random()*6)+1;
+  die.style.setProperty('--sc-final-rot',SC_FACE_ROT[n]);
+  void die.offsetWidth;
+  die.classList.add('sc-die');
+  die.style.animation='none';
+  void die.offsetWidth;
+  die.style.animation='';
+  die.classList.add('rolling');
+  setTimeout(()=>{
+    die.style.transform=SC_FACE_ROT[n];
+    die.classList.remove('rolling');
+    scShowResult(n);
+    btn.disabled=false;
+  },2100);
+}
+
+function scShowResult(n){
+  const s=SC_DATA[n];
+  document.getElementById('sc-res-num').textContent=s.num;
+  document.getElementById('sc-res-title').textContent=s.title;
+  document.getElementById('sc-res-flavor').textContent=s.flavor;
+  let bodyHTML='';
+  if(s.variants){
+    bodyHTML=`<div class="sc-res-variant-tabs">`;
+    s.v.forEach((v,i)=>{bodyHTML+=`<button class="sc-res-variant-tab ${i===0?'active':''}" onclick="scSwitchTab(this,'sc-res-variant-tab','sc-res-variant-body')">${v.label}</button>`;});
+    bodyHTML+=`</div>`;
+    s.v.forEach((v,i)=>{bodyHTML+=`<div class="sc-res-variant-body ${i===0?'active':''}"><div class="sc-card-flavor" style="margin-bottom:12px;font-style:italic;">${v.flavor}</div>${v.rules.map(r=>scRuleHTML(r)).join('')}</div>`;});
+  } else {
+    bodyHTML=scRulesHTML(s.rules,s.schema);
+  }
+  document.getElementById('sc-res-body').innerHTML=bodyHTML;
+  document.getElementById('sc-res-print-btn').onclick=()=>scPrint(n);
+  document.getElementById('sc-die-result').classList.add('visible');
+}
+
+function scPrint(n){
+  const s=SC_DATA[n];
+  let body='';
+  function pr(r){
+    if(r.sp) return `<div class="sp"><strong>${r.l} :</strong> ${r.t}</div>`;
+    let h=`<div class="rl">${r.l}</div><div class="rt">`;
+    if(r.pre) h+=`<p>${r.pre}</p>`;
+    if(r.li)  h+=`<ul>${r.li.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+    if(r.t)   h+=`<p>${r.t}</p>`;
+    if(r.post)h+=`<p>${r.post}</p>`;
+    h+=`</div>`;return h;
+  }
+  if(s.variants){
+    s.v.forEach(v=>{
+      body+=`<h3 style="font-size:12px;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid #ddd;padding-bottom:5px;margin:18px 0 10px;">${v.label}</h3><p style="font-style:italic;color:#666;font-size:12px;margin-bottom:12px;padding-left:10px;border-left:2px solid #ddd;">${v.flavor}</p>`;
+      v.rules.forEach(r=>body+=pr(r));
+    });
+  } else {
+    if(s.schema) body+=SC_SVG.replace('class="sc-schema-box"','style="border:1px solid #ddd;padding:8px;margin:12px 0;"');
+    s.rules.forEach(r=>body+=pr(r));
+  }
+  const w=window.open('','_blank');
+  w.document.write(`<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Sons of Fate — ${s.title}</title><style>
+    body{font-family:Georgia,serif;font-size:13px;color:#111;max-width:680px;margin:40px auto;padding:0 20px;}
+    h1{font-size:24px;letter-spacing:4px;text-transform:uppercase;margin-bottom:4px;}.sub{font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-bottom:18px;}
+    .fl{font-style:italic;color:#555;border-left:2px solid #d4a853;padding-left:12px;margin-bottom:18px;font-size:13px;line-height:1.6;}
+    .rl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;border-bottom:1px solid #eee;padding-bottom:3px;margin:12px 0 5px;}.rt{font-size:12px;line-height:1.7;color:#222;}
+    ul{padding-left:14px;list-style:disc;margin-top:3px;}.sp{background:#fdf6e8;border:1px solid #d4c4a0;border-left:2px solid #d4a853;padding:9px 13px;font-style:italic;color:#555;margin:10px 0;font-size:12px;}
+    svg{width:100%;height:auto;}footer{margin-top:36px;border-top:1px solid #eee;padding-top:10px;font-size:10px;letter-spacing:2px;color:#aaa;text-transform:uppercase;text-align:center;}
+  </style></head><body>
+  <div class="sub">${s.num}</div><h1>${s.title}</h1><div class="fl">${s.flavor}</div>
+  ${body}
+  <footer>Sons of Fate — sons-of-fate.github.io</footer>
+  <script>window.onload=()=>window.print();<\/script>
+  </body></html>`);
+  w.document.close();
+}
 </script>
 </body>
 </html>
