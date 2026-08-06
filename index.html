@@ -760,7 +760,7 @@ function renderMD(){
       if(cap.reservedFor.length>0){const names=cap.reservedFor.map(id=>PROFILES.find(p=>p.id===id)?.name||id);resLabel=`<div class="b-reserved">Réservé : ${names.join(', ')}</div>`;}
       const assigned=assignments.filter(a=>a.capId===cap.id);
       let assignedHtml=assigned.map(a=>{const f=band.find(x=>x.uid===a.fighterUid);if(!f)return'';return`<div class="b-cap-assigned"><span>${getFighterDisplayName(f)}</span><button class="b-btn-sm" onclick="removeAssignment('${f.uid}','${cap.id}')">×</button></div>`;}).join('');
-      const avail=band.filter(f=>capCompatible(cap,f)&&!fighterHasCap(f.uid,cap.id)&&fighterCapCount(f.uid)<5);
+      const avail=band.filter(f=>capCompatible(cap,f)&&!fighterHasCap(f.uid,cap.id)&&fighterCapCount(f.uid)<5&&(cap.cat!=='Tir'||f.tireur===true));
       const canA=left>=cap.cout&&avail.length>0;
       let selHtml=avail.length>0?`<select id="sel-${cap.id}">${avail.map(f=>`<option value="${f.uid}">${getFighterDisplayName(f)}</option>`).join('')}</select>`:`<span style="font-size:12px;color:#aaa;font-family:sans-serif;">Aucun combattant disponible</span>`;
       block.innerHTML=`<div class="b-cap-block-header"><div><div class="b-cap-block-name">${cap.name} <span class="b-cap-block-niveau">${cap.niveau}</span></div>${resLabel}</div><span class="b-cap-block-cost">${cap.cout} MD</span></div><div class="b-cap-block-desc">${cap.desc}</div>${assignedHtml}<div class="b-cap-select-row">${selHtml}${avail.length>0?`<button class="b-btn-add" ${canA?'':'disabled'} onclick="assignCap('${cap.id}',document.getElementById('sel-${cap.id}').value)">Assigner</button>`:''}</div>`;
