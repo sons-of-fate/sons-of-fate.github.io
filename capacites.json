@@ -277,5 +277,14 @@
   "name": "À bout portant",
   "reservedFor": [],
   "desc": "Passif : lorsqu'un combattant effectue une attaque de tir contre un ennemi situé à 6 pouces ou moins, il bénéficie de +1D6 lors de son jet d'attaque."
+},
+{
+  "id": "c32",
+  "cat": "Défense",
+  "niveau": "+",
+  "cout": 1,
+  "name": "Dos au mur",
+  "reservedFor": [],
+  "desc": "Passif : lorsque le combattant est au contact d'un élément de décor, il peut relancer un dé ayant échoué lors de chacun de ses jets d'esquive. Le nouveau résultat remplace l'ancien."
 }
 ]
