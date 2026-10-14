@@ -233,4 +233,13 @@
   "reservedFor": ["champion", "seigneur", "seigneurS"],
   "desc": "1 PA — 1 fois par tour — portée 18 pouces — réservé Champion, Seigneur et Seigneur Suprême : choisissez un combattant allié à portée, autre que le porteur, puis lancez 1D6. Sur 2+, choisissez l'un des effets suivants : Sacrifice vital : infligez 1 blessure à l'allié et le porteur récupère 1 blessure. Sacrifice de puissance : infligez 2 blessures à l'allié et le porteur gagne +1 FOR jusqu'à sa prochaine activation. Effectuez un jet de localisation pour chaque blessure infligée à l'allié. Ces blessures sont résolues normalement et peuvent mettre l'allié hors de combat."
 }
+  {
+  "id": "c27",
+  "cat": "Défense",
+  "niveau": "+",
+  "cout": 1,
+  "name": "Insaisissable",
+  "reservedFor": [],
+  "desc": "Passif — 1 par bande — interdit aux Colosses et Seigneurs Suprêmes : lorsqu'un combattant ennemi effectue une attaque de tir contre le porteur, il lance 1D6 de moins lors de son jet d'attaque contre la RAP du porteur."
+}
 ]
