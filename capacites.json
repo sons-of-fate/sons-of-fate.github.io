@@ -286,5 +286,14 @@
   "name": "Dos au mur",
   "reservedFor": [],
   "desc": "Passif : lorsque le combattant est au contact d'un élément de décor, il peut relancer un dé ayant échoué lors de chacun de ses jets d'esquive. Le nouveau résultat remplace l'ancien."
+},
+ {
+  "id": "c33",
+  "cat": "Défense",
+  "niveau": "+++",
+  "cout": 3,
+  "name": "Égide du gardien",
+  "reservedFor": [],
+  "desc": "1 PA — Réaction — 1 fois par tour — portée 6 pouces — 1 par bande : lorsqu'un combattant allié situé à 6 pouces ou moins du porteur est ciblé par une attaque, le porteur peut dépenser 1 PA pour lui accorder une protection mystique. Le combattant protégé bénéficie de +2D6 à son jet d'esquive contre cette attaque. Le porteur doit posséder une ligne de vue sur l'allié protégé. Il peut également utiliser cette capacité sur lui-même."
 }
 ]
