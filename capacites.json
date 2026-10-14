@@ -259,7 +259,7 @@
   "name": "Bond prodigieux",
   "reservedFor": [],
   "desc": "1 PA — Mouvement : lors d'un déplacement, le porteur peut effectuer un bond au lieu d'un déplacement normal. Il ignore les décors, les obstacles ainsi que les figurines alliées et ennemies traversés. Le bond peut franchir une hauteur maximale égale à deux fois celle du porteur. La distance parcourue est limitée à sa distance de déplacement habituelle. Le porteur ne peut pas terminer son bond au contact d'un ennemi ni sur une autre figurine."
-}
+},
 {
   "id": "c30",
   "cat": "Mouvement",
