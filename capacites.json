@@ -197,15 +197,15 @@
     "reservedFor": [],
     "desc": "( passif ) : le porteur peut effectuer des attaques de tir à portée illimitée."
   },
-  {
-    "id": "c23",
-    "cat": "Tir",
-    "niveau": "+",
-    "cout": 1,
-    "name": "Frappe ciblée",
-    "reservedFor": [],
-    "desc": "( passif ) : lors d’une attaque de tir, le porteur peut cibler n’importe quel ennemi, sans obligation de viser le combattant le plus proche."
-  },
+{
+  "id": "c23",
+  "cat": "Tir",
+  "niveau": "+",
+  "cout": 1,
+  "name": "Tir opportuniste",
+  "reservedFor": [],
+  "desc": "Passif : lors d'une attaque de tir contre un ennemi qui n'est au contact d'aucun combattant allié, le tireur peut relancer jusqu'à deux dés d'attaque ayant obtenu un résultat de 1. Les nouveaux résultats doivent être conservés."
+},
     {
     "id": "c24",
     "cat": "Mouvement",
