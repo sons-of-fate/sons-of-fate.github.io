@@ -251,7 +251,7 @@
   "reservedFor": ["champion", "capitaine", "seigneur", "seigneurS", "colosse"],
   "desc": "Passif — réservé Champion, Capitaine, Seigneur, Seigneur Suprême et Colosse : lorsqu'un combattant ennemi engagé au contact du porteur effectue un jet d'esquive ou de désengagement, il doit relancer un dé ayant obtenu une réussite. Le nouveau résultat remplace l'ancien."
 },
- {
+{
   "id": "c29",
   "cat": "Mouvement",
   "niveau": "++",
