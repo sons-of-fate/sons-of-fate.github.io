@@ -268,5 +268,14 @@
   "name": "Transposition mystique",
   "reservedFor": [],
   "desc": "1 PA — 1 fois par tour — portée 24 pouces — 1 par bande : choisissez un combattant allié à 24 pouces ou moins du porteur. Les deux combattants échangent immédiatement leurs positions, sans effectuer de déplacement. Ils doivent posséder des socles de dimensions identiques et aucun des deux ne doit être engagé."
+},
+{
+  "id": "c31",
+  "cat": "Tir",
+  "niveau": "+",
+  "cout": 1,
+  "name": "À bout portant",
+  "reservedFor": [],
+  "desc": "Passif : lorsqu'un combattant effectue une attaque de tir contre un ennemi situé à 6 pouces ou moins, il bénéficie de +1D6 lors de son jet d'attaque."
 }
 ]
