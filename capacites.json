@@ -242,7 +242,7 @@
   "reservedFor": ["brave", "guerrier", "champion", "capitaine", "seigneur"],
   "desc": "Passif — 1 par bande : lorsqu'un combattant ennemi effectue une attaque de tir contre le porteur, il lance 1D6 de moins lors de son jet d'attaque contre la RAP du porteur."
 },
-  {
+{
   "id": "c28",
   "cat": "Contrôle",
   "niveau": "+",
