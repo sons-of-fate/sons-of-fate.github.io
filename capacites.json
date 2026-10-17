@@ -296,7 +296,7 @@
   "reservedFor": [],
   "desc": "Réaction — 1 fois par tour — 3 fois par partie — portée 12 pouces — 1 par bande : lorsqu'un combattant allié situé à 12 pouces ou moins du porteur est ciblé par une attaque, il bénéficie de +3D6 lors de son jet d'esquive. Le porteur doit posséder une ligne de vue sur l'allié protégé. Cette capacité peut également être utilisée sur lui-même."
 },
-  {
+{
   "id": "c34",
   "cat": "Mouvement",
   "niveau": "++",
