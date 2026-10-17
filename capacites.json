@@ -177,7 +177,7 @@
   "cout": 3,
   "name": "Frappe divinatoire",
   "reservedFor": ["brave", "guerrier", "seigneur"],
-  "desc": "1 PA — 1 fois par tour — 1 par bande : le combattant peut effectuer une attaque de tir indirecte sur un ennemi, même sans ligne de vue ni couloir de tir, à condition qu'au moins un allié possède une ligne de vue sur la cible. La portée de cette attaque est augmentée de 6 pouces par rapport à la portée habituelle de l'arme. L'attaque est résolue normalement, sans malus."
+  "desc": "1 PA — 1 par bande : le combattant peut effectuer une attaque de tir indirecte sur un ennemi, même sans ligne de vue ni couloir de tir, à condition qu'au moins un allié possède une ligne de vue sur la cible. La portée de cette attaque est doublée par rapport à la portée habituelle de l'arme. L'attaque est résolue normalement, sans malus."
 },
   {
     "id": "c21",
