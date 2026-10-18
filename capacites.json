@@ -303,6 +303,6 @@
   "cout": 2,
   "name": "Rythme entraînant",
   "reservedFor": ["brave", "guerrier"],
-  "desc": "Passif : au début de leur activation, les combattants alliés situés à 6 pouces ou moins du porteur bénéficient de +2 pouces lors de leur premier déplacement. Le porteur ne bénéficie pas de ce bonus."
+  "desc": "Passif — 1 par bande : au début de leur activation, les combattants alliés situés à 6 pouces ou moins du porteur bénéficient de +2 pouces lors de leur premier déplacement. Le porteur ne bénéficie pas de ce bonus."
 }
 ]
