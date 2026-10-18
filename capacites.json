@@ -66,7 +66,7 @@
     "id": "c8",
     "cat": "Tir",
     "niveau": "++",
-    "cout": 3,
+    "cout": 2,
     "name": "Tir précis",
     "reservedFor": ["brave", "guerrier", "seigneur"],
     "desc": "1 PA — 1 fois par tour — tir : lors d'une attaque de tir, ajoutez +1D3 à la valeur de FOR pour ce tir. (réservé Braves, Guerriers, Seigneurs)"
