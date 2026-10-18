@@ -305,4 +305,13 @@
   "reservedFor": ["brave", "guerrier"],
   "desc": "Passif — 1 par bande : au début de leur activation, les combattants alliés situés à 6 pouces ou moins du porteur bénéficient de +2 pouces lors de leur premier déplacement. Le porteur ne bénéficie pas de ce bonus."
 }
+{
+  "id": "c35",
+  "cat": "Tir",
+  "niveau": "+",
+  "cout": 1,
+  "name": "Tir maîtrisé",
+  "reservedFor": [],
+  "desc": "Passif : lorsqu'il effectue une attaque de tir sur un ennemi engagé au corps à corps avec un allié, le combattant n'effectue pas de jet de Psy. Le tir est directement résolu contre l'ennemi ciblé."
+}
 ]
