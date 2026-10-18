@@ -65,7 +65,7 @@
   {
     "id": "c8",
     "cat": "Tir",
-    "niveau": "+++",
+    "niveau": "++",
     "cout": 3,
     "name": "Tir précis",
     "reservedFor": ["brave", "guerrier", "seigneur"],
