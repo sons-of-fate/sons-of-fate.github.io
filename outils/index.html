@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#291f15">
+<title>Sons of Fate — Outils de jeu</title>
+<style>
+:root{--bg:#f8f6f1;--paper:#fffefa;--ink:#25221e;--dark:#1a1917;--muted:#736d65;--line:#e0dbd1;--red:#8b3833;--redSoft:#f6edeb;--warm:#eeeae2;--ok:#47664b;--okSoft:#e9f0e7;--bad:#914b3e;--badSoft:#f4eae6;--focus:#b67e74}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,'Segoe UI',Arial,sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}a{color:var(--red)}h1,h2,h3,p{margin:0}h2{font-family:Georgia,serif;font-size:24px}h3{font-size:16px}input,textarea,select{width:100%;background:white;border:1px solid #c9c1b5;border-radius:9px;color:var(--ink);padding:10px 11px;font-size:16px}textarea{resize:vertical;min-height:78px}input:focus,textarea:focus,select:focus,button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}label{display:block;font-size:13px;font-weight:700;margin-bottom:5px}.wrap{max-width:1010px;margin:auto}.head{background:var(--dark);border-bottom:3px solid var(--red);color:#f4f0e8;padding:21px 16px}.mast{font:900 30px/1 Georgia,serif;letter-spacing:.09em}.mast small{font-size:.44em;color:#bea5a0}.sub{font-size:13px;color:#c9c4b9;margin-top:9px}.content{padding:22px 16px 55px}.mast-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.eyebrow{color:var(--red);letter-spacing:.09em;text-transform:uppercase;font-size:11px;font-weight:800;margin-bottom:5px}.intro{color:var(--muted);max-width:730px;margin-top:6px}.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:20px 0 22px;border-bottom:1px solid var(--line)}.tab{border:0;border-bottom:3px solid transparent;background:transparent;color:#59544d;padding:12px 14px;font-weight:750}.tab[aria-selected=true]{color:var(--red);border-color:var(--red)}.panel{border:1px solid var(--line);background:var(--paper);border-radius:13px;padding:19px;margin-bottom:17px;box-shadow:0 1px 3px #33251709}.muted{color:var(--muted)}.small{font-size:12px}.notice{background:#f1ede6;padding:12px 14px;border-radius:9px;font-size:13px;color:#5b5149}.row{display:flex;align-items:center;gap:11px}.between{justify-content:space-between}.wrap-row{flex-wrap:wrap}.stack{display:grid;gap:11px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.btn{appearance:none;border:1px solid #cac0b1;border-radius:9px;background:#f2eee7;color:var(--ink);padding:10px 14px;font-size:14px;font-weight:750;min-height:40px}.btn:hover:not(:disabled){background:#e9e1d8}.primary{background:var(--red);border-color:var(--red);color:white}.primary:hover:not(:disabled){background:#722f2a}.ghost{background:transparent}.danger{color:var(--bad);border-color:#d9b6ae;background:#fff7f6}.sm{padding:7px 10px;min-height:34px;font-size:12px}.icon-btn{display:inline-flex;align-items:center;justify-content:center;min-width:35px}.pill{display:inline-flex;align-items:center;border-radius:30px;background:#efebe5;padding:5px 10px;font-size:12px;font-weight:700;white-space:nowrap}.positive{background:var(--okSoft);color:#315e35}.negative{background:var(--badSoft);color:#813f35}.divider{height:1px;background:var(--line);margin:18px 0}.tooltop{margin-bottom:19px}.tooltop h2{margin-bottom:6px}.steps{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}.step{border:1px solid var(--line);background:var(--paper);color:var(--muted);padding:7px 12px;border-radius:30px;font-weight:700;font-size:12px}.step.active{background:#f1e5e0;border-color:#d3b9b0;color:var(--red)}.step:disabled{opacity:.6}.list{display:grid;gap:8px}.effect{border:1px solid var(--line);background:#fff;border-radius:10px;padding:12px 13px;display:flex;gap:11px;align-items:flex-start;justify-content:space-between}.effect .name{font-weight:800}.effect .desc{font-size:13px;white-space:pre-line;margin-top:3px;color:#514a44;overflow-wrap:anywhere}.effect .meta{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:5px}.effect button{flex-shrink:0}.checkrow{display:flex;gap:10px;align-items:flex-start;margin-top:5px}.checkrow input{width:18px;height:18px;flex:0 0 18px;margin:2px 0}.checkrow label{font-size:14px;font-weight:500;margin:0}.mutedbox{border:1px dashed #bfb5a6;border-radius:10px;padding:17px;color:#736d65;text-align:center;background:#faf8f4}.count-box{display:inline-flex;gap:8px;align-items:center}.count-box input{width:82px}.slotgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:15px 0}.slot{border:1px solid #d9cfbe;min-height:110px;background:#fffefa;border-radius:11px;text-align:center;padding:12px 5px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}.slot strong{font:800 24px Georgia,serif}.slot .small{line-height:1.2}.slot:disabled{opacity:1;cursor:default}.slot.revealed{border-color:#9b8472;background:#f6f0e8}.slot.revealed.good{border-color:#a0baa0;background:#f1f7f0}.slot.revealed.bad{border-color:#d5aa9c;background:#fdf5f1}.result{padding:16px 17px;border:1px solid var(--line);border-radius:10px;background:#fff;margin-top:14px}.result.good{border-color:#b9d0b7;background:#f2f7f0}.result.bad{border-color:#dbb7b0;background:#fff5f2}.result .desc{margin-top:5px;white-space:pre-line;overflow-wrap:anywhere}.selectlist{display:grid;gap:7px;max-height:350px;overflow:auto;padding:2px}.bankitem{background:white;border:1px solid var(--line);padding:10px 12px;border-radius:9px}.bankitem .desc{white-space:pre-line;overflow-wrap:anywhere;margin-top:3px;color:#676056;font-size:13px}.dice-choices{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px}.number{border:1px solid #c9c1b5;border-radius:8px;background:#fff;padding:9px 2px;font-weight:800;min-height:41px}.number.selected{color:white;background:var(--red);border-color:var(--red)}.switch{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:white}.switch button{padding:9px 18px;border:0;background:transparent;color:var(--ink);font-weight:800}.switch button.selected{background:var(--dark);color:white}.dicearea{background:#efebe4;border-radius:13px;padding:23px 12px;min-height:170px;margin-top:18px}.dicegrid{display:flex;gap:11px;justify-content:center;align-items:center;flex-wrap:wrap}.die{height:60px;width:60px;border:2px solid #a7a19a;border-radius:11px;background:white;display:flex;justify-content:center;align-items:center;box-shadow:0 5px 0 #c4bcb0;color:#26221f;font:800 32px Georgia,serif;transition:transform .12s ease}.die.animate{animation:tumble .17s linear infinite alternate}@keyframes tumble{from{transform:translateY(-7px) rotate(-10deg)}to{transform:translateY(7px) rotate(10deg)}}.dice-caption{text-align:center;margin-top:18px;font-size:13px;color:#6d655b}.history-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.history-entries{display:grid;gap:9px}.history-entry{border:1px solid var(--line);background:#fff;border-radius:10px;padding:12px 14px}.history-entry-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.history-entry time{color:var(--muted);font-size:12px}.history-dice{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.history-die{min-width:32px;height:34px;padding:2px 7px;border:1px solid #d2c7b8;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font:bold 18px Georgia,serif;background:#f8f6f1;font-variant-numeric:tabular-nums}.history-more{display:block;margin:12px auto 0}.score-head{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:space-between}.scoreplayer{display:flex;align-items:center;justify-content:space-between;gap:13px;padding:12px;border:1px solid var(--line);border-radius:10px;background:white}.scoreplayer .left{flex:1;min-width:0}.scoreplayer input{max-width:245px}.namebtn{border:0;background:transparent;padding:3px 2px;text-align:left;color:var(--ink);font-weight:800;font-size:16px;overflow-wrap:anywhere}.namebtn:hover{text-decoration:underline}.scoreplayer .tools{display:flex;align-items:center;gap:7px;flex-shrink:0}.scoreplayer .current{font-size:24px;font-weight:800;min-width:28px;text-align:center;font-variant-numeric:tabular-nums}.scoreboard{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0}.scoreboard th,.scoreboard td{padding:9px 7px;border-bottom:1px solid var(--line);text-align:center;font-variant-numeric:tabular-nums}.scoreboard th:first-child,.scoreboard td:first-child{text-align:left}.scoreboard th{font-size:12px;color:#686057;background:#f2eee6}.scoreboard th:last-child,.scoreboard td:last-child{font-weight:800}.scroll{overflow:auto}.scoretitle{font-size:18px;font-family:Georgia,serif;font-weight:800}.footer{border-top:1px solid var(--line);margin-top:24px;padding-top:16px;font-size:12px;color:var(--muted)}.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#292620;color:white;padding:11px 16px;border-radius:10px;box-shadow:0 4px 25px #0005;z-index:20;font-size:14px;max-width:90vw}.hidden{display:none!important}
+.location-toggle-row{background:#f6f0e4;border:1px solid #dfd1b5;border-radius:11px;padding:13px;margin-top:5px}.location-toggle-row label{margin:0;cursor:pointer}.location-toggle-row strong{display:block;font-size:15px}.location-toggle-row .small{display:block;font-weight:400;margin-top:3px;color:#61594a}.location-settings{padding:12px 14px;border-left:3px solid #a77c32;background:#fbf8f0;border-radius:0 9px 9px 0}.location-settings select{max-width:290px}.die.success-die{border-color:#6a9776;background:#f0f8f0;box-shadow:0 5px 0 #a0bda4}.die.failed-die{opacity:.64}.die.location-die{background:#b78b3c;color:#fff;border-color:#7c5b24;box-shadow:0 5px 0 #65491f}.dice-cell{display:flex;flex-direction:column;align-items:center;gap:8px}.dice-label{font-size:11px;color:#615a51;font-weight:750}.location-panel{margin-top:2px;padding:16px;border:1px solid #d8c6a5;border-radius:12px;background:#faf4e9}.location-reading{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.loc-big{width:66px;height:66px;display:flex;justify-content:center;align-items:center;flex-direction:column;border:2px solid #896729;border-radius:12px;background:#b78b3c;color:white;box-shadow:0 4px 0 #745723}.loc-big strong{font:800 30px Georgia,serif;line-height:1}.loc-big span{font-size:9px;font-weight:800;text-transform:uppercase}.loc-value{font-weight:850;font-size:17px}.loc-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px}.loc-actions button{min-width:105px}.loc-summary{font-size:13px;color:#5c5447;margin-top:10px;line-height:1.6}.loc-hint{font-size:12px;margin-top:8px;color:#655a45}.history-loc{border-top:1px dashed #ded1b7;margin-top:10px;padding-top:9px;font-size:12px;color:#564a35;line-height:1.6}.history-die.loc{background:#b78b3c;border-color:#7c5b24;color:white}.history-die.success{border-color:#679a70;background:#edf7ec}.legend{display:flex;gap:13px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:10px;font-size:12px;color:#5d574e}.legend-mark{width:10px;height:10px;border-radius:3px;background:#b78b3c;display:inline-block;margin-right:4px}.legend-mark.success{background:#7a9b79}.die:focus-visible{outline:2px solid #8b3833}
+@media(max-width:720px){.panel{padding:14px}.grid2,.grid3{grid-template-columns:1fr}.slotgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.dice-choices{grid-template-columns:repeat(5,minmax(0,1fr))}.tab{padding:11px 9px;font-size:13px}.dicearea{padding:17px 9px;min-height:140px}.die{height:51px;width:51px;font-size:27px}.scoreplayer{gap:8px;padding:10px}.scoreplayer .tools{gap:4px}.btn.sm{padding:7px 9px}.scoreplayer .namebtn{font-size:14px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+
+.match-list{display:flex;flex-direction:column;gap:12px}.match-card{border:1px solid var(--line);border-radius:11px;padding:14px;background:white}.match-card .match-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:9px;align-items:flex-start}.match-card .match-result{font-weight:800;font-size:15px}.match-card .match-date{color:var(--muted);font-size:12px}.match-scenario{margin-top:5px;color:#5a4b40;font-size:13px;overflow-wrap:anywhere}.match-card .match-players{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.match-card .match-player{background:#f3f0e9;border:1px solid #e4ddd1;padding:5px 10px;border-radius:20px;font-size:13px}.match-card .match-player.winner{background:var(--okSoft);border-color:#bdd2bc}.match-card .match-detail{font-size:12px;color:var(--muted);margin-top:9px}.scoreactions{display:flex;flex-wrap:wrap;gap:9px}.score-history-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:start}.score-history-options{display:flex;gap:9px;flex-wrap:wrap}.score-history-empty{background:#f5f1e9;border:1px dashed #d3c9b8;color:var(--muted);border-radius:9px;padding:15px;font-size:13px}.match-head-to-head{font-size:13px;color:#514b44;border-left:3px solid var(--red);padding:9px 11px;background:#f5f0ea;border-radius:0 7px 7px 0}.scoreplayer.finished{opacity:.7}.score-confirm{background:#e9f0e7;color:#355b3b;border:1px solid #bad1b9;padding:11px 13px;border-radius:9px;font-size:13px}.score-archive{font-size:13px;color:var(--muted)}
+@media(max-width:640px){.match-card{padding:12px}.scoreactions .btn{flex:1 1 180px}}
+
+.history-die.history-spent{position:relative;color:#5d6959;opacity:.85}.history-die.history-spent:after{content:"";position:absolute;left:3px;right:3px;top:49%;height:2px;background:#963e37;transform:rotate(-20deg);pointer-events:none}
+.scoreplayer-name{font-size:16px;font-weight:800;overflow-wrap:anywhere;line-height:1.3;padding:3px 2px}
+@media(max-width:640px){.scoreplayer-name{font-size:15px}}
+/* V6 : manipulation du dé de localisation dans le tableau des dés */
+.die{position:relative;isolation:isolate}
+.die.spent-success{color:#56715a;background:#e5eee4;border-color:#799b7d;box-shadow:0 5px 0 #b8cbb9}
+.die.spent-success:after{content:"";position:absolute;left:8px;right:8px;top:50%;height:3px;background:#963e37;border-radius:5px;transform:rotate(-24deg);box-shadow:0 0 0 1px #fff7;pointer-events:none}
+.die.spent-success:before{content:"Utilisée";font:750 9px system-ui,sans-serif;position:absolute;bottom:-21px;color:#8b3833;white-space:nowrap}
+.dice-cell{min-width:0}
+.loc-inline{display:flex;flex-direction:column;align-items:center;gap:5px;padding:0 3px 5px}
+.loc-inline-main{display:flex;align-items:center;gap:7px}
+.loc-step{display:flex;align-items:center;justify-content:center;min-width:42px;min-height:44px;padding:3px 5px;background:#fffefa;border:1px solid #a8997e;border-radius:10px;font-weight:850;font-size:15px;color:#5d4126}
+.loc-step:disabled{opacity:.33;cursor:not-allowed}
+.loc-step:not(:disabled):active{transform:translateY(2px);background:#f4e7cb}
+.loc-inline-zone{font-weight:850;font-size:13px;color:#5d4126}
+.loc-feedback{display:grid;justify-items:center;text-align:center;gap:5px;margin:18px auto 3px;max-width:620px;font-size:13px;color:#595044}
+.loc-feedback strong{font-weight:850}
+.loc-feedback .loc-remaining{font-size:14px;color:#365b3f}
+.loc-reset{border:0;background:transparent;padding:7px 12px;color:#8b3833;text-decoration:underline;font-weight:750;border-radius:6px}
+.loc-reset:disabled{opacity:.45;text-decoration:none;cursor:default}
+.dice-legend-spent{display:inline-block;border-radius:3px;width:12px;height:12px;background:linear-gradient(155deg,#94b29a 42%,#963e37 45%,#963e37 60%,#94b29a 62%);vertical-align:-1px;margin-right:4px}
+@media(max-width:620px){.dicegrid{gap:13px 10px}.loc-step{min-width:42px;min-height:48px;font-size:14px}.loc-inline-main{gap:5px}.die.spent-success:before{bottom:-17px;font-size:8px}}
+
+/* V15 : le tableau des tours reste dans son conteneur défilant,
+   sans élargir toute la page sur les écrans mobiles. */
+#round-score-table-block{min-width:0;max-width:100%;}
+#round-score-table-block .scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* V14 : choisir la saisie des PV par tour ou en fin de partie */
+.score-mode-selector{display:grid;gap:9px}
+.score-mode-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.score-mode-option{display:flex;align-items:flex-start;gap:9px;cursor:pointer;padding:13px;border:1px solid #d8ccbd;background:#fff;border-radius:11px;margin:0;min-height:92px;font-weight:normal}
+.score-mode-option:has(input:checked){border-color:var(--red);background:#faf0ed;box-shadow:0 0 0 1px var(--red)}
+.score-mode-option:has(input:disabled){opacity:.75;cursor:default}
+.score-mode-option input{width:18px;height:18px;flex:0 0 18px;margin:3px 0 0;accent-color:var(--red)}
+.score-mode-option strong{display:block;font-size:14px;margin-bottom:3px}
+.score-mode-option .small{font-size:12px;color:var(--muted);line-height:1.35;display:block}
+.score-mode-note{font-size:12px;color:var(--muted)}
+@media(max-width:420px){.score-mode-options{grid-template-columns:1fr}.score-mode-option{min-height:auto;padding:11px}}
+/* V11 : seuil indépendant du dé de localisation, lisible aussi sur mobile */
+.dice-success-summary{text-align:center;font-size:15px;font-weight:800;color:#365b3f;margin:12px auto 0}
+#difficulty-settings{background:#f4f2eb;border-left-color:#77866a}
+#difficulty-settings select{max-width:290px}
+@media(max-width:620px){#difficulty-settings select{max-width:none;width:100%}}
+
+/* V8 : selection des joueurs utilisable même après une partie terminée */
+.player-picker{background:#f7f3ec;border:1px solid #ded4c8;border-radius:12px;padding:16px;display:grid;gap:12px}
+.player-picker h3{font:800 21px Georgia,serif;line-height:1.25}
+.player-picker .friend-list,.player-picker .selected-list{display:flex;flex-wrap:wrap;gap:8px}
+.friend-pill{border:1px solid #c6bbab;background:#fffefa;padding:9px 13px;min-height:42px;border-radius:23px;font-size:14px;font-weight:750;display:inline-flex;align-items:center;gap:7px}
+.friend-pill[aria-pressed="true"]{border-color:#7b9274;background:#e9f1e6;color:#31543b}.friend-pill.suggested{border-style:dashed}.friend-pill:active{transform:scale(.98)}
+.friend-pill[aria-pressed="true"]:before{content:'✓';font-weight:900}
+.selected-pill{border:1px solid #d7c5b4;background:#fffdfa;padding:6px 10px 6px 13px;min-height:37px;border-radius:20px;font-weight:750;display:inline-flex;align-items:center;gap:8px}
+.selected-pill:hover,.friend-pill:hover:not(:disabled){background:#f3e8dd}
+.selected-pill .x{font-size:18px;color:var(--red);font-weight:500}
+.friend-form{display:flex;align-items:stretch;gap:9px}
+.friend-form input{flex:1;min-width:0}
+.friend-form button{flex-shrink:0}
+.selector-heading{font-weight:800;font-size:13px;color:#5e554b}
+.player-picker .small{line-height:1.4}
+@media(max-width:640px){.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px}.tab{font-size:12px;padding:10px 4px;min-height:56px;line-height:1.2;text-align:center}}
+.match-roster{font-size:12px;color:var(--muted)}
+@media(max-width:640px){.player-picker{padding:13px}.friend-form{flex-wrap:wrap}.friend-form button{width:100%}.player-picker h3{font-size:20px}}
+
+.objective-count-setup{border:1px solid #ccb996;border-radius:12px;background:#f8f1e5;padding:15px 16px}
+.objective-count-setup label{font-size:17px;line-height:1.35;margin-bottom:12px}
+.objective-count-setup input{width:95px;text-align:center;font-weight:800;font-size:21px}
+.objective-count-setup .pill{background:#eee0cd;color:#5b392f}
+.objective-count-setup p{margin-top:10px}
+.objective-progress{font-size:13px;font-weight:750;color:#7b352f}
+.objective-progress.ready{color:#35633c}
+.inspirations{border:1px solid var(--line);background:#faf7f2;border-radius:11px;padding:13px}
+.inspirations summary{cursor:pointer;font-weight:800}
+.inspirations .inspo-row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.inspirations .inspo-desc{color:#60584c;font-size:13px;margin-top:5px}
+.inspirations .inspo-row .btn{white-space:nowrap}
+@media(max-width:640px){.objective-count-setup{padding:13px}.inspirations .inspo-row .btn{margin-top:4px}}
+
+/* V10 : affichage mobile en priorité, sans modifier la logique du jeu. */
+.tab-icon{width:19px;height:19px;flex:none}
+.tabs .tab{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px}
+.tab-label-short{display:none}
+@media(max-width:640px){
+  html{scroll-padding-top:10px}
+  body{overflow-x:hidden;background:#f8f6f1;padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+  .head{padding:13px 14px 12px}
+  .head .mast{font-size:24px}
+  .head .sub{font-size:12px;margin-top:4px}
+  .mast-row{gap:10px;flex-wrap:nowrap}
+  .mast-row>a{max-width:138px;padding:9px 10px;font-size:12px;line-height:1.18;min-height:43px;white-space:normal;text-align:center}
+  .content{padding:16px 12px 14px}
+  .intro-block{display:none}
+  .tooltop{margin-bottom:12px}
+  .tooltop h2{font-size:22px}
+  .tooltop p{font-size:13px;line-height:1.45}
+  .panel{padding:13px 12px;border-radius:12px;margin-bottom:12px;min-width:0}
+  .panel.stack{gap:13px}
+  /* Large touch targets, three destinations always within thumb reach. */
+  .tabs{
+    position:fixed;z-index:50;bottom:0;left:0;right:0;
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;
+    margin:0;padding:4px 6px calc(5px + env(safe-area-inset-bottom,0px));
+    border:0;border-top:1px solid #d8d0c5;
+    background:rgba(255,254,250,.97);
+    box-shadow:0 -5px 18px #261d171a;
+  }
+  .tabs .tab{
+    display:flex;flex-direction:column;gap:1px;
+    min-height:61px;padding:7px 2px 6px;
+    border:0;border-radius:10px;
+    color:#655e55;font-size:11.5px;line-height:1.25;
+    font-weight:800;white-space:nowrap;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .tabs .tab[aria-selected=true]{background:#f3e7e2;color:#7f302d;box-shadow:inset 0 -3px #8b3833}
+  .tab-icon{width:24px;height:24px}
+  .tab-label-long{display:none}
+  .tab-label-short{display:inline}
+  .tab:active{transform:scale(.97)}
+  .player-picker{padding:12px;gap:12px}
+  .friend-pill{min-height:45px;padding:10px 13px;max-width:100%;overflow-wrap:anywhere;white-space:normal}
+  .selected-pill{min-height:44px}
+  .friend-form button{width:100%;min-height:46px}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;align-items:stretch}
+  .step{min-height:45px;padding:9px 3px;font-size:11px;line-height:1.25;text-align:center;border-radius:9px}
+  .btn{min-height:45px;padding:10px 12px}
+  .btn.sm{min-height:44px;padding:9px 10px;font-size:12px}
+  .scoreplayer{gap:8px;padding:10px 9px}
+  .scoreplayer .namebtn{font-size:15px;max-width:100%}
+  .scoreplayer .tools{gap:6px}
+  .scoreplayer .tools .btn{min-width:44px;padding:7px 9px}
+  .scoreplayer .current{font-size:23px;min-width:25px}
+  .scoreboard{min-width:470px;font-size:13px}
+  .scoreboard th,.scoreboard td{padding:9px 7px}
+  .scoreboard th:first-child,.scoreboard td:first-child{position:sticky;left:0;background:#fffefa;box-shadow:1px 0 0 #e2dacf;z-index:1}
+  .scoreboard th:first-child{background:#f2eee6}
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .score-head .row{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .score-head .row .btn{width:100%;font-size:12px}
+  .scoreactions{display:grid;grid-template-columns:1fr}
+  .scoreactions .btn{width:100%}
+  .score-history-options{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .score-history-options .btn{white-space:normal;line-height:1.25}
+  .dice-choices{grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+  .number{min-height:47px;font-size:16px}
+  .switch button{min-height:46px}
+  #roll-btn{min-height:52px;font-size:16px}
+  .dicearea{padding:16px 8px}
+  .dicegrid{gap:12px 8px}
+  .die{width:50px;height:50px;font-size:27px}
+  .loc-inline-main{gap:5px}
+  .loc-step{min-height:46px;min-width:43px}
+  .dice-caption{line-height:1.45;margin-top:14px}
+  .slotgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+  .slot{min-height:102px;padding:10px 4px}
+  .effect{padding:12px 10px;gap:8px}
+  .effect .btn{max-width:45%;white-space:normal}
+  .history-entry,.match-card{padding:12px 10px}
+  .footer{padding-bottom:8px}
+}
+@media(max-width:355px){
+  .head .mast{font-size:21px}
+  .head .sub{font-size:11px}
+  .mast-row>a{max-width:126px;font-size:11px}
+  .content{padding-inline:9px}
+  .panel{padding:11px 9px}
+  .scoreplayer .tools .btn{min-width:42px;padding:7px}
+  .scoreplayer .tools{gap:3px}
+  .scoreplayer .current{min-width:19px}
+  .die{width:45px;height:45px;font-size:25px}
+  .loc-step{min-width:41px}
+}
+
+
+/* V17 — le dé de localisation possède systématiquement sa propre rangée,
+   après TOUS les dés ordinaires, même sur un petit écran. */
+.dicegrid > .loc-inline{
+  flex:0 0 100%;
+  width:100%;
+  max-width:100%;
+  margin-top:14px;
+  padding:16px 0 2px;
+  border-top:1px solid #d8d0c4;
+}
+
+
+/* V20 — palette reprise de l'interface Sons of Fate transmise par captures.
+   Brun #291f15 · parchemin #f0e5cf · or #cda652 · cartes blanches.
+   CSS uniquement. Aucun script ou mécanisme de jeu modifié. */
+:root{
+  color-scheme:light;
+  --bg:#f0e5cf;
+  --paper:#fff;
+  --ink:#291f15;
+  --dark:#291f15;
+  --muted:#71695d;
+  --line:#daccb4;
+  --red:#cda652;
+  --redSoft:#f8efd7;
+  --warm:#f5ead8;
+  --ok:#356a43;
+  --okSoft:#e9f3e7;
+  --bad:#934939;
+  --badSoft:#f8ebe7;
+  --focus:#cda652;
+}
+html,body{background:#f0e5cf;color:#291f15}
+body{background-image:none;font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.56}
+button,input,textarea,select, .tabs, .notice, .pill, .small, .eyebrow, .tooltop .muted, .score-head,.scoreboard,
+.step,.history-entry time,.history-head,.friend-pill,.selected-pill,.scoreplayer,.player-picker,.btn,.number,.switch,
+.location-settings,.loc-feedback,.loc-inline-zone,.dice-caption,.dice-success-summary,.legend,.slot .small,
+.match-card,.effect .meta,.effect .name,.score-mode-option,.score-mode-note,.score-history-empty {
+  font-family:Arial,Helvetica,sans-serif;
+}
+.head{
+  background:#291f15;
+  border-bottom:1px solid #6a5230;
+  color:#fff9ed;
+  box-shadow:none;
+}
+.head .mast{
+  color:#fff;
+  font-family:Georgia,'Times New Roman',serif;
+  font-weight:400;
+  letter-spacing:.16em;
+  font-size:26px;
+  white-space:nowrap;
+}
+.head .mast small{font-size:1em;color:#cda652;font-weight:400}
+.head .sub{color:#dbceb6;font-size:12px;letter-spacing:.06em}
+.site-rule-link,
+.head .btn{background:transparent!important;border:1px solid #cda652!important;color:#e5c77a!important;text-decoration:none!important;font-weight:600;border-radius:2px}
+.head .btn:hover{background:#403121!important}
+.content{background:transparent}
+.eyebrow{color:#a37b2e;letter-spacing:.16em}
+h2,h3,.scoretitle,.player-picker h3,.tooltop h2,
+.match-card .match-result{font-family:Georgia,'Times New Roman',serif;color:#291f15;font-weight:500}
+h2{font-size:26px;letter-spacing:.045em}
+.tooltop h2{font-size:29px;letter-spacing:.055em}
+.tooltop h2:after{content:"";display:block;width:38px;height:2px;background:#cda652;margin-top:13px}
+.tooltop p,.intro{color:#625c52;font:16px/1.58 Georgia,'Times New Roman',serif}
+.panel{background:#fff;border:1px solid #d8c9ae;border-radius:5px;box-shadow:0 1px 2px #291f150c}
+.panel h3{font-weight:600}
+input:not([type=checkbox]):not([type=radio]),textarea,select{
+  background:#fff;border:1px solid #c9bfae;border-radius:4px;color:#291f15;
+}
+input::placeholder,textarea::placeholder{color:#898277;opacity:1}
+input[type=checkbox],input[type=radio]{accent-color:#a67c30}
+input:focus,textarea:focus,select:focus,button:focus-visible{outline-color:#cda652}
+a{color:#967028;text-decoration-color:#cda652}
+a:hover{color:#6f4d15}
+.btn{border-radius:4px;background:#fff;color:#291f15;border:1px solid #d1c6b5;font-weight:600;box-shadow:none}
+.btn:hover:not(:disabled){background:#f5efdf;border-color:#bc9950}
+.btn.primary,.primary{background:#291f15;border-color:#291f15;color:#fff7e9;box-shadow:none}
+.btn.primary:hover:not(:disabled),.primary:hover:not(:disabled){background:#49351f;color:white;border-color:#a27c3a}
+.btn.ghost,.ghost{background:transparent}
+.btn.danger,.danger{background:#fff9f7;color:#9b4837;border-color:#debcb4}
+.btn.danger:hover:not(:disabled){background:#faeae5}
+.pill{background:#efe5cf;color:#4f3c20;border:1px solid #e2d4b9;font-weight:600}
+.positive{background:#e9f3e7;color:#2b653b;border-color:#c6dac2}
+.negative{background:#f8ebe7;color:#944936;border-color:#e6cbbf}
+.divider{background:#e0d4be}
+.notice{background:#f7f1e5;color:#62584a;border-radius:4px;border:0}
+.tabs{border-color:#ccb88f}
+.tab{color:#615b53;font-weight:700}
+.tab[aria-selected=true]{color:#7e5d28;border-color:#cda652}
+.step{background:#fff;color:#6d6558;border-color:#dacdb6;border-radius:4px}
+.step.active{background:#291f15;color:#e3c57c;border-color:#291f15}
+.effect,.bankitem,.history-entry,.match-card,.scoreplayer,.result,.score-mode-option{
+  background:#fff;border-color:#d9cbb5;border-radius:5px;
+}
+.effect .desc,.bankitem .desc,.result .desc,.match-scenario{color:#60584e}
+.mutedbox,.score-history-empty{background:#f7f1e5;border-color:#d3c4a8;color:#736a5b}
+.slot{background:#fff;border-color:#d5c5aa;border-radius:4px}
+.slot.revealed{background:#f7efde;border-color:#cda652}
+.slot.revealed.good,.result.good{background:#f1f7ee;border-color:#9ab89a}
+.slot.revealed.bad,.result.bad{background:#fcf3ee;border-color:#d4ac9e}
+.objective-count-setup{background:#f7f0e3;border-color:#d5bf90;border-radius:5px}
+.objective-count-setup .pill{background:#eee1c2;color:#594019}
+.objective-progress{color:#8f4939}
+.objective-progress.ready{color:#2b693c}
+.inspirations{background:#fcfaf5;border-color:#e2d7c2;border-radius:4px}
+.inspirations .inspo-desc{color:#60584f}
+.player-picker{background:#f8f2e7;border:1px solid #ded0ba;border-radius:5px}
+.friend-pill,.selected-pill{background:#fff;border:1px solid #d4c5ae;border-radius:4px;color:#291f15}
+.friend-pill:hover:not(:disabled),.selected-pill:hover{background:#f3ecd9}
+.friend-pill[aria-pressed=true]{border-color:#b99a51;background:#efe3c4;color:#291f15}
+.selected-pill .x{color:#944b3c}
+.selector-heading{color:#574633}
+.score-mode-option:has(input:checked){background:#f6edd9;border-color:#bd9b50;box-shadow:0 0 0 1px #b99851}
+.match-card .match-player{background:#f5efdf;border-color:#e2d5bd;color:#504434}
+.match-card .match-player.winner{background:#e9f3e7;border-color:#a9c7a6;color:#2f613c}
+.match-head-to-head{background:#f7f1e5;border-left-color:#cda652;color:#564c3e}
+.score-confirm{background:#e9f3e7;color:#2d6339;border-color:#aaccaa}
+.scoreboard th,.scoreboard th:first-child{background:#efe4ce;color:#5a4a32}
+.scoreboard td:first-child{background:#fff}
+.scoreplayer-name,.namebtn{color:#291f15}
+.number{background:#fff;border-color:#cdbfa6;border-radius:4px;color:#291f15}
+.number.selected{background:#291f15;border-color:#291f15;color:#f6ebd5}
+.switch{background:#fff;border-color:#d3c6af;border-radius:4px}
+.switch button{color:#291f15}
+.switch button.selected{background:#291f15;color:#fff4e0}
+.dicearea{background:#f4ecdf;border:1px solid #e2d7c5;border-radius:6px}
+.die{background:#fff;border-color:#bdb8ad;color:#291f15;box-shadow:0 5px 0 #d8cebc;border-radius:7px}
+.die.success-die{background:#eaf4e9;border-color:#6e9f7c;color:#204c2e;box-shadow:0 5px 0 #a5c2aa}
+.die.spent-success{background:#dceadd;border-color:#769883;color:#42644a;box-shadow:0 5px 0 #aac6ae}
+.die.spent-success:after,.history-die.history-spent:after{background:#923e32}
+.die.location-die,.history-die.loc,.loc-big{background:#b58a34;border-color:#82601f;color:white;box-shadow:0 5px 0 #806027}
+.loc-step{background:#fff;border:1px solid #baa987;color:#543d1c;border-radius:5px}
+.loc-step:not(:disabled):active{background:#f0e0b9}
+.loc-inline-zone{color:#795726}
+.loc-feedback{color:#5f574d}
+.loc-feedback .loc-remaining,.dice-success-summary{color:#346c43}
+.loc-reset{color:#8c6627}
+.dice-caption,.legend,.dice-label{color:#6e6659}
+.history-die{background:#faf7f0;border-color:#d7c8ac;color:#41352a}
+.history-die.success{background:#eaf4e9;border-color:#8cb499;color:#2b5e39}
+.location-toggle-row{background:#f7f0e2;border-color:#d7c49c}
+.location-toggle-row .small{color:#6d6252}
+.location-settings,#difficulty-settings{background:#f6f1e7;border-left-color:#ab9153}
+.location-panel{background:#f8f1e3;border-color:#d3ba8f}
+.dicegrid>.loc-inline{border-top-color:#d6c7a9}
+.toast{background:#291f15;color:#fff7ec;border:1px solid #cda652}
+@media(max-width:640px){
+  body{background:#f0e5cf;padding-bottom:calc(90px + env(safe-area-inset-bottom,0px))}
+  .head{padding:18px 14px 17px}
+  .head .mast{font-size:20px;letter-spacing:.115em}
+  .head .sub{font-size:11px;color:#ddd0b9}
+  .head .mast-row>a{max-width:128px;font-size:11px;min-height:40px}
+  .content{padding:18px 12px 16px}
+  .tooltop h2{font-size:25px}
+  .tooltop p{font-size:15px;line-height:1.55}
+  .panel{border-radius:5px;padding:15px 12px}
+  .tabs{background:#fffdf7;border-top:1px solid #d5c5a6;box-shadow:0 -5px 15px #291f1511}
+  .tabs .tab{color:#5b5348}
+  .tabs .tab[aria-selected=true]{background:#f0e4cc;color:#291f15;box-shadow:inset 0 -3px #cda652}
+  .tab-icon{width:23px;height:23px}
+  .scoreboard td:first-child{background:#fff;box-shadow:1px 0 0 #e3d6bf}
+  .scoreboard th:first-child{background:#efe4ce}
+  .player-picker{padding:12px}
+  .friend-pill,.selected-pill{border-radius:4px}
+  .dicearea{padding:15px 8px}
+}
+@media(max-width:355px){
+  .head .mast{font-size:18px}
+  .head .mast-row>a{max-width:112px;font-size:10px}
+}
+.tooltop p.muted{font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.55}
+@media(max-width:640px){.tooltop p.muted{font-size:15px}}
+
+
+/* V21 — tours adaptables, sans compromettre la version mobile. */
+.round-count-setup{display:grid;gap:9px;padding:14px 15px;border:1px solid var(--line);border-radius:11px;background:#fffdf8}
+.round-count-setup label{font-size:15px;margin:0}
+.round-count-controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.round-count-controls .btn{width:48px;min-height:48px;padding:7px;font-size:23px;line-height:1}
+.round-count-controls input{width:82px;text-align:center;min-height:48px;font-size:20px;font-weight:800;flex:none}
+.round-count-controls .unit{color:var(--muted);font-weight:700}
+.round-count-setup p{font-size:12px;line-height:1.45;color:var(--muted)}
+#round-score-table-block .scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+#score-table{min-width:100%;width:max-content}
+#score-table td,#score-table th{min-width:40px}
+#score-table td:first-child,#score-table th:first-child{min-width:110px}
+@media(max-width:420px){.round-count-setup{padding:12px}.round-count-controls{gap:8px}.round-count-controls .btn{width:45px}}
+</style>
+</head>
+<body>
+<header class="head"><div class="wrap"><div class="mast-row"><div><div class="mast">SONS <small>OF</small> FATE</div><p class="sub">Outils de jeu · Scores, dés et objectifs</p></div><a class="btn sm site-rule-link" href="REGLES_recherche.html">↗ Livre de règles V2</a></div></div></header>
+<main class="wrap content">
+<div class="intro-block"><div class="eyebrow">Pendant la partie</div><h2>Outils de jeu</h2><p class="intro">Suivez vos points de victoire, lancez des dés et préparez vos objectifs mystérieux. Les objectifs utilisent les effets choisis par les joueurs, parmi leurs propres idées et des suggestions facultatives.</p></div>
+<nav class="tabs" role="tablist" aria-label="Outils de jeu">
+<button class="tab" id="tab-scores" type="button" role="tab" aria-selected="true" aria-controls="scores" tabindex="0"><svg class="tab-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v7a5 5 0 0 1-10 0V4ZM7 6H4v3a4 4 0 0 0 4 4M17 6h3v3a4 4 0 0 1-4 4"/></svg><span class="tab-label-long">Points de victoire</span><span class="tab-label-short">Scores</span></button>
+<button class="tab" id="tab-dice" type="button" role="tab" aria-selected="false" aria-controls="dice" tabindex="-1"><svg class="tab-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="7.5" cy="7.5" r=".8" fill="currentColor"/><circle cx="16.5" cy="7.5" r=".8" fill="currentColor"/><circle cx="12" cy="12" r=".8" fill="currentColor"/><circle cx="7.5" cy="16.5" r=".8" fill="currentColor"/><circle cx="16.5" cy="16.5" r=".8" fill="currentColor"/></svg><span class="tab-label-long">Lanceur de dés</span><span class="tab-label-short">Dés</span></button>
+<button class="tab" id="tab-objectives" type="button" role="tab" aria-selected="false" aria-controls="objectives" tabindex="-1"><svg class="tab-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 8-9 12L3 10l9-8Z"/><path d="M3 10h18M9 3l-2 7 5 12 5-12-2-7"/></svg><span class="tab-label-long">Objectifs mystérieux</span><span class="tab-label-short">Objectifs</span></button>
+</nav>
+
+<section id="objectives" role="tabpanel" aria-labelledby="tab-objectives">
+<div class="tooltop"><h2>Objectifs mystérieux</h2><p class="muted">Avant de jouer, choisissez combien d’objectifs vous voulez et préparez leurs effets. Les joueurs peuvent inventer leurs idées ou choisir parmi des inspirations facultatives.</p></div>
+<div class="steps"><button class="step active" id="obj-step-prepare">1 · Préparation</button><button class="step" id="obj-step-play">2 · Révélation</button><button class="step" id="obj-step-bank">3 · Banque d'idées</button></div>
+<div id="obj-prepare">
+<div class="panel stack">
+<div class="objective-count-setup"><label for="objective-count">Combien d’objectifs voulez-vous sur le terrain ?</label><div class="row wrap-row"><input id="objective-count" type="number" min="1" max="12" value="5" inputmode="numeric" aria-describedby="objective-pool-explanation"><span class="pill" id="objective-required">6 propositions minimum</span></div><p class="muted small" id="objective-pool-explanation">Les avantages seront toujours majoritaires parmi les objectifs tirés. Préparez au moins un effet de plus que le nombre d’objectifs : une proposition restera secrète et inutilisée.</p><p class="objective-progress" id="effects-remaining" aria-live="polite"></p><p class="muted small" id="objective-bonus-progress" aria-live="polite"></p></div>
+<div class="row between wrap-row"><h3>Effets prévus pour cette partie</h3><span id="chosen-count" class="pill">0 effet</span></div>
+<div id="chosen-list" class="list"></div>
+<div class="divider"></div>
+<h3>Inventer un nouvel effet</h3>
+<form id="effect-form" class="stack">
+<div><label for="effect-name">Nom de l'effet</label><input id="effect-name" maxlength="100" required placeholder="Ex. nom de votre effet"></div>
+<div><label for="effect-type">Nature</label><select id="effect-type"><option value="bonus">Avantage</option><option value="malus">Inconvénient</option></select></div>
+<div><label for="effect-desc">Effet pendant la partie, avec vos propres mots</label><textarea id="effect-desc" maxlength="1500" required placeholder="Décrivez précisément le bonus ou le malus..."> </textarea></div>
+<button class="btn primary" type="submit">＋ Ajouter à la partie et à ma banque d'idées</button>
+</form>
+<details class="inspirations" id="suggestions-details"><summary>✦ Idées de bonus et de malus (20 propositions)</summary><p class="muted small" style="margin-top:8px">Inspirations facultatives et non officielles, à accepter ou adapter ensemble avant la partie. Touchez « Ajouter » pour les conserver dans votre banque et les intégrer aux effets prévus.</p><div id="suggestions-list" class="list" style="margin-top:12px"></div></details>
+<div class="notice">Pour <strong id="objective-note-count">5</strong> objectifs, prévoyez au moins <strong id="objective-note-min">6</strong> effets différents, dont suffisamment d’avantages. Le tirage garantit une majorité d’avantages (<strong id="objective-bonus-min">3</strong> minimum), sans révéler leur répartition à l’avance. Au moins une proposition restera inutilisée pour entretenir la surprise.</div>
+<div class="row between wrap-row"><button class="btn" id="choose-from-bank">＋ Reprendre des idées de la banque</button><button class="btn primary" id="start-objectives">Commencer la partie →</button></div>
+</div></div>
+<div id="obj-play" class="hidden"><div class="panel"><div class="row between wrap-row"><h3>Objectifs sur le terrain</h3><span class="pill" id="reveal-counter">0 / 5 révélés</span></div><p class="muted small" style="margin-top:8px">Chaque objectif révèle un effet différent. Les avantages sont majoritaires sur l’ensemble de la partie, mais leur répartition reste secrète. Au moins une proposition ne sera pas tirée. Touchez le numéro récupéré.</p><div id="objective-slots" class="slotgrid"></div><div id="active-objective" aria-live="polite"></div><div class="divider"></div><div class="row between wrap-row"><button class="btn" id="back-objectives">← Voir la préparation</button><button class="btn danger" id="restart-objectives">Recommencer une nouvelle partie</button></div></div></div>
+<div id="obj-bank" class="hidden"><div class="panel stack"><div class="row between wrap-row"><div><h3>Ma banque d'idées</h3><p class="muted small" id="bank-count">0 idées enregistrées</p></div><button class="btn sm" id="bank-export">↓ Télécharger mes idées</button></div><div class="notice">Vos idées personnelles et les inspirations que vous avez ajoutées sont enregistrées dans ce navigateur, sur cet appareil. Elles ne sont pas automatiquement partagées entre les joueurs. Pour garder une copie ou transférer vos idées sur un autre appareil, cliquez sur « Télécharger mes idées ». Le fichier pourra être réimporté ici.</div><div><label for="bank-filter">Retrouver une idée</label><input id="bank-filter" placeholder="Chercher par nom ou description"></div><div id="bank-list" class="list"></div><div class="divider"></div><label for="bank-import">Récupérer mes idées depuis un fichier</label><input id="bank-import" type="file" accept=".json,application/json"><button class="btn danger sm" id="clear-bank">Effacer la banque enregistrée</button></div></div>
+</section>
+
+<section id="dice" role="tabpanel" aria-labelledby="tab-dice" class="hidden">
+<div class="tooltop"><h2>Lanceur de dés</h2><p class="muted">Choisissez le nombre de dés et leur type. Les résultats restent individuels, sans total additionné.</p></div>
+<div class="panel stack"><div class="row between wrap-row"><h3>Type de dé</h3><div class="switch"><button class="selected" id="type-d6" aria-pressed="true">D6</button><button id="type-d3" aria-pressed="false">D3</button></div></div><div><label>Combien de dés ?</label><div class="dice-choices" id="dice-choices" role="group" aria-label="Nombre de dés"></div></div>
+<div id="difficulty-settings" class="location-settings"><label for="target-difficulty">Difficulté du jet <span class="muted" style="font-weight:400">(facultative)</span></label><select id="target-difficulty"><option value="">Sans difficulté — lancer libre</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option></select><p class="muted small" style="margin-top:6px">Indique les réussites en vert, même sans dé de localisation. Pour un tir : premier jet contre la RAP, deuxième jet contre la RES. Vous pouvez aussi choisir la difficulté après le lancer.</p></div>
+<div class="checkrow location-toggle-row"><input type="checkbox" id="with-location"><label for="with-location"><strong>Ajouter un dé de localisation</strong><span class="small">1D6 ocre distinct des autres dés. Facultatif, lors d’un lancer de D6.</span></label></div>
+<button class="btn primary" id="roll-btn">⚄ Lancer 6D6</button>
+<div class="dicearea"><div id="dice-grid" class="dicegrid" aria-live="polite"></div><div id="dice-success-summary" class="dice-success-summary hidden" aria-live="polite"></div><div id="location-inline-info" class="loc-feedback hidden" aria-live="polite"></div><div class="dice-caption" id="dice-caption">Prêt à lancer les dés.</div><div id="dice-legend" class="legend hidden"><span id="legend-success"><span class="legend-mark success"></span>Réussite</span><span id="legend-spent"><span class="dice-legend-spent"></span>Réussite utilisée</span><span id="legend-location"><span class="legend-mark"></span>Dé de localisation</span></div></div>
+<p class="muted small">Le D3 produit des résultats de 1 à 3, comme le Dé du Destin. Selon <a href="regles_v2.pdf#page=12" target="_blank" rel="noopener">le livre de règles, page 12</a>, chaque réussite employée pour déplacer le dé de localisation n'inflige plus de blessure. L’outil conserve au moins une réussite pour l’attaque : c’est une aide pratique, pas une modification des règles officielles.</p></div>
+<div class="panel stack" aria-labelledby="history-title">
+<div class="history-head"><div><h3 id="history-title">Historique des lancers</h3><p class="muted small" id="history-count">Aucun lancer enregistré</p></div><button class="btn sm danger" id="clear-dice-history" disabled>Effacer l’historique</button></div>
+<div class="notice">Chaque lancer terminé est enregistré automatiquement sur cet appareil. Les résultats sont conservés individuellement, sans total, avec le résultat initial et la modification éventuelle de la localisation. L’historique conserve les 100 derniers lancers.</div>
+<div id="dice-history" class="history-entries" aria-live="polite"><div class="mutedbox">Les prochains lancers apparaîtront ici.</div></div>
+<button class="btn sm history-more hidden" id="toggle-dice-history" aria-expanded="false">Afficher les autres lancers</button>
+</div>
+</section>
+
+<section id="scores" role="tabpanel" aria-labelledby="tab-scores" class="hidden">
+<div class="tooltop"><h2>Points de victoire</h2><p class="muted">Sélectionnez les joueurs, choisissez comment compter les points, puis retrouvez le classement. Cette feuille de score n'attribue pas de points automatiquement : c'est le scénario qui les définit.</p></div>
+<div class="panel stack">
+<div class="player-picker" aria-labelledby="play-with-title">
+<h3 id="play-with-title">Avec qui tu joues ce soir ?</h3>
+<p class="muted small">Sélectionne les joueurs ci-dessous. Les prénoms ajoutés et validés sont mémorisés pour les prochaines parties.</p>
+<div><div class="selector-heading" style="margin-bottom:7px">Mes joueurs enregistrés (touche un prénom pour le sélectionner)</div><div class="friend-list" id="known-player-buttons" aria-live="polite"></div></div>
+<div id="starter-player-wrap"><div class="selector-heading" style="margin-bottom:7px">Prénoms d’exemple pour essayer (touche pour ajouter)</div><div class="friend-list" id="starter-player-buttons"></div></div>
+<form id="add-friend-form" class="friend-form"><input id="friend-name" maxlength="60" autocomplete="off" list="historic-player-names" placeholder="Nouveau prénom (ex. Jonathan)" aria-label="Prénom du joueur à ajouter" required><button class="btn primary" type="submit">＋ Valider le prénom</button></form>
+<div><div class="selector-heading" style="margin-bottom:7px">Participants sélectionnés <span id="selected-player-count" class="pill">0</span></div><div id="selected-player-pills" class="selected-list" aria-live="polite"></div></div>
+<div id="player-picker-status" class="muted small">Choisis au moins 2 participants pour commencer.</div>
+</div>
+<div><label for="scenario-name">Nom du scénario <span class="muted" style="font-weight:400">(facultatif)</span></label><input id="scenario-name" maxlength="100" list="historic-scenario-names" autocomplete="off" placeholder="Ex. Les Trésors de la discorde"><datalist id="historic-scenario-names"></datalist><p class="muted small" style="margin-top:5px">Le nom sera conservé avec les résultats dans l’historique des parties.</p></div>
+<div class="score-mode-selector" role="group" aria-labelledby="score-mode-title">
+  <div id="score-mode-title" style="font-weight:800">Quand comptez-vous les points de victoire ?</div>
+  <div class="score-mode-options">
+    <label class="score-mode-option" for="score-mode-round"><input type="radio" name="score-mode" id="score-mode-round" value="round" checked><span><strong>À chaque tour</strong><span class="small">Inscrire les PV à chaque tour, avec une durée adaptable.</span></span></label>
+    <label class="score-mode-option" for="score-mode-end"><input type="radio" name="score-mode" id="score-mode-end" value="end"><span><strong>En fin de partie</strong><span class="small">Inscrire les PV une seule fois, à la fin.</span></span></label>
+  </div>
+  <div class="round-count-setup" id="round-count-setup">
+    <label for="score-round-count">Combien de tours prévoyez-vous ?</label>
+    <div class="round-count-controls">
+      <button class="btn" id="round-count-dec" type="button" aria-label="Réduire le nombre de tours">−</button>
+      <input id="score-round-count" type="number" inputmode="numeric" min="2" max="99" step="1" value="5" aria-label="Nombre de tours de 2 à 99">
+      <button class="btn" id="round-count-inc" type="button" aria-label="Augmenter le nombre de tours">＋</button>
+      <span class="unit">tours</span>
+    </div>
+    <p>Tu peux ajuster ce nombre en cours de partie. Si vous vous arrêtez après le tour 4 sur les 5 prévus, choisis simplement 4 : les points des quatre premiers tours seront conservés.</p>
+    <p>Le livre de règles V2 prévoit 5 tours maximum. Au-delà, c’est une variante libre pour les scénarios personnalisés.</p>
+  </div>
+  <p class="score-mode-note">Le choix et la durée jouée sont conservés dans l’historique.</p>
+</div>
+<div class="divider" style="margin:4px 0"></div>
+<div class="score-head" id="round-controls"><div><span class="eyebrow">Tour en cours</span><div class="scoretitle" id="round-title">Tour 1 / 5</div></div><div class="row wrap-row"><button class="btn sm" id="prev-round">← Tour précédent</button><button class="btn sm primary" id="next-round">Tour suivant →</button></div></div>
+<div id="final-score-heading" class="hidden"><span class="eyebrow">Résultat de la partie</span><div class="scoretitle">Points de victoire finaux</div></div>
+<div class="notice" id="score-mode-instructions">Les boutons ＋ / − changent les points du tour affiché ; les totaux se calculent automatiquement.</div>
+<div id="players" class="list"></div><datalist id="historic-player-names"></datalist>
+<div class="row between wrap-row"><button class="btn sm danger" id="reset-scores">Remettre les scores à zéro</button></div>
+<div id="round-score-table-block"><div class="divider"></div>
+<h3>Tableau des tours</h3><div class="scroll"><table class="scoreboard" id="score-table" aria-label="Détail des points par tour"></table></div></div>
+<div id="ranking" class="notice"></div>
+<div class="divider"></div>
+<div class="scoreactions"><button class="btn primary" id="save-match">✓ Terminer et enregistrer la partie</button><button class="btn" id="new-match">↻ Nouvelle partie (garder les joueurs)</button></div>
+<div id="saved-match-status" class="score-archive">L’enregistrement n’a lieu qu’à la fin de la partie, lorsque vous le demandez.</div>
+</div>
+<div class="panel stack" id="score-history-panel">
+<div class="score-history-top"><div><h3>Historique des parties</h3><p class="muted small">Les parties avec exactement les participants sélectionnés apparaissent ici, même si elles ont été jouées dans un autre ordre.</p></div><div class="score-history-options"><button class="btn sm" id="export-matches">↓ Exporter les résultats</button><button class="btn sm danger" id="clear-matches">Effacer l’historique</button></div></div>
+<div id="match-matchup" class="match-head-to-head hidden"></div>
+<div id="score-history" class="match-list" aria-live="polite"></div>
+<div class="divider"></div>
+<details><summary class="small">Transférer un historique sur un autre appareil</summary><p class="muted small">Les résultats et les prénoms sont conservés dans ce navigateur. Exportez un fichier JSON, puis importez-le sur un autre appareil.</p><div style="margin-top:10px"><label for="import-matches">Importer un historique exporté</label><input id="import-matches" type="file" accept=".json,application/json"></div></details>
+</div>
+</section>
+<footer class="footer">Prototype indépendant, non publié sur GitHub. Les données d'objectifs et de scores restent dans ce navigateur. Le livre de règles demeure la seule source officielle pour déterminer les effets du jeu et les conditions de victoire.</footer>
+</main>
+<div class="toast hidden" id="toast" role="status"></div>
+<script>
+'use strict';
+const $=id=>document.getElementById(id), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const KEY='sons-of-fate-outils-de-jeu-demo-v1';
+const blank=()=>({bank:[],chosen:[],objectiveCount:5,game:null,diceHistory:[],matchHistory:[],scoreFinalized:false,scenarioName:'',players:[],knownPlayers:[],round:0,scoringMode:'round',roundCount:5});
+let app=blank(), activeTool='scores',objStep='prepare', selectedObjective=null, diceType=6,diceCount=6,diceRolling=false,showAllDiceHistory=false,withLocation=false,targetDifficulty='',currentRoll=null;
+try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&typeof s==='object'&&Array.isArray(s.bank)&&Array.isArray(s.chosen)&&Array.isArray(s.players))app={...blank(),...s};}catch(e){}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(app))}catch(e){toast('Sauvegarde locale indisponible : pensez à exporter votre banque.')}}
+let toastTimer;function toast(s){const el=$('toast');el.textContent=s;el.classList.remove('hidden');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.add('hidden'),3400)}
+function genid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,9)}
+function randomIndex(n){if(n<=1)return 0;if(globalThis.crypto&&crypto.getRandomValues){const arr=new Uint32Array(1),limit=Math.floor(4294967296/n)*n;do{crypto.getRandomValues(arr)}while(arr[0]>=limit);return arr[0]%n}return Math.floor(Math.random()*n)}
+function shuffle(items){const out=items.slice();for(let i=out.length-1;i>0;i--){const j=randomIndex(i+1);[out[i],out[j]]=[out[j],out[i]]}return out}
+function setTool(t,moveToTop=false){
+ activeTool=t;
+ ['scores','dice','objectives'].forEach(x=>{
+  $(x).classList.toggle('hidden',x!==t);
+  const tab=$('tab-'+x);
+  tab.setAttribute('aria-selected',String(x===t));
+  tab.tabIndex=x===t?0:-1;
+ });
+ // Mobile: after changing tools, show the beginning of the new tool,
+ // instead of keeping the previous section's scroll position.
+ if(moveToTop && window.matchMedia('(max-width: 640px)').matches){
+  const section=$(t);
+  const y=section.getBoundingClientRect().top + window.scrollY - 10;
+  window.scrollTo({top:Math.max(0,y),behavior:'instant'});
+ }
+}
+['scores','dice','objectives'].forEach(t=>$('tab-'+t).addEventListener('click',()=>setTool(t,true)));
+$('tab-scores').parentElement.addEventListener('keydown',e=>{
+ if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;
+ const tools=['scores','dice','objectives'];
+ const current=tools.indexOf(activeTool);
+ const next=e.key==='Home'?0:e.key==='End'?2:(current+(e.key==='ArrowRight'?1:2))%3;
+ e.preventDefault();setTool(tools[next],true);$('tab-'+tools[next]).focus({preventScroll:true});
+});
+function setObjectiveStep(s){objStep=s;['prepare','play','bank'].forEach(t=>{$('obj-'+t).classList.toggle('hidden',s!==t);$('obj-step-'+t).classList.toggle('active',s===t)});if(s==='prepare')renderChosen();if(s==='bank')renderBank();if(s==='play')renderObjectiveGame()}
+['prepare','play','bank'].forEach(s=>$('obj-step-'+s).onclick=()=>{if(s==='play'&&!app.game){toast('Préparez vos effets et commencez une partie.');return}setObjectiveStep(s)});
+const suggestedEffects=[{"type": "bonus", "name": "Lame du destin", "desc": "Lors de sa prochaine attaque au corps-à-corps, ce combattant lance 1D6 supplémentaire sur son jet de FOR."}, {"type": "bonus", "name": "Œil du corbeau", "desc": "Lors de son prochain tir, ce combattant ajoute 1D6 à son premier jet de FOR contre la RAP."}, {"type": "bonus", "name": "Bottes des sept lieues", "desc": "Lors de son prochain déplacement, ce combattant peut parcourir 2 pouces supplémentaires."}, {"type": "bonus", "name": "Bouclier du voyageur", "desc": "Lors de la prochaine attaque qu’il subit, ce combattant ignore 1 blessure après la résolution des dégâts."}, {"type": "bonus", "name": "Agilité du renard", "desc": "Lors de sa prochaine esquive, ce combattant lance 1D6 supplémentaire."}, {"type": "bonus", "name": "Main de la chance", "desc": "Lors de son prochain jet de D6, ce combattant peut relancer un seul dé après avoir vu les résultats."}, {"type": "bonus", "name": "Relique des rois", "desc": "La bande qui récupère cet objectif marque immédiatement 1 point de victoire supplémentaire."}, {"type": "bonus", "name": "Plume du phénix", "desc": "Lors de son prochain saut, ce combattant peut relancer son D3 une seule fois."}, {"type": "bonus", "name": "Sentier du rôdeur", "desc": "Lors de son prochain déplacement en terrain difficile, ce combattant parcourt 6 pouces au lieu de 3."}, {"type": "bonus", "name": "Boussole des anciens", "desc": "Lors de sa prochaine attaque réussie, ce combattant peut modifier son dé de localisation de +1 ou −1 sans dépenser de réussite (une seule fois)."}, {"type": "malus", "name": "Coffre mordeur", "desc": "Le combattant qui récupère cet objectif subit immédiatement 1 blessure aux Bras."}, {"type": "malus", "name": "Brume aveuglante", "desc": "Lors de son prochain tir, ce combattant retire 1D6 à son premier jet de FOR contre la RAP (minimum 1D6)."}, {"type": "malus", "name": "Bottes de plomb", "desc": "Lors de son prochain déplacement, ce combattant parcourt 2 pouces de moins (minimum 1 pouce)."}, {"type": "malus", "name": "Mauvais présage", "desc": "Lors de sa prochaine attaque au corps-à-corps, ce combattant retire 1D6 à son jet de FOR (minimum 1D6)."}, {"type": "malus", "name": "Main tremblante", "desc": "Lors de sa prochaine esquive, ce combattant retire 1D6 à son jet de RAP (minimum 1D6)."}, {"type": "malus", "name": "Étreinte des racines", "desc": "Lors de son prochain désengagement, ce combattant retire 1D6 à son jet de RAP (minimum 1D6)."}, {"type": "malus", "name": "Dette du brigand", "desc": "La bande qui récupère cet objectif perd 1 point de victoire, si elle en possède au moins un."}, {"type": "malus", "name": "Marche entravée", "desc": "Lors de son prochain engagement, ce combattant ne peut parcourir que 3 pouces avant l’attaque."}, {"type": "malus", "name": "Saut maudit", "desc": "Lors du prochain saut de ce combattant, la réussite du D3 nécessite un résultat de 3 au lieu de 2+."}, {"type": "malus", "name": "Piège des pierres", "desc": "Le combattant qui récupère cet objectif subit immédiatement 1 blessure aux Jambes."}];
+function typeTag(type){return `<span class="pill ${type==='bonus'?'positive':'negative'}">${type==='bonus'?'Avantage':'Inconvénient'}</span>`}
+function validItem(o){return o&&typeof o.name==='string'&&typeof o.desc==='string'&&(o.type==='bonus'||o.type==='malus')}
+// Sur N objectifs : au moins floor(N/2)+1 avantages.
+// Un tirage aléatoire peut comporter davantage d'avantages si le hasard le permet.
+function minAdvantages(n){return Math.floor(n/2)+1}
+function selectMajorityAdvantages(effects,n){
+ const maxMalus=n-minAdvantages(n),selected=[];let maluses=0;
+ for(const effect of shuffle(effects)){
+  if(effect.type==='malus'&&maluses>=maxMalus)continue;
+  selected.push(effect);
+  if(effect.type==='malus')maluses++;
+  if(selected.length===n)break;
+ }
+ if(selected.length!==n||selected.filter(x=>x.type==='bonus').length<minAdvantages(n))return null;
+ // Évite un ordre de tirage systématiquement biaisé vers les malus.
+ return shuffle(selected);
+}
+function renderChosen(){const items=app.chosen.map(id=>app.bank.find(x=>x.id===id)).filter(validItem);$('chosen-count').textContent=`${items.length} effet${items.length>1?'s':''} pour la partie`;
+$('chosen-list').innerHTML=items.length?items.map(o=>`<div class="effect"><div><div class="name">${esc(o.name)}</div><div class="meta">${typeTag(o.type)}</div><div class="desc">${esc(o.desc)}</div></div><button class="btn sm danger" data-remove-chosen="${esc(o.id)}" aria-label="Retirer ${esc(o.name)} de cette partie">Retirer</button></div>`).join(''):'<div class="mutedbox">Aucun effet choisi. Inventez-en un, ouvrez les idées proposées ci-dessous ou reprenez des idées de votre banque.</div>';
+$('objective-count').value=app.objectiveCount;
+const need=app.objectiveCount+1,remaining=Math.max(0,need-items.length);
+const numBonus=items.filter(x=>x.type==='bonus').length,numMalus=items.length-numBonus;
+const bonusRequired=minAdvantages(app.objectiveCount),bonusMissing=Math.max(0,bonusRequired-numBonus);
+$('objective-required').textContent=`${need} propositions minimum`;
+$('objective-note-count').textContent=app.objectiveCount;
+$('objective-note-min').textContent=need;
+$('objective-bonus-min').textContent=bonusRequired;
+const ready=!remaining&&!bonusMissing;
+$('effects-remaining').textContent=ready?'✓ Préparation suffisante. Au moins une idée ne sera pas tirée.':[
+ remaining?`Encore ${remaining} proposition${remaining>1?'s':''} à ajouter.`:'',
+ bonusMissing?`Encore ${bonusMissing} avantage${bonusMissing>1?'s':''} à prévoir.`:''
+].filter(Boolean).join(' ');
+$('effects-remaining').classList.toggle('ready',ready);
+$('objective-bonus-progress').textContent=`Votre sélection : ${numBonus} avantage${numBonus>1?'s':''} et ${numMalus} inconvénient${numMalus>1?'s':''}. Le tirage garantit au moins ${bonusRequired} avantage${bonusRequired>1?'s':''} sur ${app.objectiveCount} objectif${app.objectiveCount>1?'s':''}.`;
+$('start-objectives').disabled=!ready;
+renderSuggestions();}
+$('chosen-list').addEventListener('click',e=>{const el=e.target.closest('[data-remove-chosen]');if(!el)return;app.chosen=app.chosen.filter(id=>id!==el.dataset.removeChosen);persist();renderChosen()});
+$('objective-count').addEventListener('change',e=>{app.objectiveCount=Math.max(1,Math.min(12,Math.trunc(Number(e.target.value)||5)));persist();renderChosen()});
+$('effect-desc').value='';
+$('effect-form').addEventListener('submit',e=>{e.preventDefault();const name=$('effect-name').value.trim(),desc=$('effect-desc').value.trim(),type=$('effect-type').value;if(!name||!desc)return;
+// Prevent identical ideas piling up in the library.
+const existing=app.bank.find(o=>o.name.toLocaleLowerCase('fr')===name.toLocaleLowerCase('fr')&&o.desc.toLocaleLowerCase('fr')===desc.toLocaleLowerCase('fr')&&o.type===type);
+let id;if(existing){id=existing.id;toast('Idée déjà présente dans la banque : réutilisée pour cette partie.')}else{id=genid();app.bank.push({id,name,desc,type});toast('Effet ajouté à la partie et à la banque.')}if(!app.chosen.includes(id))app.chosen.push(id);persist();$('effect-form').reset();$('effect-desc').value='';$('objective-count').value=app.objectiveCount;renderChosen();});
+
+function renderSuggestions(){
+ $('suggestions-list').innerHTML=suggestedEffects.map((o,i)=>{
+ const stored=app.bank.find(x=>x.name===o.name&&x.desc===o.desc&&x.type===o.type),selected=stored&&app.chosen.includes(stored.id);
+ return `<div class="bankitem"><div class="inspo-row"><div style="flex:1;min-width:190px"><strong>${esc(o.name)}</strong> ${typeTag(o.type)}<div class="inspo-desc">${esc(o.desc)}</div></div><button type="button" class="btn sm" data-add-suggestion="${i}" ${selected?'disabled':''}>${selected?'✓ Ajouté':'＋ Ajouter'}</button></div></div>`;
+ }).join('');
+}
+$('suggestions-list').addEventListener('click',e=>{
+ const b=e.target.closest('[data-add-suggestion]');if(!b)return;
+ const item=suggestedEffects[Number(b.dataset.addSuggestion)];if(!item)return;
+ let existing=app.bank.find(x=>x.name===item.name&&x.desc===item.desc&&x.type===item.type);
+ if(!existing){existing={id:genid(),...item};app.bank.push(existing)}
+ if(!app.chosen.includes(existing.id))app.chosen.push(existing.id);
+ persist();renderChosen();toast('Inspiration ajoutée à la partie et à la banque.');
+});
+$('choose-from-bank').onclick=()=>setObjectiveStep('bank');
+$('start-objectives').onclick=()=>{
+ const n=app.objectiveCount;
+ const available=[...new Set(app.chosen)].map(id=>app.bank.find(x=>x.id===id)).filter(validItem);
+ if(available.length<n+1){toast(`Pour ${n} objectifs, préparez au moins ${n+1} effets : une proposition restera inutilisée.`);return}
+ if(available.filter(x=>x.type==='bonus').length<minAdvantages(n)){
+  toast(`Pour ${n} objectifs, ajoutez au moins ${minAdvantages(n)} avantages à votre sélection.`);return;
+ }
+ if(app.game&&!confirm('Remplacer la partie en cours ? Les révélations précédentes seront perdues.'))return;
+ const selection=selectMajorityAdvantages(available,n);
+ if(!selection){toast('Impossible de garantir une majorité d’avantages avec cette sélection.');return}
+ const ids=selection.map(x=>x.id),used=new Set(ids);
+ app.game={ids,unusedIds:available.filter(x=>!used.has(x.id)).map(x=>x.id),revealed:[],last:null};
+ selectedObjective=null;persist();setObjectiveStep('play');
+};
+function renderObjectiveGame(){if(!app.game){setObjectiveStep('prepare');return}const g=app.game;const n=g.ids.length;$('reveal-counter').textContent=`${g.revealed.length} / ${n} révélés`;
+$('objective-slots').innerHTML=g.ids.map((id,i)=>{const found=g.revealed.includes(i),o=app.bank.find(x=>x.id===id),type=o?.type;return `<button class="slot ${found?'revealed '+(type==='bonus'?'good':'bad'):''}" data-slot="${i}" aria-label="${found?'Voir l’effet révélé de':'Révéler'} l’objectif ${i+1}"><strong>${i+1}</strong><span class="small">${found?'✓ Révélé':'? Inconnu'}</span></button>`}).join('');
+const idx=selectedObjective;if(idx!==null&&g.revealed.includes(idx)){const o=app.bank.find(x=>x.id===g.ids[idx]);$('active-objective').innerHTML=o?`<div class="result ${o.type==='bonus'?'good':'bad'}"><div class="row between wrap-row"><h3>Objectif ${idx+1} — ${esc(o.name)}</h3>${typeTag(o.type)}</div><p class="desc">${esc(o.desc)}</p></div>`:'<div class="notice">Effet introuvable dans la banque.</div>';}else $('active-objective').innerHTML='<div class="mutedbox">Touchez un objectif pour révéler son effet au moment où il est récupéré.</div>'}
+$('objective-slots').addEventListener('click',e=>{const b=e.target.closest('[data-slot]');if(!b||!app.game)return;const i=Number(b.dataset.slot);if(!app.game.revealed.includes(i)){app.game.revealed.push(i);persist()}selectedObjective=i;renderObjectiveGame()});
+$('back-objectives').onclick=()=>setObjectiveStep('prepare');
+$('restart-objectives').onclick=()=>{if(!confirm('Recommencer ? Les effets révélés de cette partie seront oubliés, mais la banque d’idées sera conservée.'))return;app.game=null;selectedObjective=null;persist();setObjectiveStep('prepare')};
+function renderBank(){const filter=$('bank-filter').value.trim().toLocaleLowerCase('fr'),results=app.bank.filter(o=>(o.name+' '+o.desc).toLocaleLowerCase('fr').includes(filter));$('bank-count').textContent=`${app.bank.length} idée${app.bank.length>1?'s':''} enregistrée${app.bank.length>1?'s':''}`;
+$('bank-list').innerHTML=results.length?results.map(o=>`<div class="bankitem"><div class="row between"><div class="row wrap-row"><strong>${esc(o.name)}</strong>${typeTag(o.type)}</div><button class="btn sm danger" data-bank-remove="${esc(o.id)}" aria-label="Supprimer ${esc(o.name)}">Supprimer</button></div><div class="desc">${esc(o.desc)}</div><div class="row wrap-row" style="margin-top:10px"><button class="btn sm" data-bank-add="${esc(o.id)}" ${app.chosen.includes(o.id)?'disabled':''}>${app.chosen.includes(o.id)?'✓ Déjà prévu pour la partie':'＋ Ajouter à la partie'}</button></div></div>`).join(''):'<div class="mutedbox">Aucune idée trouvée. Créez un effet depuis la préparation.</div>'}
+$('bank-filter').addEventListener('input',renderBank);
+$('bank-list').addEventListener('click',e=>{let el=e.target.closest('[data-bank-add]');if(el){if(!app.chosen.includes(el.dataset.bankAdd)){app.chosen.push(el.dataset.bankAdd);persist();renderBank();toast('Idée ajoutée à la préparation.')}return}el=e.target.closest('[data-bank-remove]');if(!el)return;const id=el.dataset.bankRemove;const idea=app.bank.find(x=>x.id===id);if(app.game?.ids?.includes(id)||app.game?.unusedIds?.includes(id)){toast("Cette proposition appartient à la partie en cours. Recommencez une nouvelle partie avant de la supprimer.");return}if(!confirm(`Supprimer « ${idea?.name||'cet effet'} » de la banque ?`))return;app.bank=app.bank.filter(x=>x.id!==id);app.chosen=app.chosen.filter(x=>x!==id);persist();renderBank()});
+$('bank-export').onclick=()=>{const blob=new Blob([JSON.stringify({format:'sons-of-fate-objectifs-v1',bank:app.bank},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='sons-of-fate-banque-objectifs.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('Idées téléchargées. Conservez ce fichier pour les récupérer plus tard.')};
+$('bank-import').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const data=JSON.parse(await file.text());if(data.format!=='sons-of-fate-objectifs-v1'||!Array.isArray(data.bank))throw Error('Format non reconnu');let added=0;for(const row of data.bank){if(!validItem(row))continue;const name=row.name.trim().slice(0,100),desc=row.desc.trim().slice(0,1500),type=row.type;if(!name||!desc)continue;if(app.bank.some(x=>x.name===name&&x.desc===desc&&x.type===type))continue;app.bank.push({id:genid(),name,desc,type});added++}persist();renderBank();toast(`${added} idée${added>1?'s':''} importée${added>1?'s':''}.`)}catch(err){toast('Fichier incompatible. Importez un JSON exporté depuis cet outil.')}finally{e.target.value=''}});
+$('clear-bank').onclick=()=>{if(!app.bank.length)return;if(!confirm('Effacer définitivement toutes les idées enregistrées sur cet appareil ? Pensez à exporter votre banque.'))return;app.bank=[];app.chosen=[];app.game=null;selectedObjective=null;persist();renderBank();toast('Banque locale effacée.')};
+
+// L'historique conserve les anciens lancers et les nouvelles localisations, sans changer le format des autres outils.
+function isValidRoll(r){
+ if(!(r&&[3,6].includes(r.type)&&Number.isInteger(r.count)&&r.count>=1&&r.count<=10&&Array.isArray(r.results)&&r.results.length===r.count&&r.results.every(n=>Number.isInteger(n)&&n>=1&&n<=r.type)&&Number.isFinite(r.at)&&r.at>0))return false;
+ if(r.loc===undefined){ // anciens lancers et nouveaux jets sans localisation
+  return r.difficulty===undefined||r.difficulty===null||(Number.isInteger(r.difficulty)&&r.difficulty>=2&&r.difficulty<=8);
+ }
+ if(r.type!==6||!Number.isInteger(r.loc)||r.loc<1||r.loc>6)return false;
+ if(!(r.difficulty===null||Number.isInteger(r.difficulty)&&r.difficulty>=2&&r.difficulty<=8))return false;
+ if(!Number.isInteger(r.shift)||Math.abs(r.shift)>r.count||r.loc+r.shift<1||r.loc+r.shift>6)return false;
+ const successes=successCount(r);return Math.abs(r.shift)<=successes; // Conserve les historiques anciens même si tous les succès avaient été dépensés.
+}
+function successCount(r){if(!r||!Number.isInteger(r.difficulty))return 0;return r.results.filter(v=>v!==1&&v>=r.difficulty).length}
+function locZone(n){return ({1:'Tête',2:'Bras',3:'Bras',4:'Torse',5:'Torse',6:'Jambes'})[n]||'—'}
+app.diceHistory=Array.isArray(app.diceHistory)?app.diceHistory.filter(isValidRoll).slice(0,100):[];
+function renderDiceHistory(){
+ const rows=app.diceHistory,shown=showAllDiceHistory?rows:rows.slice(0,6);
+ $('history-count').textContent=rows.length?`${rows.length} lancer${rows.length>1?'s':''} enregistré${rows.length>1?'s':''} · Plus récent en premier`:'Aucun lancer enregistré';
+ $('clear-dice-history').disabled=!rows.length||diceRolling;
+ $('dice-history').innerHTML=shown.length?shown.map(r=>{
+  const when=new Date(r.at),date=when.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'}),time=when.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  const marked=r.loc!==undefined,successes=successCount(r),spend=Math.abs(r.shift||0),finalLoc=marked?r.loc+(r.shift||0):null;
+  const hasDifficulty=Number.isInteger(r.difficulty);
+  const locHTML=marked?`<div class="history-loc"><strong>Dé de localisation :</strong> <span class="history-die loc">${r.loc}</span> ${r.shift?'→ <strong>'+finalLoc+' ('+locZone(finalLoc)+')</strong> · '+spend+' réussite'+(spend>1?'s':'')+' dépensée'+(spend>1?'s':''):'('+locZone(r.loc)+')'}${hasDifficulty?`<div>Difficulté ${r.difficulty}+ · ${successes} réussite${successes>1?'s':''} · ${successes-spend} restante${successes-spend>1?'s':''}</div>`:'<div>Difficulté non renseignée · localisation brute uniquement</div>'}</div>`:'';
+  const thresholdHTML=!marked&&hasDifficulty?`<div class="history-loc"><strong>Difficulté ${r.difficulty}+</strong> · ${successes} réussite${successes>1?'s':''}</div>`:'';
+  return `<div class="history-entry"><div class="history-entry-head"><strong>${r.count}D${r.type}${marked?' + 1D6 localisation':''}</strong><time datetime="${when.toISOString()}">${date} · ${time}</time></div><div class="history-dice" aria-label="Résultats : ${r.results.join(', ')}">${r.results.map((n,i)=>{const isSuccess=hasDifficulty&&n!==1&&n>=r.difficulty;const used=isSuccess&&r.results.slice(0,i+1).filter(v=>v!==1&&v>=r.difficulty).length<=spend;return `<span class="history-die ${isSuccess?'success':''} ${used?'history-spent':''}" title="${used?'Réussite dépensée pour la localisation':''}">${n}</span>`}).join('')}</div>${locHTML}${thresholdHTML}</div>`
+ }).join(''):'<div class="mutedbox">Les prochains lancers apparaîtront ici.</div>';
+ const more=$('toggle-dice-history');more.classList.toggle('hidden',rows.length<=6);more.textContent=showAllDiceHistory?'Afficher uniquement les 6 derniers':`Afficher les ${rows.length-6} autres lancers`;more.setAttribute('aria-expanded',String(showAllDiceHistory));
+}
+$('toggle-dice-history').onclick=()=>{showAllDiceHistory=!showAllDiceHistory;renderDiceHistory()};
+$('clear-dice-history').onclick=()=>{if(diceRolling||!app.diceHistory.length)return;if(!confirm('Effacer l’historique des lancers sur cet appareil ? Cette action est irréversible.'))return;app.diceHistory=[];currentRoll=null;showAllDiceHistory=false;persist();showDice([],false);renderDiceHistory();toast('Historique des lancers effacé.')};
+function renderDiceChoices(){
+ $('dice-choices').innerHTML=Array.from({length:10},(_,i)=>`<button class="number ${diceCount===i+1?'selected':''}" data-dice-count="${i+1}" aria-pressed="${diceCount===i+1}">${i+1}</button>`).join('');
+ $('roll-btn').textContent=`⚄ Lancer ${diceCount}D${diceType}${withLocation&&diceType===6?' + dé de localisation':''}`;
+}
+function clearDiceDisplay(){currentRoll=null;showDice([],false);}
+$('dice-choices').onclick=e=>{const b=e.target.closest('[data-dice-count]');if(!b||diceRolling)return;diceCount=Number(b.dataset.diceCount);renderDiceChoices();clearDiceDisplay()};
+function setDiceType(n){
+ if(diceRolling)return;diceType=n;
+ $('type-d6').classList.toggle('selected',n===6);$('type-d3').classList.toggle('selected',n===3);
+ $('type-d6').setAttribute('aria-pressed',String(n===6));$('type-d3').setAttribute('aria-pressed',String(n===3));
+ $('with-location').disabled=n!==6;
+ if(n!==6){withLocation=false;$('with-location').checked=false}
+ renderDiceChoices();clearDiceDisplay();
+}
+$('type-d6').onclick=()=>setDiceType(6);$('type-d3').onclick=()=>setDiceType(3);
+$('with-location').addEventListener('change',e=>{
+ if(diceRolling)return;withLocation=Boolean(e.target.checked)&&diceType===6;
+ renderDiceChoices();clearDiceDisplay();
+});
+$('target-difficulty').addEventListener('change',e=>{
+ targetDifficulty=e.target.value;
+ if(currentRoll&&!diceRolling){
+  currentRoll.difficulty=targetDifficulty?Number(targetDifficulty):null;
+  if(currentRoll.loc!==undefined)currentRoll.shift=0;
+  persist();showDice(currentRoll.results,false,currentRoll.loc??null,currentRoll);renderDiceHistory();
+ }
+});
+function showDice(values,animated,locationValue=null,roll=null){
+ const threshold=roll?.difficulty??null;
+ const totalSuccess=roll?successCount(roll):0;
+ const spent=roll?Math.abs(roll.shift||0):0;
+ let successOrdinal=0;
+ const items=values.map((n,i)=>{
+  const success=threshold!==null&&n!==1&&n>=threshold;
+  const failure=threshold!==null&&!success;
+  if(success)successOrdinal++;
+  const used=success&&successOrdinal<=spent;
+  const status=used?' : réussite utilisée pour la localisation':success?' : réussite conservée':'';
+  return `<div class="dice-cell"><div class="die ${animated?'animate':''} ${success?'success-die':''} ${failure?'failed-die':''} ${used?'spent-success':''}" aria-label="Dé ${i+1} : ${n}${status}">${n}</div></div>`;
+ });
+ if(locationValue!==null){
+  const current=roll?roll.loc+(roll.shift||0):locationValue;
+  const allowed=roll?Math.max(0,totalSuccess-1):0;
+  const canChange=roll&&Number.isInteger(roll.difficulty)&&totalSuccess>1&&!animated;
+  const minusDisabled=!canChange||current<=1||Math.abs((roll.shift||0)-1)>allowed;
+  const plusDisabled=!canChange||current>=6||Math.abs((roll.shift||0)+1)>allowed;
+  items.push(`<div class="dice-cell loc-inline"><div class="loc-inline-main"><button type="button" class="loc-step" data-location-step="-1" ${minusDisabled?'disabled':''} aria-label="Diminuer la localisation de 1" title="−1 localisation">−1</button><div class="die location-die ${animated?'animate':''}" aria-label="Dé de localisation : ${current}${roll&&roll.shift?', résultat initial '+roll.loc:''}">${current}</div><button type="button" class="loc-step" data-location-step="1" ${plusDisabled?'disabled':''} aria-label="Augmenter la localisation de 1" title="+1 localisation">+1</button></div><div class="dice-label">LOCALISATION</div>${!animated?`<div class="loc-inline-zone">${locZone(current)}</div>`:''}</div>`);
+ }
+ $('dice-grid').innerHTML=items.join('');
+ $('dice-legend').classList.toggle('hidden',animated||(!Number.isInteger(threshold)&&locationValue===null));
+ $('legend-success').classList.toggle('hidden',!Number.isInteger(threshold));
+ $('legend-spent').classList.toggle('hidden',locationValue===null||!Number.isInteger(threshold));
+ $('legend-location').classList.toggle('hidden',locationValue===null);
+ const diceSummary=$('dice-success-summary');
+ const showSummary=Boolean(roll)&&locationValue===null&&Number.isInteger(threshold)&&!animated;
+ diceSummary.classList.toggle('hidden',!showSummary);
+ diceSummary.textContent=showSummary?`${totalSuccess} réussite${totalSuccess>1?'s':''} · Difficulté ${threshold}+`:'';
+ $('dice-caption').textContent=animated?'Les dés roulent…':values.length?`${values.length}D${roll?.type||diceType}${locationValue!==null?' + 1D6 de localisation':''} · Résultats individuels`:'Prêt à lancer les dés.';
+ const info=$('location-inline-info');
+ info.classList.toggle('hidden',!(roll&&locationValue!==null&&!animated));
+ if(roll&&locationValue!==null&&!animated){
+  const remaining=totalSuccess-spent;
+  const change=roll.shift||0;
+  const from=roll.loc;
+  let explanation='';
+  if(roll.difficulty===null)explanation='Choisissez une difficulté pour identifier les réussites et modifier la localisation.';
+  else if(totalSuccess===0)explanation='Aucune réussite : la localisation ne peut pas être modifiée.';
+  else if(totalSuccess===1)explanation='Une seule réussite : elle reste disponible pour l’attaque.';
+  else explanation=`${totalSuccess} réussites · ${spent} utilisée${spent>1?'s':''} pour la localisation · <strong class="loc-remaining">${remaining} restante${remaining>1?'s':''} pour l’attaque</strong>.`;
+  info.innerHTML=`<div>${change?`Localisation initiale : <strong>${from}</strong> → <strong>${from+change}</strong> (${locZone(from+change)})`:`Localisation : <strong>${from}</strong> (${locZone(from)})`}</div><div>${explanation}</div>${change?'<button type="button" class="loc-reset" id="location-reset-inline">↶ Annuler les modifications</button>':''}`;
+ }
+}
+function changeLocation(delta){
+ if(!currentRoll||currentRoll.loc===undefined||diceRolling||!Number.isInteger(currentRoll.difficulty))return;
+ const r=currentRoll,shift=r.shift+delta;
+ if(r.loc+shift<1||r.loc+shift>6||Math.abs(shift)>Math.max(0,successCount(r)-1))return;
+ const wasFocused=document.activeElement?.matches(`[data-location-step="${delta}"]`);
+ r.shift=shift;persist();showDice(r.results,false,r.loc,r);renderDiceHistory();
+ const follow=$('dice-grid').querySelector(`[data-location-step="${delta}"]`);
+ if(wasFocused&&follow&&!follow.disabled)follow.focus({preventScroll:true});
+}
+$('dice-grid').addEventListener('click',e=>{const b=e.target.closest('[data-location-step]');if(!b||b.disabled)return;changeLocation(Number(b.dataset.locationStep));});
+$('location-inline-info').addEventListener('click',e=>{if(!e.target.closest('#location-reset-inline')||!currentRoll)return;currentRoll.shift=0;persist();showDice(currentRoll.results,false,currentRoll.loc,currentRoll);renderDiceHistory();});
+$('roll-btn').onclick=()=>{
+ if(diceRolling)return;diceRolling=true;currentRoll=null;$('roll-btn').disabled=true;$('clear-dice-history').disabled=true;
+ const rolledType=diceType,rolledCount=diceCount,rollLocation=withLocation&&diceType===6;
+ const difficulty=targetDifficulty?Number(targetDifficulty):null;
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;let ticks=0;
+ const interval=setInterval(()=>{
+  showDice(Array.from({length:rolledCount},()=>randomIndex(rolledType)+1),!reduce,rollLocation?randomIndex(6)+1:null);
+  ticks++;
+  if(ticks>=(reduce?1:9)){
+   clearInterval(interval);
+   const results=Array.from({length:rolledCount},()=>randomIndex(rolledType)+1),loc=rollLocation?randomIndex(6)+1:null;
+   const record={at:Date.now(),type:rolledType,count:rolledCount,results,difficulty};
+   if(rollLocation){record.loc=loc;record.shift=0}
+   app.diceHistory.unshift(record);app.diceHistory=app.diceHistory.slice(0,100);currentRoll=record;persist();
+   diceRolling=false;$('roll-btn').disabled=false;
+   showDice(results,false,loc,record);renderDiceHistory();
+  }
+ },reduce?40:85);
+};
+
+// La mise a jour V7 reutilise la meme cle localStorage que la V6 : pas de perte d'archives.
+const canonName=n=>String(n||'').trim().replace(/\s+/g,' ').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fr-FR');
+function realPlayerName(n){return Boolean(canonName(n))&&!/^joueur\s*\d+$/.test(canonName(n))}
+function validMatch(m){
+ if(!m||typeof m.id!=='string'||!Number.isFinite(m.at)||!Array.isArray(m.players)||m.players.length<2||m.players.length>12)return false;
+ if(m.scoringMode!==undefined&&!['round','end'].includes(m.scoringMode))return false;
+ if(m.scenarioName!==undefined&&(typeof m.scenarioName!=='string'||m.scenarioName.length>100))return false;
+ const n=m.players[0]?.rounds?.length;
+ if(!Number.isInteger(n)||n<1||n>99||(m.scoringMode!=='end'&&n<2))return false;
+ if(m.roundCount!==undefined&&(!Number.isInteger(m.roundCount)||m.roundCount<1||m.roundCount>99))return false;
+ return m.players.every(p=>p&&typeof p.name==='string'&&p.name.trim()&&Array.isArray(p.rounds)&&p.rounds.length===n&&p.rounds.every(x=>Number.isInteger(x)&&x>=0&&x<=999999))&&new Set(m.players.map(p=>canonName(p.name))).size===m.players.length;
+}
+app.matchHistory=Array.isArray(app.matchHistory)?app.matchHistory.filter(validMatch).slice(0,1000):[];
+function normalizePlayers(){
+ if(!Array.isArray(app.players))app.players=[];
+ app.roundCount=Math.max(2,Math.min(99,Math.floor(Number(app.roundCount)||5)));
+ app.players=app.players.slice(0,12).map((p,i)=>({id:String(p.id||genid()),name:String(p.name??`Joueur ${i+1}`).slice(0,60),rounds:Array.from({length:Math.max(5,app.roundCount,Math.min(99,Array.isArray(p.rounds)?p.rounds.length:0))},(_,j)=>Math.max(0,Math.floor(Number(p.rounds?.[j])||0)))}));
+ // Les deux joueurs factices de la V6 ne sont pas des participants selectionnes.
+ app.players=app.players.filter(p=>realPlayerName(p.name)||p.rounds.some(v=>v>0));
+ app.round=Math.max(0,Math.min(app.roundCount-1,Math.floor(Number(app.round)||0)));
+ app.scoringMode=app.scoringMode==='end'?'end':'round';
+}
+function freshRounds(){return Array(Math.max(5,app.roundCount)).fill(0)}
+normalizePlayers();
+app.knownPlayers=Array.isArray(app.knownPlayers)?app.knownPlayers.filter(n=>typeof n==='string'&&realPlayerName(n)).map(n=>n.trim().slice(0,60)):[];
+// Migration : les joueurs presents dans la V6 et dans les anciens historiques deviennent selectionnables.
+function rememberPlayerName(name){
+ const clean=String(name||'').trim().replace(/\s+/g,' ').slice(0,60);
+ if(!realPlayerName(clean))return null;
+ const existing=app.knownPlayers.find(n=>canonName(n)===canonName(clean));
+ if(existing)return existing;
+ app.knownPlayers.push(clean);
+ return clean;
+}
+for(const m of app.matchHistory)for(const p of m.players)rememberPlayerName(p.name);
+for(const p of app.players)rememberPlayerName(p.name);
+app.knownPlayers=[...new Map(app.knownPlayers.map(n=>[canonName(n),n])).values()];
+function scoreTotal(p){return app.scoringMode==='end'?(p.rounds[0]||0):p.rounds.slice(0,app.roundCount).reduce((a,b)=>a+b,0)}
+function hasUnrecordedScores(p){return p.rounds.some(x=>x>0)}
+// La feuille validée est déjà archivée ; changer de sélection prépare automatiquement la suivante.
+function startNextMatchForPicker(){
+ if(!app.scoreFinalized)return;
+ app.players.forEach(p=>p.rounds=freshRounds());
+ app.round=0;app.scenarioName='';app.scoreFinalized=false;
+}
+function removeParticipant(playerId){
+ const p=app.players.find(p=>p.id===playerId);if(!p)return;
+ if(app.scoreFinalized)startNextMatchForPicker();
+ if(hasUnrecordedScores(p)&&!confirm(`Retirer ${p.name} ? Ses points de cette partie seront perdus.`))return;
+ app.players=app.players.filter(p=>p.id!==playerId);persist();renderScores();
+}
+function addParticipant(name){
+ const clean=String(name||'').trim().replace(/\s+/g,' ').slice(0,60);
+ if(!realPlayerName(clean)){toast('Entre un vrai prénom pour le mémoriser.');return false}
+ if(app.players.some(p=>canonName(p.name)===canonName(clean))){toast(`${clean} joue déjà ce soir.`);return false}
+ if(app.players.length>=12){toast('Maximum 12 joueurs pour cette partie.');return false}
+ if(app.scoreFinalized)startNextMatchForPicker();
+ const stored=rememberPlayerName(clean);
+ app.players.push({id:genid(),name:stored,rounds:freshRounds()});
+ persist();renderScores();return true;
+}
+function renderParticipantPicker(){
+ const names=app.knownPlayers.slice().sort((a,b)=>a.localeCompare(b,'fr',{sensitivity:'base'}));
+ $('known-player-buttons').innerHTML=names.length?names.map(n=>{
+  const existing=app.players.some(p=>canonName(p.name)===canonName(n));
+  return `<button type="button" class="friend-pill" data-known-name="${esc(n)}" aria-pressed="${existing}">${esc(n)}</button>`;
+ }).join(''):'<div class="muted small">Aucun pour le moment : touche un exemple ou saisis un prénom ci-dessous.</div>';
+ // Suggestions pour tester immédiatement sans devoir tout taper ; elles ne sont enregistrées qu'au clic.
+ const suggestions=['Romain','Jonathan','Mathieu'].filter(n=>!names.some(k=>canonName(k)===canonName(n)));
+ $('starter-player-wrap').classList.toggle('hidden',suggestions.length===0);
+ $('starter-player-buttons').innerHTML=suggestions.map(n=>`<button type="button" class="friend-pill suggested" data-known-name="${esc(n)}">＋ ${esc(n)}</button>`).join('');
+ $('selected-player-count').textContent=String(app.players.length);
+ $('selected-player-pills').innerHTML=app.players.length?app.players.map(p=>`<button type="button" class="selected-pill" data-remove-participant="${esc(p.id)}" title="Retirer ${esc(p.name)}">${esc(p.name)} <span class="x" aria-hidden="true">×</span></button>`).join(''):'<span class="muted small">Personne pour le moment.</span>';
+ $('player-picker-status').textContent=app.scoreFinalized?'Partie enregistrée : touche un prénom pour préparer la suivante, ou clique sur « Nouvelle partie ».':app.players.length>=2?`${app.players.length} participants prêts. Leurs confrontations précédentes sont affichées tout en bas.`:`Sélectionne encore ${2-app.players.length} joueur${app.players.length===0?'s':''} pour commencer.`;
+ $('friend-name').disabled=false;
+ $('add-friend-form').querySelector('button').disabled=false;
+}
+for(const listId of ['known-player-buttons','starter-player-buttons'])$(listId).addEventListener('click',e=>{
+ const b=e.target.closest('[data-known-name]');if(!b)return;
+ const n=b.dataset.knownName, existing=app.players.find(p=>canonName(p.name)===canonName(n));
+ if(existing)removeParticipant(existing.id);else addParticipant(n);
+});
+$('selected-player-pills').addEventListener('click',e=>{
+ const b=e.target.closest('[data-remove-participant]');if(b)removeParticipant(b.dataset.removeParticipant);
+});
+$('add-friend-form').addEventListener('submit',e=>{
+ e.preventDefault();const inp=$('friend-name');if(addParticipant(inp.value))inp.value='';
+});
+function renderScores(){
+ normalizePlayers();renderParticipantPicker();
+ $('scenario-name').value=app.scenarioName||'';$('scenario-name').disabled=Boolean(app.scoreFinalized);
+ const endMode=app.scoringMode==='end';
+ $('score-mode-round').checked=!endMode;
+ $('score-mode-end').checked=endMode;
+ $('score-mode-round').disabled=Boolean(app.scoreFinalized);
+ $('score-mode-end').disabled=Boolean(app.scoreFinalized);
+ $('round-count-setup').classList.toggle('hidden',endMode);
+ $('score-round-count').value=String(app.roundCount);
+ $('score-round-count').disabled=Boolean(app.scoreFinalized);
+ $('round-count-dec').disabled=Boolean(app.scoreFinalized)||app.roundCount<=2;
+ $('round-count-inc').disabled=Boolean(app.scoreFinalized)||app.roundCount>=99;
+ $('round-controls').classList.toggle('hidden',endMode);
+ $('final-score-heading').classList.toggle('hidden',!endMode);
+ $('round-score-table-block').classList.toggle('hidden',endMode);
+ $('score-mode-instructions').textContent=endMode?'À la fin de la partie, indique les PV de chaque joueur avec ＋ / −, puis enregistre le résultat. Une seule saisie, sans changement de tour.':'Les joueurs sont ceux sélectionnés plus haut. Les boutons ＋ / − changent uniquement les points du tour affiché ; les totaux se calculent automatiquement.';
+ $('reset-scores').textContent=endMode?'Remettre les points à zéro':'Remettre les scores à zéro';
+ $('round-title').textContent=`Tour ${app.round+1} / ${app.roundCount}`;
+ $('prev-round').disabled=app.round<=0||app.scoreFinalized||app.players.length<2;
+ $('next-round').disabled=app.round>=app.roundCount-1||app.scoreFinalized||app.players.length<2;
+ $('reset-scores').disabled=app.scoreFinalized||app.players.length<2;
+ $('save-match').disabled=app.scoreFinalized||app.players.length<2;
+ $('players').innerHTML=app.players.length?app.players.map((p,i)=>`<div class="scoreplayer ${app.scoreFinalized?'finished':''}"><div class="left"><div class="scoreplayer-name">${esc(p.name)}</div><div class="small muted">Total : <strong>${scoreTotal(p)} PV</strong></div></div><div class="tools"><button class="btn sm icon-btn" ${app.scoreFinalized?'disabled':''} data-score-dec="${esc(p.id)}" aria-label="Retirer un point à ${esc(p.name)}">−</button><span class="current">${p.rounds[endMode?0:app.round]}</span><button class="btn sm icon-btn" ${app.scoreFinalized?'disabled':''} data-score-inc="${esc(p.id)}" aria-label="Ajouter un point à ${esc(p.name)}">＋</button></div></div>`).join(''):'<div class="mutedbox">Choisis les joueurs tout en haut pour afficher leurs compteurs de points.</div>';
+ $('score-table').innerHTML=app.players.length>=2?`<thead><tr><th>Joueur</th>${Array.from({length:app.roundCount},(_,i)=>`<th>T${i+1}</th>`).join('')}<th>Total</th></tr></thead><tbody>${app.players.map(p=>`<tr><td>${esc(p.name)}</td>${p.rounds.slice(0,app.roundCount).map((v,i)=>`<td ${i===app.round?'style="background:#f4ebe7"':''}>${v}</td>`).join('')}<td>${scoreTotal(p)}</td></tr>`).join('')}</tbody>`:'';
+ if(app.players.length<2){$('ranking').textContent='Sélectionne au moins deux joueurs pour afficher le classement.'}
+ else{const ranked=app.players.slice().sort((a,b)=>scoreTotal(b)-scoreTotal(a));const best=scoreTotal(ranked[0]);const leaders=ranked.filter(p=>scoreTotal(p)===best).map(p=>p.name||'Sans nom');$('ranking').textContent=best===0?'Classement : aucun point marqué pour le moment.':leaders.length>1?`Égalité en tête : ${leaders.join(', ')} (${best} PV).`:`En tête : ${leaders[0]} (${best} PV).`}
+ $('saved-match-status').textContent=app.scoreFinalized?'✓ Partie enregistrée dans l’historique. Pour saisir une autre partie, clique sur « Nouvelle partie ».':'À la fin de la partie, enregistre le résultat pour le retrouver la prochaine fois.';
+ renderMatchHistory();
+}
+$('scenario-name').addEventListener('input',e=>{if(app.scoreFinalized)return;app.scenarioName=e.target.value.slice(0,100);persist()});
+// Le nombre de tours peut être modifié avant ou pendant la partie.
+// Réduire la durée préserve tous les points des tours conservés.
+function setRoundCount(n){
+ if(app.scoreFinalized)return;
+ const next=Math.max(2,Math.min(99,Math.floor(Number(n)||5)));
+ if(next===app.roundCount){$('score-round-count').value=String(next);return}
+ if(next<app.roundCount&&app.players.some(p=>p.rounds.slice(next).some(v=>v>0))){
+  if(!confirm(`Des PV ont été saisis après le tour ${next}. Ces points seront supprimés et ne compteront pas dans le résultat. Conserver les ${next} premiers tours ?`)){
+   $('score-round-count').value=String(app.roundCount);return;
+  }
+  app.players.forEach(p=>p.rounds=p.rounds.map((v,i)=>i>=next?0:v));
+ }
+ app.roundCount=next;
+ app.players.forEach(p=>{while(p.rounds.length<Math.max(5,next))p.rounds.push(0)});
+ app.round=Math.min(app.round,next-1);
+ persist();renderScores();
+ toast(`${next} tours prévus. Les points déjà saisis sont conservés.`);
+}
+$('score-round-count').addEventListener('change',e=>setRoundCount(e.target.value));
+$('round-count-dec').onclick=()=>setRoundCount(app.roundCount-1);
+$('round-count-inc').onclick=()=>setRoundCount(app.roundCount+1);
+
+for(const input of document.querySelectorAll('input[name="score-mode"]'))input.addEventListener('change',e=>{
+ if(!e.target.checked || app.scoreFinalized)return;
+ const newMode=e.target.value;
+ if(newMode===app.scoringMode)return;
+ if(app.players.some(hasUnrecordedScores)&&!confirm('Changer de mode remettra les points de cette partie à zéro. Les joueurs, le scénario et les parties déjà enregistrées seront conservés. Continuer ?')){
+  renderScores();return;
+ }
+ app.scoringMode=newMode;app.round=0;
+ for(const p of app.players)p.rounds=freshRounds();
+ persist();renderScores();
+});
+$('players').addEventListener('click',e=>{
+ if(app.scoreFinalized)return;
+ const change=e.target.closest('[data-score-inc],[data-score-dec]');
+ if(!change)return;
+ const id=change.dataset.scoreInc||change.dataset.scoreDec;
+ const delta=change.hasAttribute('data-score-inc')?1:-1;
+ const p=app.players.find(x=>x.id===id);
+ if(!p)return;
+ const scoreIdx=app.scoringMode==='end'?0:app.round;
+ p.rounds[scoreIdx]=Math.max(0,p.rounds[scoreIdx]+delta);
+ persist();renderScores();
+});
+$('prev-round').onclick=()=>{app.round=Math.max(0,app.round-1);persist();renderScores()};
+$('next-round').onclick=()=>{app.round=Math.min(app.roundCount-1,app.round+1);persist();renderScores()};
+$('reset-scores').onclick=()=>{if(app.scoreFinalized||app.players.length<2)return;if(!confirm(app.scoringMode==='end'?'Remettre à zéro les points finaux de tous les joueurs ? Les prénoms seront conservés.':`Remettre à zéro les scores des ${app.roundCount} tours ? Les prénoms seront conservés.`))return;for(const p of app.players)p.rounds=freshRounds();app.round=0;persist();renderScores();toast('Scores remis à zéro.')};
+// Historique associe a la composition exacte : duo et trio sont des confrontations distinctes.
+function namesForMatch(){return app.players.map(p=>p.name.trim()).filter(realPlayerName)}
+function matchWinners(m){const scores=m.players.map(p=>p.rounds.reduce((a,b)=>a+b,0));const best=Math.max(...scores);return m.players.filter((_,i)=>scores[i]===best).map(p=>p.name)}
+function matchesCurrentRoster(m,keys){return keys.length>=2&&m.players.length===keys.length&&keys.every(n=>m.players.some(p=>canonName(p.name)===n))}
+function renderMatchHistory(){
+ const names=namesForMatch();const keys=[...new Set(names.map(canonName))];
+ const prior=app.matchHistory.filter(m=>matchesCurrentRoster(m,keys)).sort((a,b)=>b.at-a.at);
+ $('historic-player-names').innerHTML=app.knownPlayers.slice().sort((a,b)=>a.localeCompare(b,'fr')).map(n=>`<option value="${esc(n)}"></option>`).join('');
+ const knownScenarios=[...new Map(app.matchHistory.filter(m=>m.scenarioName?.trim()).map(m=>[canonName(m.scenarioName),m.scenarioName.trim()])).values()].sort((a,b)=>a.localeCompare(b,'fr'));
+ $('historic-scenario-names').innerHTML=knownScenarios.map(n=>`<option value="${esc(n)}"></option>`).join('');
+ const el=$('score-history'),bar=$('match-matchup');
+ if(keys.length>=2){
+  bar.classList.remove('hidden');
+  const namesInOrder=[...new Map(names.map(n=>[canonName(n),n])).values()];
+  const victories=namesInOrder.map(n=>{const nb=prior.filter(m=>{const w=matchWinners(m);return w.length===1&&canonName(w[0])===canonName(n)}).length;return `${n} : ${nb} victoire${nb!==1?'s':''}`});
+  const draws=prior.filter(m=>matchWinners(m).length>1).length;
+  bar.textContent=`${prior.length} partie${prior.length!==1?'s':''} avec ${namesInOrder.join(' · ')} · ${victories.join(' · ')}${draws?' · '+draws+' égalité'+(draws>1?'s':''):''}`;
+ }else{bar.classList.add('hidden')}
+ $('clear-matches').disabled=!app.matchHistory.length;$('export-matches').disabled=!app.matchHistory.length&&!app.knownPlayers.length;
+ const intro=keys.length>=2?'Aucune partie enregistrée avec exactement ces joueurs sur cet appareil.':'Choisis au moins deux joueurs pour retrouver leur historique commun.';
+ el.innerHTML=prior.length?prior.map(m=>{
+  const when=new Date(m.at),winners=matchWinners(m),tie=winners.length>1;
+  const result=tie?`Égalité : ${winners.join(' et ')}`:`Victoire de ${winners[0]}`;
+  const pts=m.players.map(p=>`<span class="match-player ${winners.some(n=>canonName(n)===canonName(p.name))?'winner':''}">${esc(p.name)} · ${p.rounds.reduce((a,b)=>a+b,0)} PV</span>`).join('');
+  const date=when.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+  return `<article class="match-card"><div class="match-top"><div><div class="match-result">${esc(result)}</div><div class="match-date">${date}</div>${m.scenarioName?.trim()?`<div class="match-scenario"><strong>Scénario :</strong> ${esc(m.scenarioName.trim())}</div>`:''}</div><button class="btn sm danger" data-delete-match="${esc(m.id)}" aria-label="Supprimer cette partie de l’historique">Supprimer</button></div><div class="match-players">${pts}</div><div class="match-date" style="margin-top:8px">${m.scoringMode==='end'?'PV comptabilisés en fin de partie':`PV comptabilisés à chaque tour · ${m.players[0].rounds.length} tours joués`}</div>${m.scoringMode==='end'?'':`<details class="match-detail"><summary>Voir les points par tour</summary><div class="scroll"><table class="scoreboard"><thead><tr><th>Joueur</th>${Array.from({length:m.players[0].rounds.length},(_,i)=>`<th>T${i+1}</th>`).join('')}</tr></thead><tbody>${m.players.map(p=>`<tr><td>${esc(p.name)}</td>${p.rounds.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')}</tbody></table></div></details>`}</article>`;
+ }).join(''):`<div class="score-history-empty">${intro}</div>`;
+}
+$('score-history').addEventListener('click',e=>{const b=e.target.closest('[data-delete-match]');if(!b)return;const match=app.matchHistory.find(m=>m.id===b.dataset.deleteMatch);if(!match)return;if(!confirm('Supprimer définitivement cette partie de l’historique ?'))return;app.matchHistory=app.matchHistory.filter(m=>m.id!==match.id);persist();renderMatchHistory();toast('Partie retirée de l’historique.');});
+$('save-match').onclick=()=>{
+ if(app.scoreFinalized)return;
+ const actual=app.players.map(p=>p.name.trim());
+ if(actual.length<2){toast('Sélectionne au moins 2 joueurs.');return}
+ if(actual.some(n=>!realPlayerName(n))){toast('Nomme chaque joueur avant d’enregistrer la partie.');return}
+ if(new Set(actual.map(canonName)).size!==actual.length){toast('Chaque joueur doit avoir un nom distinct.');return}
+ const top=Math.max(...app.players.map(scoreTotal));
+ if(top===0&&!confirm('Personne n’a marqué de point. Enregistrer quand même une égalité à 0 PV ?'))return;
+ const winners=app.players.filter(p=>scoreTotal(p)===top).map(p=>p.name);
+ const msg=(app.scoringMode==='round'?`${app.roundCount} tours comptabilisés.\n`:'')+(winners.length>1?`Égalité entre ${winners.join(' et ')}.`:`Victoire de ${winners[0]} avec ${top} PV.`);
+ const scenarioName=String(app.scenarioName||'').trim().slice(0,100);
+ if(!confirm((scenarioName?`Scénario : ${scenarioName}\n`:'')+msg+'\nEnregistrer définitivement cette partie dans l’historique ?'))return;
+ const recordedTours=app.scoringMode==='end'?1:app.roundCount;
+ const record={id:genid(),at:Date.now(),scenarioName,scoringMode:app.scoringMode,roundCount:recordedTours,players:app.players.map(p=>({name:p.name.trim(),rounds:p.rounds.slice(0,recordedTours)}))};
+ app.matchHistory.unshift(record);app.matchHistory=app.matchHistory.slice(0,1000);app.scoreFinalized=true;persist();renderScores();toast('Partie enregistrée !');
+};
+$('new-match').onclick=()=>{
+ const msg=app.scoreFinalized?'Préparer une nouvelle partie ? Les résultats enregistrés resteront dans l’historique.':'Repartir sur une nouvelle partie ? Les scores non enregistrés seront perdus.';
+ if(!confirm(msg))return;
+ app.players.forEach(p=>p.rounds=freshRounds());app.round=0;app.scoreFinalized=false;app.scenarioName='';persist();renderScores();toast('Nouvelle partie prête.');
+};
+$('clear-matches').onclick=()=>{if(!app.matchHistory.length)return;if(!confirm('Effacer définitivement tout l’historique des parties sur cet appareil ? Pensez à l’exporter avant.'))return;app.matchHistory=[];persist();renderMatchHistory();toast('Historique effacé.');};
+$('export-matches').onclick=()=>{const blob=new Blob([JSON.stringify({format:'sons-of-fate-parties-v2',matches:app.matchHistory,knownPlayers:app.knownPlayers},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='sons-of-fate-historique-et-joueurs.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);toast('Historique et prénoms exportés.');};
+$('import-matches').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const parsed=JSON.parse(await file.text());if(!['sons-of-fate-parties-v1','sons-of-fate-parties-v2'].includes(parsed.format)||!Array.isArray(parsed.matches))throw Error('Format incorrect');let added=0;const ids=new Set(app.matchHistory.map(m=>m.id));for(const item of parsed.matches){if(!validMatch(item)||ids.has(item.id))continue;app.matchHistory.push(item);ids.add(item.id);added++;for(const p of item.players)rememberPlayerName(p.name)}if(Array.isArray(parsed.knownPlayers))for(const name of parsed.knownPlayers)if(typeof name==='string')rememberPlayerName(name);app.matchHistory.sort((a,b)=>b.at-a.at);app.matchHistory=app.matchHistory.slice(0,1000);persist();renderScores();toast(`${added} partie(s) importée(s), prénoms mémorisés.`)}catch(e){toast('Fichier non reconnu : utilise un export Sons of Fate.')}finally{e.target.value=''}});
+
+renderChosen();renderDiceChoices();renderDiceHistory();renderScores();setObjectiveStep(app.game?'play':'prepare');setTool('scores');
+</script>
+</body></html>
