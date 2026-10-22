@@ -1134,5 +1134,22 @@ function scPrint(n){
   w.document.close();
 }
 </script>
+  
+<!-- Navigation depuis les outils vers les rubriques du site -->
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+  const page = new URLSearchParams(window.location.search).get('page');
+  const allowed = ['accueil', 'regles', 'cartes', 'constructeur', 'capacites', 'scenarios'];
+
+  if (!allowed.includes(page) || typeof showPage !== 'function') return;
+
+  const menuLink = Array.from(document.querySelectorAll('#nav-links a')).find(
+    a => a.getAttribute('onclick')?.includes("showPage('" + page + "'")
+  );
+
+  if (menuLink) showPage(page, menuLink);
+});
+</script>
+
 </body>
 </html>
