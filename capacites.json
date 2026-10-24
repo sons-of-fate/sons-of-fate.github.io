@@ -68,7 +68,7 @@
     "niveau": "++",
     "cout": 2,
     "name": "Tir précis",
-    "reservedFor": ["brave", "guerrier", "seigneur"],
+    "reservedFor": ["brave", "guerrier", "eclaireur", "seigneur"],
     "desc": "1 PA — 1 fois par tour — tir : lors d'une attaque de tir, ajoutez +1D3 à la valeur de FOR pour ce tir. (réservé Braves, Guerriers, Seigneurs)"
   },
   {
@@ -176,7 +176,7 @@
   "niveau": "+++",
   "cout": 3,
   "name": "Frappe divinatoire",
-  "reservedFor": ["brave", "guerrier", "seigneur"],
+  "reservedFor": ["brave", "guerrier", "eclaireur", "seigneur"],
   "desc": "1 PA — 1 par bande : le combattant peut effectuer une attaque de tir indirecte sur un ennemi, même sans ligne de vue ni couloir de tir, à condition qu'au moins un allié possède une ligne de vue sur la cible. La portée de cette attaque est doublée par rapport à la portée habituelle de l'arme. L'attaque est résolue normalement, sans malus."
 },
   {
@@ -239,7 +239,7 @@
   "niveau": "+",
   "cout": 1,
   "name": "Insaisissable",
-  "reservedFor": ["brave", "guerrier", "champion", "capitaine", "seigneur"],
+  "reservedFor": ["brave", "guerrier", "eclaireur", "champion", "capitaine", "seigneur"],
   "desc": "Passif — 1 par bande : lorsqu'un combattant ennemi effectue une attaque de tir contre le porteur, il lance 1D6 de moins lors de son jet d'attaque contre la RAP du porteur."
 },
 {
@@ -302,7 +302,7 @@
   "niveau": "++",
   "cout": 2,
   "name": "Rythme entraînant",
-  "reservedFor": ["brave", "guerrier"],
+  "reservedFor": ["brave", "guerrier", "eclaireur"],
   "desc": "Passif — 1 par bande : au début de leur activation, les combattants alliés situés à 6 pouces ou moins du porteur bénéficient de +2 pouces lors de leur premier déplacement. Le porteur ne bénéficie pas de ce bonus."
 },
 {
