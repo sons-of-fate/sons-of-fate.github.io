@@ -312,124 +312,7 @@ footer span{color:#d4a853;}
   .page{display:block!important;}
   body{background:#fff;}
 }
-
-/* ===== ACCUEIL NOUVEAU VISUEL ===== */
-
-.home-hero-layout{
-  display:grid;
-  grid-template-columns:minmax(0,1.65fr) minmax(320px,.75fr);
-  gap:48px;
-  align-items:stretch;
-  max-width:1400px;
-  margin:0 auto;
-  padding:40px 20px 20px;
-}
-
-.home-main{
-  display:flex;
-  justify-content:center;
-}
-
-.home-main .hero{
-  width:100%;
-  max-width:900px;
-  text-align:center;
-}
-
-.home-side-card{
-  border:1px solid #d4a853;
-  padding:36px 32px;
-  background:rgba(45,31,20,.32);
-  min-height:560px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-
-.new-profile-kicker{
-  text-align:center;
-  color:#d4a853;
-  font-size:.95rem;
-  letter-spacing:.16em;
-  margin-bottom:20px;
-}
-
-.home-side-card h2{
-  text-align:center;
-  font-size:3.4rem;
-  line-height:1;
-  margin:10px 0 34px;
-  color:#fff;
-}
-
-.home-side-card p{
-  text-align:center;
-  font-size:1.05rem;
-  line-height:1.7;
-  color:#eee;
-  margin:0 0 24px;
-}
-
-.home-side-card p span{
-  color:#d4a853;
-}
-
-.btn-side-card{
-  display:block;
-  width:100%;
-  margin-top:30px;
-  padding:16px 20px;
-  background:transparent;
-  color:#d4a853;
-  border:1px solid #d4a853;
-  font-size:1rem;
-  cursor:pointer;
-}
-
-.btn-side-card:hover{
-  background:#d4a853;
-  color:#2b1d12;
-}
-
-.home-main .hero h1{
-  font-size:5.5rem;
-}
-
-.home-main .hero-cards{
-  margin-top:34px;
-  padding-top:26px;
-  border-top:1px solid rgba(212,168,83,.35);
-}
-
-@media (max-width:1100px){
-  .home-hero-layout{
-    grid-template-columns:1fr;
-  }
-
-  .home-side-card{
-    min-height:auto;
-  }
-
-  .home-main .hero h1{
-    font-size:4rem;
-  }
-}
-
-@media (max-width:700px){
-  .home-main .hero h1{
-    font-size:3rem;
-  }
-
-  .home-side-card h2{
-    font-size:2.6rem;
-  }
-
-  .home-side-card{
-    padding:26px 20px;
-  }
-}
-
-315  </style>
+</style>
 </head>
 <body>
 
@@ -451,81 +334,22 @@ footer span{color:#d4a853;}
 
 <!-- PAGE ACCUEIL -->
 <div id="page-accueil" class="page active">
- <div class="home-hero-layout">
-
-  <div class="home-main">
-    <div class="hero">
-      <h1>SONS <span>OF</span> FATE</h1>
-
-      <div class="hero-sub">
-        JEU DE FIGURINES TACTIQUE &amp; AGNOSTIQUE
-      </div>
-
-      <p class="hero-desc">
-        Sons of Fate est un jeu de figurines où
-        <em>chaque combat raconte une histoire.</em><br><br>
-
-        Menez les figurines de votre choix dans des affrontements intenses,
-        où stratégie et imprévu se mêlent à chaque instant.<br><br>
-
-        Chaque décision compte... et tout peut basculer en un instant.<br><br>
-
-        <em>Forgez votre destin, combattez pour la gloire.</em>
-      </p>
-
-      <button class="btn-hero"
-        onclick="showPage('constructeur',document.querySelectorAll('.nav-links a')[3])">
-        Créer ma bande
-      </button>
-
-      <div class="hero-cards">
-        <div class="hero-card">
-          <div class="hero-card-num">7</div>
-          <div class="hero-card-label">PROFILS</div>
-        </div>
-
-        <div class="hero-card">
-          <div class="hero-card-num">5</div>
-          <div class="hero-card-label">TOURS MAX</div>
-        </div>
-
-        <div class="hero-card">
-          <div class="hero-card-num">3</div>
-          <div class="hero-card-label">DÉS DU DESTIN</div>
-        </div>
-
-        <div class="hero-card">
-          <div class="hero-card-num" id="nbCapacites"></div>
-          <div class="hero-card-label">CAPACITÉS</div>
-        </div>
-      </div>
+  <div class="hero">
+    <h1>SONS <span>OF</span> FATE</h1>
+    <div class="hero-sub">JEU DE FIGURINES TACTIQUE &amp; AGNOSTIQUE</div>
+    <p class="hero-desc">
+      Sons of Fate est un jeu de figurines où <em>chaque combat raconte une histoire</em>. Menez les figurines de votre choix dans des affrontements intenses, où stratégie et imprévu se mêlent à chaque instant.<br><br>
+      Chaque décision compte… et tout peut basculer en un instant.<br><br>
+      <em>Forgez votre destin, combattez pour la gloire.</em>
+    </p>
+    <button class="btn-hero" onclick="showPage('constructeur',document.querySelectorAll('.nav-links a')[3])">Créer ma bande</button>
+    <div class="hero-cards">
+      <div class="hero-card"><div class="hero-card-num">7</div><div class="hero-card-label">PROFILS</div></div>
+      <div class="hero-card"><div class="hero-card-num">5</div><div class="hero-card-label">TOURS MAX</div></div>
+      <div class="hero-card"><div class="hero-card-num">3</div><div class="hero-card-label">DÉS DU DESTIN</div></div>
+      <div class="hero-card"><div class="hero-card-num" id="nbCapacites">—</div><div class="hero-card-label">CAPACITÉS</div></div>
     </div>
   </div>
-
-  <div class="home-side-card">
-    <div>
-      <div class="new-profile-kicker">NOUVEAU PROFIL</div>
-
-      <h2>L’Éclaireur</h2>
-
-      <p>
-        Un nouveau profil rejoint<br>
-        Sons of Fate : <span>l’Éclaireur</span>.
-      </p>
-
-      <p>
-        Rapide, agile et imprévisible,<br>
-        il frappe là où personne ne l’attend.
-      </p>
-    </div>
-
-    <button class="btn-side-card"
-      onclick="showPage('cartes',document.querySelectorAll('.nav-links a')[2])">
-      Découvrir l’Éclaireur
-    </button>
-  </div>
-
-</div>
   <div class="section">
     <div class="section-title">Comment <span>jouer</span> ?</div>
     <div class="divider"></div>
