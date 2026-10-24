@@ -313,5 +313,14 @@
   "name": "Tir maîtrisé",
   "reservedFor": [],
   "desc": "Passif : lorsqu'il effectue une attaque de tir sur un ennemi engagé au corps à corps avec un allié, le combattant n'effectue pas de jet de Psy. Le tir est directement résolu contre l'ennemi ciblé."
+},
+{
+  "id": "c_infiltration",
+  "cat": "Mouvement",
+  "niveau": "+",
+  "cout": 1,
+  "name": "Infiltration",
+  "reservedFor": ["eclaireur"],
+  "desc": "Déploiement — lors du déploiement, placez ce combattant n’importe où sur le champ de bataille, à plus de 3\" de tout objectif et de tout combattant adverse. (réservé Éclaireur)"
 }
 ]
