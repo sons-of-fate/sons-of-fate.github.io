@@ -40,6 +40,17 @@ nav{background:#2a1f15;padding:0 2rem;display:flex;align-items:center;justify-co
 .hero-desc em{color:#d4a853;font-style:normal;}
 .btn-hero{display:inline-block;padding:.75rem 2rem;border:1px solid #d4a853;color:#d4a853;font-size:.9rem;letter-spacing:.1em;font-family:sans-serif;cursor:pointer;background:none;transition:all .2s;}
 .btn-hero:hover{background:#d4a853;color:#2a1f15;}
+  .hero-new-profile{
+  margin-top:1.2rem;
+  color:#ccc;
+  font-size:.9rem;
+  line-height:1.5;
+}
+
+.hero-new-profile strong{
+  color:#d4a853;
+  letter-spacing:.06em;
+}
 .hero-cards{display:flex;justify-content:center;gap:2rem;margin-top:3rem;flex-wrap:wrap;}
 .hero-card{text-align:center;}
 .hero-card-num{font-size:2rem;color:#d4a853;}
@@ -343,8 +354,12 @@ footer span{color:#d4a853;}
       <em>Forgez votre destin, combattez pour la gloire.</em>
     </p>
     <button class="btn-hero" onclick="showPage('constructeur',document.querySelectorAll('.nav-links a')[3])">Créer ma bande</button>
+    <div class="hero-new-profile">
+  <strong>NOUVEAU PROFIL : L’ÉCLAIREUR</strong><br>
+  Rapide, agile et imprévisible — découvrez-le dans la rubrique Cartes.
+</div>
     <div class="hero-cards">
-      <div class="hero-card"><div class="hero-card-num">7</div><div class="hero-card-label">PROFILS</div></div>
+      <div class="hero-card"><div class="hero-card-num">8</div><div class="hero-card-label">PROFILS</div></div>
       <div class="hero-card"><div class="hero-card-num">5</div><div class="hero-card-label">TOURS MAX</div></div>
       <div class="hero-card"><div class="hero-card-num">3</div><div class="hero-card-label">DÉS DU DESTIN</div></div>
       <div class="hero-card"><div class="hero-card-num" id="nbCapacites">—</div><div class="hero-card-label">CAPACITÉS</div></div>
