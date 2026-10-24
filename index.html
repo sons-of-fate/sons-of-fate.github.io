@@ -587,6 +587,7 @@ footer span{color:#d4a853;}
 // ============================================================
 const PROFILES=[
   {id:'brave',    name:'Brave',           psy:2,for_:3,res:3,rap:3,cost:12,tireurCost:16,md:0,tireurMd:0,maxType:null},
+  {id:'eclaireur',name:'Éclaireur',psy:2,for_:4,res:3,rap:5,cost:16,tireurCost:22,md:1,tireurMd:1,maxType:'eclaireur'},
   {id:'guerrier', name:'Guerrier',        psy:2,for_:4,res:4,rap:4,cost:18,tireurCost:24,md:0,tireurMd:0,maxType:null},
   {id:'capitaine',name:'Capitaine',       psy:3,for_:5,res:4,rap:4,cost:28,tireurCost:38,md:1,tireurMd:1,maxType:'capitaine'},
   {id:'champion', name:'Champion',        psy:3,for_:5,res:4,rap:4,cost:26,tireurCost:36,md:0,tireurMd:0,maxType:null},
@@ -665,6 +666,7 @@ function getMDLeft(){return getTotalMD()-getMDSpent();}
 function getSpent(){return band.reduce((s,f)=>{const p=PROFILES.find(x=>x.id===f.profileId);return s+(f.tireur?p.tireurCost:p.cost);},0);}
 function hasSeigneur(){return band.some(x=>x.profileId==='seigneur'||x.profileId==='seigneurS');}
 function countCapitaines(){return band.filter(x=>x.profileId==='capitaine').length;}
+function countEclaireurs(){return band.filter(x=>x.profileId==='eclaireur').length;}
 function hasColosse(){return band.some(x=>x.profileId==='colosse');}
 
 function canAdd(profile,tireur){
@@ -673,6 +675,7 @@ function canAdd(profile,tireur){
   if(profile.maxType==='seigneur'&&hasSeigneur())return{ok:false,reason:'Un seul Seigneur ou Seigneur Suprême'};
   if(profile.maxType==='colosse'&&hasColosse())return{ok:false,reason:'Maximum 1 Colosse'};
   if(profile.maxType==='capitaine'){const m=budget>=200?2:1;if(countCapitaines()>=m)return{ok:false,reason:'Maximum '+(budget>=200?2:1)+' Capitaine(s)'};}
+  if(profile.maxType==='eclaireur'){const m=budget>=200?2:1;if(countEclaireurs()>=m)return{ok:false,reason:'Maximum '+(budget>=200?2:1)+' Éclaireur(s)'};}
   return{ok:true};
 }
 
