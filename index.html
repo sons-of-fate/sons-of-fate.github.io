@@ -217,9 +217,12 @@ footer span{color:#d4a853;}
 .sc-section-line{width:50px;height:2px;background:#d4a853;margin:.6rem auto 2.5rem;}
 
 /* Grille scénarios */
-.sc-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:1.5rem;align-items:start;}
+.sc-cards-grid{
+  column-count:2;
+  column-gap:1.5rem;
+}
 /* Carte scénario */
-.sc-card{background:#fff;border:1px solid #d4c4a0;position:relative;transition:border-color .25s,transform .2s;}
+.sc-card{background:#fff;border:1px solid #d4c4a0;position:relative;transition:border-color .25s,transform .2s;break-inside:avoid;margin-bottom:1.5rem;}
 .sc-card:hover{border-color:#d4a853;transform:translateY(-2px);}
 .sc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#d4a85380,transparent);opacity:0;transition:opacity .3s;}
 .sc-card:hover::before{opacity:1;}
@@ -314,7 +317,7 @@ footer span{color:#d4a853;}
   .nav-burger{display:block;}
   .b-stats{grid-template-columns:repeat(2,minmax(0,1fr));}
   .hero h1{letter-spacing:.1em;}
-  .sc-cards-grid{grid-template-columns:1fr;}
+.sc-cards-grid{column-count:1;}
 }
 
 @media print{
